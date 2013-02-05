@@ -4,18 +4,18 @@ $(document).ready(function() {
 		$('#result_table').empty();
 		$('#result_table').append("Fetching Cars...");
 		$.ajax({
-            url: 'rental/get_cars',
-            type:'POST',
+			url: 'rental/get_cars',
+			type:'POST',
 			data: {pickuplocation: $('#pickuplocation').val(),	pickupdate: $('#pickupdate').val(),	pickuptime: $('#pickuptime').val(),	dropofflocation: $('#dropofflocation').val(), dropoffdate: $('#dropoffdate').val(),	dropofftime: $('#dropofftime').val()},
-            success: function(data){
-					$('#result_table').empty();
-                    $('#result_table').append(output_string);
-            } // End of success function of ajax form
-        }); // End of ajax call  
+			success: function(data){
+				$('#result_table').empty();
+				$('#result_table').append(output_string);
+} // End of success function of ajax form
+}); // End of ajax call  
 	});
 });
 </script>
-	
+
 <h3>Welcome to Rental Cars</h3>
 Search for a Rental Car!
 
@@ -26,8 +26,8 @@ Search for a Rental Car!
 
 <label for="pickuplocation">Pick-Up Location:</label> 
 <select id="pickuplocation" name="pickuplocation">
-<?php foreach ($locations as $location): ?>
-<option value="<?php echo $location['city']; ?>"><?php echo  $location['city']; ?></option>
+	<?php foreach ($locations as $location): ?>
+	<option value="<?php echo $location['city']; ?>"><?php echo  $location['city']; ?></option>
 <?php endforeach ?>    
 </select><br />
 
@@ -41,8 +41,8 @@ Search for a Rental Car!
 
 <label for="dropofflocation">Drop-Off Location:</label> 
 <select id="dropofflocation"  name="dropofflocation">
-<?php foreach ($locations as $location): ?>
-<option value="<?php echo $location['city']; ?>"><?php echo $location['city']; ?></option>
+	<?php foreach ($locations as $location): ?>
+	<option value="<?php echo $location['city']; ?>"><?php echo $location['city']; ?></option>
 <?php endforeach ?>    
 </select><br />
 
