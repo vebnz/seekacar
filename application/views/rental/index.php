@@ -1,4 +1,3 @@
-<!-- testing -->
 <script type='text/javascript' language='javascript'>
 $(document).ready(function() {
 	$('#submit').click(function(){ 
