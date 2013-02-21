@@ -73,7 +73,7 @@ class Rental extends CI_Controller {
                     'promocode' => '');
                 
                 $data = $this->scrapeSite($url, $postdata);
-                array_push($largeCarArray, $this->AceCars($data));
+                $largeCarArray = array_merge($largeCarArray, $this->AceCars($data));
 				break;
             
 				case 'Omega':
@@ -94,7 +94,7 @@ class Rental extends CI_Controller {
 						'agent_name' => '');
 					
 					$data = $this->scrapeSite($url, $postdata);
-					array_push($largeCarArray, $this->OmegaCars($data));
+					$largeCarArray = array_merge($largeCarArray, $this->OmegaCars($data));
 				break;
 				
 				case 'Thrifty':
@@ -149,7 +149,7 @@ class Rental extends CI_Controller {
 						'WHOLESALECARCLASS' => '');
 									
 					$data = $this->scrapeSite($url, $postdata);
-					array_push($largeCarArray, $this->ThriftyCars($data));
+					$largeCarArray = array_merge($largeCarArray, $this->ThriftyCars($data));
 				break;
 				
 				case 'Britz':
@@ -182,7 +182,7 @@ class Rental extends CI_Controller {
 						'vh' => '');  
 						
 					$data = $this->scrapeSite($url, $postdata);
-					array_push($largeCarArray, $this->BritzCars($data));
+					$largeCarArray = array_merge($largeCarArray, $this->BritzCars($data));
 				break;
 				
 				case 'Budget':
@@ -228,7 +228,7 @@ class Rental extends CI_Controller {
 				
 
 					$data = $this->scrapeSite($url, $postdata);								
-					array_push($largeCarArray, $this->BudgetCars($data));
+					$largeCarArray = array_merge($largeCarArray, $this->BudgetCars($data));
 				break;
 				
 				case 'Jucy':
@@ -282,7 +282,7 @@ class Rental extends CI_Controller {
 						'ctl00$ctrlSearchCriteria$imgBtnGO.y' => '12');
 					
 					$data = $this->scrapeSite($url, $postdata);
-					array_push($largeCarArray, $this->ApexCars($data));
+					$largeCarArray = array_merge($largeCarArray, $this->ApexCars($data));
 				break;
 			}
 		}
