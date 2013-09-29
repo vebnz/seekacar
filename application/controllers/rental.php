@@ -168,30 +168,29 @@ class Rental extends CI_Controller {
             
                 $puDateSplit = explode("/", $pudate);
                 $doDateSplit = explode("/", $dodate);
-                
-                $url = 'http://secure.britz.co.nz/';
-                $postdata = array('cc' => 'NZ',
-                    'vc' => 'bz',
-                    'ac' => '',
-                    'sc' => 'car',
-                    'pc' => '',
-                    'ch' => '',
-                    'rf' => '',
-                    'na' => '1',
-                    'nc' => '0',
-                    'cr' => 'NZ',
-                    'pb' => "$locOne",
-                    'pd' => "$puDateSplit[0]",
-                    'pm' => "$puDateSplit[1]",
-                    'py' => "$puDateSplit[2]",
-                    'pt' => '10:00',
-                    'db' => "$locTwo",
-                    'dd' => "$doDateSplit[0]",
-                    'dm' => "$doDateSplit[1]",
-                    'dy' => "$doDateSplit[2]",
-                    'dt' => '10:00',
-                    'vt' => '1',
-                    'vh' => '');  
+                		
+				$url = 'https://secure.britz.co.nz/Selection.aspx';
+                $postdata = array('cc' => 'nz',
+					'brand' => 'b',
+					'ac' => '',
+					'sc' => 'ac',
+					'vtype' => 'ac',
+					'pc' => '',
+					'na' => '1',
+					'nc' => '',
+					'cr' => 'nz',
+					'pb' => "$locOne",
+					'pd' => "$puDateSplit[0]",
+					'pm' => "$puDateSplit[1]",
+					'py' => "$puDateSplit[2]",
+					'pt' => '10:00',
+					'db' => "$locTwo",
+					'dd' => "$doDateSplit[0]",
+					'dm' => "$doDateSplit[1]",
+					'dy' => "$doDateSplit[2]",
+					'dt' => '10:00',
+					'vh' => '',
+					'pv' => '1.0'); 
                     
                 $data = $this->scrapeSite($url, $postdata);
                 $largeCarArray = array_merge($largeCarArray, @$this->BritzCars($data));
@@ -531,7 +530,7 @@ class Rental extends CI_Controller {
         $carsXpath = new DOMXPath($tempDom);
         $results = array();
 
-            $cars = $carsXpath->query("li[@class='Collapse']");
+            $cars = $carsXpath->query("//li[@class='Collapse element avail']");
 
             foreach ($cars as $car) {
                 $newDom = new DOMDocument;
