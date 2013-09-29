@@ -96,17 +96,17 @@ class Rental extends CI_Controller {
                 $puDate = str_replace("/", "-", $pudate);
                 $doDate = str_replace("/", "-", $dodate);
                 
-                $url = 'http://www.omegarentalcars.com/quickquote.php';
-                $postdata = array('step' => '1',
-                    'PickUpLocation' => "$locOne",
-                    'PickUpDate' => "$puDate",
-                    'PickUpTime' => '10:00:00',
-                    'ReturnLocation' => "$locTwo",
-                    'ReturnDate' => "$doDate",
-                    'ReturnTime' => '10:00:00',
-                    'islands' => '0',
-                    'vehicle_type' => '',
-                    'agent_name' => '');
+                $url = 'https://www.omegarentalcars.com/book/QuoteForm';
+				$postdata = array('PickupForm' => "$locOne",
+					'PickupDate' => "$puDate",
+					'PickupTime' => '1000',
+					'DropoffTo' => "$locTwo",
+					'DropoffDate' => "$doDate",
+					'DropoffTime' => '1000',
+					'PromoCode' => '',
+					'SpecialText' => '',
+					'Iframe' => '0',
+					'action_SubmitQuoteForm' => '');
                 
                 $data = $this->scrapeSite($url, $postdata);
                 $largeCarArray = array_merge($largeCarArray, @$this->OmegaCars($data));
