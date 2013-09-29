@@ -92,16 +92,13 @@ class Rental extends CI_Controller {
             break;
         
             case 'Omega':
-                
-                $puDate = str_replace("/", "-", $pudate);
-                $doDate = str_replace("/", "-", $dodate);
-                
+        		
                 $url = 'https://www.omegarentalcars.com/book/QuoteForm';
 				$postdata = array('PickupForm' => "$locOne",
-					'PickupDate' => "$puDate",
+					'PickupDate' => "$pudate",
 					'PickupTime' => '1000',
 					'DropoffTo' => "$locTwo",
-					'DropoffDate' => "$doDate",
+					'DropoffDate' => "$dodate",
 					'DropoffTime' => '1000',
 					'PromoCode' => '',
 					'SpecialText' => '',
@@ -415,7 +412,7 @@ class Rental extends CI_Controller {
 		$tempDom = new DOMDocument();
 		$carDom = new DOMDocument(); 
 		$xpath = new DOMXPath($dom); 
-		$site = $xpath->query("//form[1]/div");  
+		$site = $xpath->query("//div[@class='content_block content_list']");  
 
 		foreach ( $site as $item ) {         
 			$tempDom->appendChild($tempDom->importNode($item,true));    
@@ -424,20 +421,20 @@ class Rental extends CI_Controller {
 		$carsXpath = new DOMXPath($tempDom);
 		$results = array();  
 		 
-		$cars = $carsXpath->query("//table[position()>2]");
+		$cars = $carsXpath->query("//div[contains(@class,'content_row list_item fleet_item')]");
 			
-        foreach ($cars as $car) {
-            $newDom = new DOMDocument;
-            $newDom->appendChild($newDom->importNode($car,true));
-            $carXpath = new DOMXPath( $newDom );
-            $image = trim($carXpath->query("tbody/tr/td[3]/div/img/@src")->item(0)->nodeValue);
-            $title = trim($carXpath->query("tbody/tr/td/div/span/text()")->item(0)->nodeValue);
-            $price = trim($carXpath->query("tbody/tr/td/span/text()")->item(0)->nodeValue);
-            $type = trim($carXpath->query("tbody/tr/td/div/a/text()")->item(0)->nodeValue);
-            $gearbox = $carXpath->query("tbody/tr/td[2]/table/tbody/tr[2]/td/ul/li/text()[contains(.,'Manual') or contains(.,'Automatic')]");
-            $gearbox = $gearbox->length ? trim($gearbox->item(0)->nodeValue) : "N/A";
-            $size = $carXpath->query("tbody/tr/td[2]/img[@src='https://www.omegarentalcars.com/modules/Seekom/images/PaxAdult.gif']/@src");
-            $size = $size->length;
+		foreach ($cars as $car) {
+			$newDom = new DOMDocument;
+			$newDom->appendChild($newDom->importNode($car,true));
+			$carXpath = new DOMXPath( $newDom );
+			$image = trim($carXpath->query("div[@class='list_left']/div[@class='list_image']/img/@src")->item(0)->nodeValue);
+			$title = trim($carXpath->query("div[@class='list_left']/div[@class='list_title']/h3/text()")->item(0)->nodeValue);
+			$price = trim($carXpath->query("div[@class='list_right']/div[@class='list_price']/div[@class='price']/text()")->item(0)->nodeValue);
+			$type = trim($carXpath->query("div[@class='list_left']/div[@class='list_title']/h2/text()")->item(0)->nodeValue);
+			$gearbox = $carXpath->query("div[@class='list_right']/div[@class='list_features']/div[@class='feature'][1]/text()[contains(.,'Manual') or contains(.,'Automatic')]");
+			$gearbox = $gearbox->length ? trim($gearbox->item(0)->nodeValue) : "N/A";
+			$size = $carXpath->query("div[@class='list_right']/div[@class='list_icons']/div[@class='icon adult']");
+			$size = $size->length;
 			
             $results[] = array(
             'company' => "Omega",
