@@ -109,6 +109,22 @@ class Rental extends CI_Controller {
                 $largeCarArray = array_merge($largeCarArray, @$this->OmegaCars($data));
             break;
             
+            case 'Pegasus':
+            	
+            	$fDateReplaced = urlencode($pudate); 
+            	$tDateReplaced = urlencode($dodate); 
+            	
+            	if ($locOne == $locTwo)
+            		$locTwo= '-1';
+            	
+            	$url = 'http://www.rentalcars.co.nz/home/getVehicles?from_location='.$locOne.'&from_date='.$fDateReplaced.'&from_time=1000&to_location='.$locTwo.'&to_date='.$tDateReplaced.'&to_time=1000&surname=&email=&start.x=68&start.y=15';
+            	$postdata = array();
+            	
+            	$data = $this->scrapeSite($url, $postdata);
+            	$largeCarArray = array_merge($largeCarArray, @$this->PegasusCars($data));
+            
+            break;
+            
             case 'Thrifty':
             
                 $puDateSplit = explode("/", $pudate);
@@ -403,6 +419,53 @@ class Rental extends CI_Controller {
 		}
 		return $results;
 	}
+    
+    function PegasusCars($data) {
+    	$dom = new DOMDocument();
+	@$dom->loadHTML($data);
+	$tempDom = new DOMDocument();
+	$carDom = new DOMDocument(); 
+	$xpath = new DOMXPath($dom); 
+	
+	$site = $xpath->query("//div[@id='content']/div[@id='book-col-2']/div[@id='vehicle_holder']/ul[@class='vehicles']");
+        foreach ( $site as $item ) {
+            $tempDom->appendChild($tempDom->importNode($item,true));
+        }
+
+        $tempDom->saveHTML();
+        $carsXpath = new DOMXPath($tempDom);
+        $results = array();
+
+        $cars = $carsXpath->query("//li[@class='clearfix']");
+
+        foreach ($cars as $car) {
+                $newDom = new DOMDocument;
+                $newDom->appendChild($newDom->importNode($car,true));
+                $carXpath = new DOMXPath( $newDom );
+
+                $image = trim($carXpath->query("div[@class='car-col-1']/img/@src")->item(0)->nodeValue);
+                $title = trim($carXpath->query("h3[@class='blue_bar']/text()")->item(0)->nodeValue);
+                $price = trim($carXpath->query("div[@class='car-col-1']/p/text()")->item(0)->nodeValue);
+              
+                
+                $type = trim($carXpath->query("div[@class='car-col-2']/ul/li[3]/text()")->item(0)->nodeValue);
+                $gearbox = trim($carXpath->query("div[@class='car-col-2']/ul/li[2]/text()")->item(0)->nodeValue);
+                $size = trim($carXpath->query("div[@class='car-col-2']/div/p[1]/text()")->item(0)->nodeValue);
+                
+                if ($price != "N/A") {
+                    $results[] = array(
+                        'company' => "Pegasus",
+                        'image' => $image,
+                        'title' => $title,
+                        'type' => $type,
+                        'gearbox' => $gearbox,
+                        'size' => $size,
+                        'price' => $price,
+                    );   
+                }
+        } 
+    	return $results;
+    }
     
     function OmegaCars($data) {	
 		
