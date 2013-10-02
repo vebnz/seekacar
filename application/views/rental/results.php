@@ -1,6 +1,12 @@
 <script type='text/javascript' language='javascript'>
-$(document).ready(function() {
-	$('#result_table').empty();	
+$(document).ajaxStart(function () {
+    $('#result_table').fadeIn();
+});
+$(document).ajaxStop(function () {
+    $('#result_table').fadeOut();
+});
+$(document).ready(function() {	
+	
 	$.ajax({
         url: 'list_companies',
         type:'POST',
@@ -24,7 +30,7 @@ $(document).ready(function() {
                 });	
 		  
            } // End of success function of ajax 
-    }); // End of ajax call      
+    }); // End of ajax call  
 
 });
 </script>
@@ -75,9 +81,19 @@ $(document).ready(function() {
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
-          <div class="leaderboard">
-            <h1>Search Results</h1>
-		<div id="result_table"></div><br />
+          <div class="leaderboard">            
+            <h1>Search Results</h1>	            	
+            <div class="row">
+			<div class="span4 select_height">	Showing 1 - 10 of 50 results</div>
+			<div class="pull-right">
+				Sort by : 
+				<select id="sort" name="sort" class="span2">
+					<option value="">Company Name</option>
+					<option value="">Price: Low to High</option>
+					<option value="">Price: High to Low</option>
+				</select>
+			</div>
+		</div>
             <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="carTable">
 	<thead>
 		<tr>
@@ -88,12 +104,41 @@ $(document).ready(function() {
 			<th>Gearbox</th>
 			<th>Size</th>
             <th>Price</th>
-		</tr>
-	</thead>
+		</tr>		
+	</thead>		
 	<tbody>
-	
+		<tr id="result_table"><td colspan="7" style="text-align: center;"><img src="http://www.sanbaldo.com/wordpress/wp-content/bigrotation2.gif" id="img-load" /> Finding Cars...</td></tr>
 	</tbody>
 </table>
+				<div class="row premium">
+			<div class="span2">
+				<a href="" class="thumbnail " ><img alt="" src="https://www.acerentalcars.co.nz/images/cars/premcomp_md.jpg"></a>
+				<h5>Daily price: $28NZD</h5>
+				
+			</div>			
+			<div class="span3">
+				<img style="margin-bottom: 30px; float: left;" alt="" src="http://rental.simple-hosts.com/images/ace.jpg">
+				<a href="property.html"><h3>Premium Compact</h3></a>
+				<h6>Adults: 4</h6>
+				<h6>Transmission: Manual</h6>
+				<h6>Car: Daihatsu Sirion</h6> 
+				<button class="btn btn-primary">Book...</button>
+			</div>
+			<div class="span2">
+				<a href="" class="thumbnail " ><img alt="" src="https://www.acerentalcars.co.nz/images/cars/premcomp_md.jpg"></a>
+				<h5>Daily price: $28NZD</h5>
+				
+			</div>
+			<div class="span3">
+				<img style="margin-bottom: 30px; float: left;" alt="" src="http://rental.simple-hosts.com/images/ace.jpg">
+				<a href="property.html"><h3>Premium Compact</h3></a>
+				<h6>Adults: 4</h6>
+				<h6>Transmission: Manual</h6>
+				<h6>Car: Daihatsu Sirion</h6> 
+				<button class="btn btn-primary">Book...</button>
+			</div>
+		</div>
+		<hr />	
         
           </div>          
         </div>          
