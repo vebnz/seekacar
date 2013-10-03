@@ -22,7 +22,7 @@ $(document).ready(function() {
 						$.each(cars, function(i, car) {
 							$('#carTable tr:last').after('<tr><td>&nbsp;</td><td>' + car.company + '</td><td>' + car.title + '</td><td>' + car.type + '</td><td>' + car.gearbox + '</td><td>' + car.size + '</td><td>' + car.price + '</td></tr>');
 						});							
-                    }
+					}
 			    });
 		    });	
 		} // End of success function of ajax 
@@ -69,6 +69,58 @@ $(document).ready(function() {
 							</div>
 							<div class="clearfix">
 								<button class="btn btn-large btn-primary" type="submit">Search</button>
+							</div>
+						</fieldset>
+					</form> 
+                </div>
+			</div><!--/.well -->
+			<div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<li class="nav-header">Filter</li>              
+				</ul>  
+				<div class="left-search-form">
+					<form action="">
+						<fieldset>
+							<div class="clearfix">
+								<label type="select" for="">Car Type
+									<select class="full-width">
+										<option>All</option>
+										<option>Economy</option>
+										<option>Family</option>
+										<option>Luxary</option>
+										<option>People Carriers</option>
+										<option>4WD</option>
+									</select>
+								</label>
+							</div>
+							<div class="form-group">
+								<label type="select" for="">Passengers
+									<select class="full-width">
+										<option>Any</option>
+										<option>1</option>
+										<option>2</option>
+										<option>4</option>
+										<option>5</option>
+										<option>6+</option>
+									</select>
+								</label>                                
+							</div>
+							<div class="clearfix">
+								<label class="checkbox inline">
+									<input type="checkbox" checked> Ace Rentals
+								</label>
+								<label class="checkbox inline">
+									<input type="checkbox" checked> Pegasus
+								</label>
+								<label class="checkbox inline">
+									<input type="checkbox" checked> Omega
+								</label><br/>
+								<label class="checkbox inline">
+									<input type="checkbox" checked> Budget
+								</label>
+								<label class="checkbox inline">
+									<input type="checkbox" checked> Britz
+								</label>
 							</div>
 						</fieldset>
 					</form> 
