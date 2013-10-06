@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+# If the file is NOT the index.php file
+RewriteCond %{REQUEST_FILENAME} !index.php
+
+# Hide all PHP files so none can be accessed by HTTP
+RewriteRule (.*)\.php$ index.php/$1
+
+# If the file/dir is NOT real go to index
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteRule ^(.*)$ index.php/$1 [QSA,L]
+</IfModule>
