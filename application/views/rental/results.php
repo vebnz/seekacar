@@ -65,7 +65,7 @@ $(document).ready(function() {
 							</div>
 							<div class="clearfix">
 								<input class="sixty-width" type="text" name="dropoffupdate" id="dropoffdate" placeholder="Dropoff Date"> 
-                                <input class="forty-width" type="text" placeholder="Dropoff Time">
+                                <input class="forty-width" type="text" name="dropofftime" placeholder="Dropoff Time">
 							</div>
 							<div class="clearfix">
 								<button class="btn btn-large btn-primary" type="submit">Search</button>

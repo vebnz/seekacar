@@ -21,6 +21,10 @@ var DEFAULTAPP = (function ($) {
             });
         });
 
+        $(function() {
+            $('#pickuptime, #dropofftime').timepicker({ 'scrollDefaultNow': true });
+        });
+
     }
 
 

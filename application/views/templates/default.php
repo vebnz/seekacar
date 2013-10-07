@@ -8,10 +8,11 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
-    <link href="/css/bootstrap.css" rel="stylesheet">
-    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="/css/extra.css" rel="stylesheet">
+    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="/css/extra.css" rel="stylesheet" />
+    <link href="/css/jquery.timepicker.css" rel="stylesheet" />
     <style type="text/css">
 
     </style>
@@ -60,7 +61,8 @@
     <script src="twitter-bootstrap-v2/docs/assets/js/bootstrap-collapse.js"></script>
     <script src="twitter-bootstrap-v2/docs/assets/js/bootstrap-carousel.js"></script>
     <script src="twitter-bootstrap-v2/docs/assets/js/bootstrap-typeahead.js"></script>
-    <script type="text/javascript" src="<?=base_url()?>/js/document.ready.all.js"></script>
+    <script type="text/javascript" src="/js/document.ready.all.js"></script>
+    <script type="text/javascript" src="/js/jquery.timepicker.min.js"></script>
 
     </body>
 </html>
