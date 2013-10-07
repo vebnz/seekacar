@@ -9,7 +9,7 @@
 				<div class="contained well">
 					<h2>Find Rentals</h2>
 					<?php echo validation_errors(); ?>
-                    <?php echo form_open('rental/index') ?>
+                    <?php echo form_open('rental') ?>
 
 						<fieldset>
 							<div class="clearfix">
