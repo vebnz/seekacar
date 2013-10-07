@@ -22,13 +22,18 @@ class Rental extends CI_Controller {
         
         if ($this->form_validation->run() === FALSE)
         {
-            $this->load->view('templates/header', $data);            
-            $this->load->view('rental/index', $data);
-            $this->load->view('templates/footer');            
+             $data['test'] = "test";
+            // load values for the view
+            $this->load->vars($data);
+
+            // get the view section
+            $sections = array(
+                'content'       => 'rental/index',
+            );  
+            $this->template->load('templates/default', $sections);
         }
         else
         {
-            $this->load->view('templates/header', $data);
             //$this->rental_model->search_cars();
             $data['plocation'] = $this->input->post('pickuplocation');
             $data['dlocation'] = $this->input->post('dropofflocation');
@@ -37,8 +42,15 @@ class Rental extends CI_Controller {
             $data['dodate'] = $this->input->post('dropoffdate');
             $data['dotime'] = $this->input->post('dropofftime');
             //$data['cars'] = $this->get_cars();            
-            $this->load->view('rental/results', $data);
-            $this->load->view('templates/footer'); 
+
+            // load values for the view
+            $this->load->vars($data);
+
+            // get the view section
+            $sections = array(
+                'content'       => 'rental/results',
+            );  
+            $this->template->load('templates/default', $sections);
         }        
     }
     
