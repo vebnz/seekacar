@@ -14,7 +14,7 @@ var DEFAULTAPP = (function ($) {
         /* Javascript goes in here */
         $(function() {
             $("#pickupdate, #dropoffdate").datepicker({
-                dateFormat : 'mm/dd/yy',
+                dateFormat : 'dd/mm/yy',
                 changeMonth : true,
                 changeYear : true,
                 minDate: 0,
