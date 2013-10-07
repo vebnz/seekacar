@@ -77,7 +77,6 @@ class Rental extends CI_Controller {
                 
         switch($name) {
             case 'AceRentals':
-            
             $puDateSplit = explode("/", $pudate);
             $doDateSplit = explode("/", $dodate);
                 

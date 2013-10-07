@@ -37,17 +37,13 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-$route['rental'] = 'rental';
-$route['rental/(:any)'] = 'rental/view/$1';
-$route['rental/index'] = 'rental/index';
-$route['rental/get_cars'] = 'rental/get_cars';
-$route['rental/list_companies'] = 'rental/list_companies';
-$route['news/create'] = 'news/create';
-$route['news/(:any)'] = 'news/view/$1';
-$route['news'] = 'news';
-$route['(:any)'] = 'pages/view/$1';
-$route['default_controller'] = 'rental';
-$route['404_override'] = '';
+$route['rental']                = 'rental';
+$route['rental/(:any)']         = 'rental/view/$1';
+$route['get_cars']              = 'rental/get_cars';
+$route['list_companies']        = 'rental/list_companies';
+$route['(:any)']                = 'pages/view/$1';
+$route['default_controller']    = 'rental';
+$route['404_override']          = '';
 
 
 /* End of file routes.php */
