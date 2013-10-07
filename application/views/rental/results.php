@@ -7,14 +7,14 @@ $(document).ajaxStop(function () {
 });
 $(document).ready(function() {	
 	$.ajax({
-        url: 'rental/list_companies',
+        url: 'list_companies',
         type:'POST',
 		dataType: 'json',
 		data: {pickuplocation: "<?php echo $plocation; ?>", dropofflocation: "<?php echo $dlocation; ?>"},
 		success: function(companies){			
 			$.each(companies, function(i, company) {					
                 $.ajax({
-                    url: 'rental/get_cars',
+                    url: 'get_cars',
                     type: 'POST',
                     dataType: 'json',
                     data: {name: company.name, puc: company.puc, doc: company.doc, pickupdate: "<?php echo $pudate; ?>", pickuptime: "<?php echo $putime; ?>", dropoffdate: "<?php echo $dodate; ?>", dropofftime: "<?php echo $dotime; ?>"},
