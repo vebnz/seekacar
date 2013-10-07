@@ -1,7 +1,7 @@
-Let's Get Rental
+*Seek a car*
 
-This project is a simple car rental comparision web application which uses PHP, CodeIgniter, and cURL to search and scrape multiple car rental companies in New Zealand.
+This project is a car rental comparision web application, which main usage is to get the user the cheapest rental car on a specified time/date range that suits them.
 
 Authors:
-- Michael Mackenzie
-- Jamie Gracie
+* Michael Mackenzie
+* Jamie Gracie
