@@ -8,10 +8,6 @@ class Rental extends CI_Controller {
     
     public function index() {
         $data['locations'] = $this->rental_model->populateFormLocations();
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        
-        $data['title'] = 'Rental Search';
         
         $this->form_validation->set_rules('pickuplocation', 'Pick-Up Location', 'required');
         $this->form_validation->set_rules('pickupdate', 'Pick-Up Date', 'required');
@@ -22,7 +18,8 @@ class Rental extends CI_Controller {
         
         if ($this->form_validation->run() === FALSE)
         {
-             $data['test'] = "test";
+             $data['page_title'] = $this->lang->line('page_title');
+
             // load values for the view
             $this->load->vars($data);
 
@@ -129,7 +126,12 @@ class Rental extends CI_Controller {
             	if ($locOne == $locTwo)
             		$locTwo= '-1';
             	
-            	$url = 'http://www.rentalcars.co.nz/home/getVehicles?from_location='.$locOne.'&from_date='.$fDateReplaced.'&from_time=1000&to_location='.$locTwo.'&to_date='.$tDateReplaced.'&to_time=1000&surname=&email=&start.x=68&start.y=15';
+                $url = 'http://www.rentalcars.co.nz/home/getVehicles?from_location='
+                        .$locOne.'&from_date='
+                        .$fDateReplaced.'&from_time=1000&to_location='
+                        .$locTwo.'&to_date='.
+                        $tDateReplaced.'&to_time=1000&surname=&email=&start.x=68&start.y=15';
+
             	$postdata = array();
             	
             	$data = $this->scrapeSite($url, $postdata);

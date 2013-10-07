@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Let's Get Rental - Car comparison</title>
+    <title><?=$page_title?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Let's Get Rental - Car comparison">
     <meta name="author" content="">
