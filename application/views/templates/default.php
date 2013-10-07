@@ -12,7 +12,8 @@
     <link href="/css/bootstrap.css" rel="stylesheet" />
     <link href="/css/bootstrap-responsive.css" rel="stylesheet" />
     <link href="/css/extra.css" rel="stylesheet" />
-    <link href="/css/jquery.timepicker.css" rel="stylesheet" />
+    <!--<link href="/css/jquery.timepicker.css" rel="stylesheet" />-->
+	<link href="/css/datepicker.css" rel="stylesheet" />
     <style type="text/css">
 
     </style>
@@ -62,7 +63,8 @@
     <script src="twitter-bootstrap-v2/docs/assets/js/bootstrap-carousel.js"></script>
     <script src="twitter-bootstrap-v2/docs/assets/js/bootstrap-typeahead.js"></script>
     <script type="text/javascript" src="/js/document.ready.all.js"></script>
-    <script type="text/javascript" src="/js/jquery.timepicker.min.js"></script>
+    <!--<script type="text/javascript" src="/js/jquery.timepicker.min.js"></script>-->
+	<script type="text/javascript" src="/js/bootstrap-datepicker.js"></script>
 
     </body>
 </html>
