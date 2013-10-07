@@ -50,8 +50,8 @@ $(document).ready(function() {
                                 </select>
 							</div>
 							<div class="clearfix">
-								<input class="sixty-width" type="text" placeholder="Pickup Date"> 
-                                <input class="forty-width" type="text" placeholder="Pickup Time">
+								<input class="sixty-width" type="text" name="pickupdate" id="pickupdate" placeholder="Pickup Date"> 
+                                <input class="forty-width" type="text" name="pickuptime" id="pickuptime"placeholder="Pickup Time">
 							</div>
 							<div class="clearfix">
                                 <select class="full-width">
@@ -64,7 +64,7 @@ $(document).ready(function() {
                                 </select>
 							</div>
 							<div class="clearfix">
-								<input class="sixty-width" type="text" placeholder="Dropoff Date"> 
+								<input class="sixty-width" type="text" name="dropoffupdate" id="dropoffdate" placeholder="Dropoff Date"> 
                                 <input class="forty-width" type="text" placeholder="Dropoff Time">
 							</div>
 							<div class="clearfix">
@@ -164,7 +164,7 @@ $(document).ready(function() {
 				
 					</div>			
 					<div class="span3">
-						<img style="margin-bottom: 30px; float: left;" alt="" src="http://rental.simple-hosts.com/images/ace.jpg">
+						<img style="margin-bottom: 30px; float: left;" alt="" src="/images/ace.jpg">
 						<a href="property.html"><h3>Premium Compact</h3></a>
 						<h6>Adults: 4</h6>
 						<h6>Transmission: Manual</h6>
@@ -177,7 +177,7 @@ $(document).ready(function() {
 				
 					</div>
 					<div class="span3">
-						<img style="margin-bottom: 30px; float: left;" alt="" src="http://rental.simple-hosts.com/images/ace.jpg">
+						<img style="margin-bottom: 30px; float: left;" alt="" src="/images/ace.jpg">
 						<a href="property.html"><h3>Premium Compact</h3></a>
 						<h6>Adults: 4</h6>
 						<h6>Transmission: Manual</h6>

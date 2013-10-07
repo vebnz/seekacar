@@ -8,6 +8,7 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
+    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/css/extra.css" rel="stylesheet">
@@ -46,6 +47,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="twitter-bootstrap-v2/docs/assets/js/jquery.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="twitter-bootstrap-v2/docs/assets/js/bootstrap-transition.js"></script>
     <script src="twitter-bootstrap-v2/docs/assets/js/bootstrap-alert.js"></script>
     <script src="twitter-bootstrap-v2/docs/assets/js/bootstrap-modal.js"></script>
@@ -58,6 +60,7 @@
     <script src="twitter-bootstrap-v2/docs/assets/js/bootstrap-collapse.js"></script>
     <script src="twitter-bootstrap-v2/docs/assets/js/bootstrap-carousel.js"></script>
     <script src="twitter-bootstrap-v2/docs/assets/js/bootstrap-typeahead.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>/js/document.ready.all.js"></script>
 
     </body>
 </html>

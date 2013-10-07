@@ -8,6 +8,7 @@ class Rental extends CI_Controller {
     
     public function index() {
         $data['locations'] = $this->rental_model->populateFormLocations();
+        $data['page_title'] = $this->lang->line('page_title');
         
         $this->form_validation->set_rules('pickuplocation', 'Pick-Up Location', 'required');
         $this->form_validation->set_rules('pickupdate', 'Pick-Up Date', 'required');
@@ -18,7 +19,6 @@ class Rental extends CI_Controller {
         
         if ($this->form_validation->run() === FALSE)
         {
-             $data['page_title'] = $this->lang->line('page_title');
 
             // load values for the view
             $this->load->vars($data);
