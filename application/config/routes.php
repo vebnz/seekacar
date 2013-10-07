@@ -41,6 +41,7 @@ $route['rental'] = 'rental';
 $route['rental/(:any)'] = 'rental/view/$1';
 $route['rental/index'] = 'rental/index';
 $route['rental/get_cars'] = 'rental/get_cars';
+$route['rental/list_companies'] = 'rental/list_companies';
 $route['news/create'] = 'news/create';
 $route['news/(:any)'] = 'news/view/$1';
 $route['news'] = 'news';
