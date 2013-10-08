@@ -14,6 +14,7 @@ var DEFAULTAPP = (function ($) {
         /* Javascript goes in here */
 		$(function() {	
 			var nowTemp = new Date();
+			var newDate = new Date();
 			var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
 			var pickup = $('#pickupdate').datepicker({
@@ -23,7 +24,7 @@ var DEFAULTAPP = (function ($) {
 				}
 			}).on('changeDate', function(ev) {
 				if (ev.date.valueOf() > dropoff.date.valueOf()) {
-					var newDate = new Date(ev.date)
+					newDate = new Date(ev.date)
 					newDate.setDate(newDate.getDate() + 1);
 					dropoff.setValue(newDate);
 				}
