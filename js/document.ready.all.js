@@ -26,12 +26,13 @@ var DEFAULTAPP = (function ($) {
 					var newDate = new Date(ev.date)
 					newDate.setDate(newDate.getDate() + 1);
 					dropoff.setValue(newDate);
-					var dropoff = $('#dropoffdate').datepicker({
-						format: 'dd/mm/yyyy',
-						onRender: function(date) {
-							return date.valueOf() < pickup.date.valueOf() ? 'disabled' : '';
-						}
-					});
+					dropoff = $('#dropoffdate').datepicker({
+				format: 'dd/mm/yyyy',
+				onRender: function(date) {
+					return date.valueOf() < pickup.date.valueOf() ? 'disabled' : '';
+				}
+			});					
+				}
 				pickup.hide();
 				//$('#dropoffdate')[0].focus();
 			}).data('datepicker');
