@@ -40,9 +40,9 @@ var DEFAULTAPP = (function ($) {
 			}).data('datepicker');
 		});
 
-        //$(function() {
-        //    $('#pickuptime, #dropofftime').timepicker({ 'scrollDefaultNow': true });
-        //});
+        $(function() {
+            $('#pickuptime, #dropofftime').timepicker({ 'scrollDefaultNow': true });
+        });
 
     }
 
