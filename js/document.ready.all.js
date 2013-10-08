@@ -34,7 +34,7 @@ var DEFAULTAPP = (function ($) {
 			var dropoff = $('#dropoffdate').datepicker({
 				format: 'dd/mm/yyyy',
 				onRender: function(date) {
-					return date.valueOf() < pickup.date.valueOf() ? 'disabled' : '';
+					return date.valueOf() < newDate.date.valueOf() ? 'disabled' : '';
 				}
 			}).on('changeDate', function(ev) {
 				dropoff.hide();
