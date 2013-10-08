@@ -20,7 +20,7 @@
                                 </select>
 							</div>
 							<div class="clearfix">
-                            <input class="input-medium date start" id="pickupdate"  name="pickupdate" type="text" placeholder="Pickup Date" value="<?php echo set_value('pickupdate'); ?>"> 
+                            <input class="input-medium" id="pickupdate"  name="pickupdate" type="text" placeholder="Pickup Date" value="<?php echo set_value('pickupdate'); ?>"> 
                                 <input class="input-small" id="pickuptime"  name="pickuptime" type="text" placeholder="Pickup Time">
 							</div>
 							<div class="clearfix">
