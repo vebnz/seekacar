@@ -28,7 +28,7 @@ var DEFAULTAPP = (function ($) {
 					dropoff.setValue(newDate);
 				}
 				pickup.hide();
-				$('#dropoffdate')[0].focus();
+				//$('#dropoffdate')[0].focus();
 			}).data('datepicker');
 			var dropoff = $('#dropoffdate').datepicker({
 				format: 'dd/mm/yyyy',
