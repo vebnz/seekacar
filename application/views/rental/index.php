@@ -4,6 +4,7 @@ $(document).ready(function() {
 	var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
 	var checkin = $('#pickupdate').datepicker({
+		format: 'dd/mm/yyyy',
 		onRender: function(date) {
 			return date.valueOf() < now.valueOf() ? 'disabled' : '';
 		}
