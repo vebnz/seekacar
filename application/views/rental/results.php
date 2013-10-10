@@ -29,164 +29,127 @@ $(document).ready(function() {
     }); // End of ajax call  
 });
 </script>
-<div class="container-fluid">
-	<div class="row-fluid">
-        <div class="span3">
-			<div class="well sidebar-nav">
-				<ul class="nav nav-list">
-					<li class="nav-header">Search</li>              
-				</ul>  
-				<div class="left-search-form">
-					<form action="">
-						<fieldset>
-							<div class="clearfix">
-                                <select class="full-width">
-                                    <option>Pickup Location</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
+<div class="jumbotron">
+      <div class="container">
+
+      </div>
+</div>
+
+    <div class="container">
+		<!-- Example row of columns -->
+		<div class="row">
+			<div class="col-lg-4">
+				<h2>Search</h2>
+				<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				<p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+			</div>
+			<div class="col-lg-8">
+				<div id="vehicles-list">
+					<div class="vehicle">	
+						<article class=" ">
+							<div class="row clearfix">
+								<div class="vehicle-header clearfix">					
+									<span class="vehicle-type">Economy Manual</span>
+									EDMR<span class="mobile-info icons-info">&nbsp;</span>
+								</div>
+								<div class="vehicle-info">
+									<figure>
+										<div class="image"><img src="http://images.hertz.com/vehicles/220x128/ZENZEDMR999.jpg"></div>	
+										<figcaption class="clearfix"> 
+											<div class="details">
+												<h1>Holden Spark</h1>			
+												<div class="features hidden-item">
+													<div class="wrapper">
+														<ul>										
+															<li>5 Passengers</li>							
+															<li>1 Large Suitcase</li>
+															<li>Manual Transmission</li>				
+														</ul>							
+													</div>
+												</div>
+											</div>
+										</figcaption>
+									</figure>
+									<div class="pricing">
+										<div class="single">
+											<div class="wrapper">
+												<div>
+													<button type="button" class="primary priced btn btn-primary">Select</button>
+													<strong class="price">149.04</strong>
+													<span>NZD</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-							<div class="clearfix">
-								<input class="sixty-width" type="text" name="pickupdate" id="pickupdate" placeholder="Pickup Date"> 
-                                <input class="forty-width" type="text" name="pickuptime" id="pickuptime"placeholder="Pickup Time">
+						</article>
+					</div>	
+				</div>				
+				<div id="vehicles-list">
+					<div class="vehicle">	
+						<article class=" ">
+							<div class="row clearfix">
+								<div class="vehicle-header clearfix">					
+									<span class="vehicle-type">Economy Manual</span>
+									EDMR<span class="mobile-info icons-info">&nbsp;</span>
+								</div>
+								<div class="vehicle-info">
+									<figure>
+										<div class="image"><img src="http://images.hertz.com/vehicles/220x128/ZENZEDMR999.jpg"></div>	
+										<figcaption class="clearfix"> 
+											<div class="details">
+												<h1>Holden Spark</h1>			
+												<div class="features hidden-item">
+													<div class="wrapper">
+														<ul>										
+															<li>5 Passengers</li>							
+															<li>1 Large Suitcase</li>
+															<li>Manual Transmission</li>				
+														</ul>							
+													</div>
+												</div>
+											</div>
+										</figcaption>
+									</figure>
+									<div class="pricing">
+										<div class="single">
+											<div class="wrapper">
+												<div>
+													<button type="button" class="primary priced btn btn-primary">Select</button>
+													<strong class="price">149.04</strong>
+													<span>NZD</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-							<div class="clearfix">
-                                <select class="full-width">
-                                    <option>Dropoff Location</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-							</div>
-							<div class="clearfix">
-								<input class="sixty-width" type="text" name="dropoffupdate" id="dropoffdate" placeholder="Dropoff Date"> 
-                                <input class="forty-width" type="text" name="dropofftime" id="dropofftime" placeholder="Dropoff Time">
-							</div>
-							<div class="clearfix">
-								<button class="btn btn-large btn-primary" type="submit">Search</button>
-							</div>
-						</fieldset>
-					</form> 
-                </div>
-			</div><!--/.well -->
-			<div class="well sidebar-nav">
-				<ul class="nav nav-list">
-					<li class="nav-header">Filter</li>              
-				</ul>  
-				<div class="left-search-form">
-					<form action="">
-						<fieldset>
-							<div class="clearfix">
-								<label type="select" for="">Car Type
-									<select class="full-width">
-										<option>All</option>
-										<option>Economy</option>
-										<option>Family</option>
-										<option>Luxary</option>
-										<option>People Carriers</option>
-										<option>4WD</option>
-									</select>
-								</label>
-							</div>
-							<div class="form-group">
-								<label type="select" for="">Passengers
-									<select class="full-width">
-										<option>Any</option>
-										<option>1</option>
-										<option>2</option>
-										<option>4</option>
-										<option>5</option>
-										<option>6+</option>
-									</select>
-								</label>                                
-							</div>
-							<div class="clearfix">
-								<label class="checkbox inline">
-									<input type="checkbox" checked> Ace Rentals
-								</label>
-								<label class="checkbox inline">
-									<input type="checkbox" checked> Pegasus
-								</label>
-								<label class="checkbox inline">
-									<input type="checkbox" checked> Omega
-								</label><br/>
-								<label class="checkbox inline">
-									<input type="checkbox" checked> Budget
-								</label>
-								<label class="checkbox inline">
-									<input type="checkbox" checked> Britz
-								</label>
-							</div>
-						</fieldset>
-					</form> 
-                </div>
-			</div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">
-			<div class="leaderboard">            
-				<h1>Search Results</h1>	            	
-				<div class="row">
-					<div class="span4 select_height">	Showing 1 - 10 of 50 results</div>
-					<div class="pull-right">
-						Sort by : 
-						<select id="sort" name="sort" class="span2">
-							<option value="">Company Name</option>
-							<option value="">Price: Low to High</option>
-							<option value="">Price: High to Low</option>
-						</select>
-					</div>
-				</div>
-				<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="carTable">
-					<thead>
-						<tr>
-							<th>Image</th>
-							<th>Company Name</th>
-							<th>Title</th>
-							<th>Type</th>
-							<th>Gearbox</th>
-							<th>Size</th>
-							<th>Price</th>
-						</tr>		
-					</thead>		
-					<tbody>
-						<tr id="result_table"><td colspan="7" style="text-align: center;"><img src="http://www.sanbaldo.com/wordpress/wp-content/bigrotation2.gif" id="img-load" /> Finding Cars...</td></tr>
-					</tbody>
-				</table>
-				<div class="row premium">
-					<div class="span2">
-						<a href="" class="thumbnail " ><img alt="" src="https://www.acerentalcars.co.nz/images/cars/premcomp_md.jpg"></a>
-						<h5>Daily price: $28NZD</h5>
-				
+						</article>
 					</div>			
-					<div class="span3">
-						<img style="margin-bottom: 30px; float: left;" alt="" src="/images/ace.jpg">
-						<a href="property.html"><h3>Premium Compact</h3></a>
-						<h6>Adults: 4</h6>
-						<h6>Transmission: Manual</h6>
-						<h6>Car: Daihatsu Sirion</h6> 
-						<button class="btn btn-primary">Book...</button>
-					</div>
-					<div class="span2">
-						<a href="" class="thumbnail " ><img alt="" src="https://www.acerentalcars.co.nz/images/cars/premcomp_md.jpg"></a>
-						<h5>Daily price: $28NZD</h5>
-				
-					</div>
-					<div class="span3">
-						<img style="margin-bottom: 30px; float: left;" alt="" src="/images/ace.jpg">
-						<a href="property.html"><h3>Premium Compact</h3></a>
-						<h6>Adults: 4</h6>
-						<h6>Transmission: Manual</h6>
-						<h6>Car: Daihatsu Sirion</h6> 
-						<button class="btn btn-primary">Book...</button>
-					</div>
+				</div>		
+				<div id="debug">
+					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="carTable">
+						<thead>
+							<tr>
+								<th>Image</th>
+								<th>Company Name</th>
+								<th>Title</th>
+								<th>Type</th>
+								<th>Gearbox</th>
+								<th>Size</th>
+								<th>Price</th>
+							</tr>		
+						</thead>		
+						<tbody>
+							<tr id="result_table"><td colspan="7" style="text-align: center;"><img src="http://www.sanbaldo.com/wordpress/wp-content/bigrotation2.gif" id="img-load" /> Finding Cars...</td></tr>
+						</tbody>
+					</table>	
 				</div>
-				<hr />	
-            </div>          
-        </div>          
-    </div>   
-</div><!--/.fluid-container-->
+			</div>
+		</div>
+		<hr>
+		<footer>
+			<p>&copy; Seek A Car 2013</p>
+		</footer>
+    </div> <!-- /container -->
