@@ -36,12 +36,12 @@ div {
   position: absolute;
   height: 300px;
   width: 100%;
-  padding-top: 200px;
+  padding-top: 150px;
 }
 
 .contained {
   position: relative;
-  width: 680px;
+  width: 400px;
   margin: 0 auto 0 auto;  
 }
 
