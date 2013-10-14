@@ -510,7 +510,7 @@ class Rental extends CI_Controller {
 			
             $results[] = array(
             'company' => "Omega",
-	    'url' => "http://omegarentalcars.co.nz",
+	    'url' => "http://www.omegarentalcars.co.nz",
             'image' => $image,
             'title' => $title,
             'type' => $type,
