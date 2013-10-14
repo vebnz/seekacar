@@ -96,7 +96,7 @@ class Rental extends CI_Controller {
                 'promocode' => '');
             
             $data = $this->scrapeSite($url, $postdata);
-            $largeCarArray = array_merge($largeCarArray, @$this->AceCars($data));
+            $largeCarArray = $this->AceCars($data);
             break;
         
             case 'Omega':
@@ -114,7 +114,7 @@ class Rental extends CI_Controller {
 					'action_SubmitQuoteForm' => '');
                 
                 $data = $this->scrapeSite($url, $postdata);
-                $largeCarArray = array_merge($largeCarArray, @$this->OmegaCars($data));
+                $largeCarArray = $this->OmegaCars($data);
             break;
             
             case 'Pegasus':
@@ -134,7 +134,7 @@ class Rental extends CI_Controller {
             	$postdata = array();
             	
             	$data = $this->scrapeSite($url, $postdata);
-            	$largeCarArray = array_merge($largeCarArray, @$this->PegasusCars($data));
+            	$largeCarArray = $this->PegasusCars($data);
             
             break;
             
@@ -190,7 +190,7 @@ class Rental extends CI_Controller {
                     'WHOLESALECARCLASS' => '');
                                 
                 $data = $this->scrapeSite($url, $postdata);
-                $largeCarArray = array_merge($largeCarArray, @$this->ThriftyCars($data));
+                $largeCarArray = $this->ThriftyCars($data);
             break;
             
             case 'Britz':
@@ -222,7 +222,7 @@ class Rental extends CI_Controller {
 					'pv' => '1.0'); 
                     
                 $data = $this->scrapeSite($url, $postdata);
-                $largeCarArray = array_merge($largeCarArray, @$this->BritzCars($data));
+                $largeCarArray = $this->BritzCars($data);
             break;
             
             case 'Budget':
@@ -268,7 +268,7 @@ class Rental extends CI_Controller {
             
 
                 $data = $this->scrapeSite($url, $postdata);								
-                $largeCarArray = array_merge($largeCarArray, @$this->BudgetCars($data));
+                $largeCarArray = $this->BudgetCars($data);
             break;
             
             case 'Jucy':
@@ -322,14 +322,9 @@ class Rental extends CI_Controller {
                     'ctl00$ctrlSearchCriteria$imgBtnGO.y' => '12');
                 
                 $data = $this->scrapeSite($url, $postdata);
-                $largeCarArray = array_merge($largeCarArray, @$this->ApexCars($data));
+                $largeCarArray = $this->ApexCars($data);
             break;
         }
-		//echo "<pre>";
-		//print_r($largeCarArray);
-		//echo "</pre>";
-        // Will need to do this once finished testing
-        //$largeCarArray = json_decode('[{"company":"AceRentals","image":"https:\/\/www.acerentalcars.co.nz\/images\/cars\/premcomp_md.jpg","title":"Premium Compact","type":"Daihatsu Sirion","gearbox":"Manual","size":"x4","price":"NZ$39.00"},{"company":"AceRentals","image":"https:\/\/www.acerentalcars.co.nz\/images\/cars\/economy_md.jpg","title":"Economy","type":"Nissan Tiida","gearbox":"Automatic","size":"x4","price":"NZ$39.00"},{"company":"AceRentals","image":"https:\/\/www.acerentalcars.co.nz\/images\/cars\/tourist_md.jpg","title":"Tourist","type":"Nissan Bluebird or Similar","gearbox":"Manual or automatic","size":"x5","price":"NZ$48.00"},{"company":"AceRentals","image":"https:\/\/www.acerentalcars.co.nz\/images\/cars\/sw_md.jpg","title":"Station Wagon","type":"Nissan Primera or Similar","gearbox":"Manual or automatic","size":"x5","price":"NZ$65.00"},{"company":"AceRentals","image":"https:\/\/www.acerentalcars.co.nz\/images\/cars\/4wd_sw_md.jpg","title":"4WD Station Wagon","type":"Subaru Legacy or similar","gearbox":"Automatic","size":"x5","price":"NZ$85.00"},{"company":"AceRentals","image":"https:\/\/www.acerentalcars.co.nz\/images\/cars\/pm_md.jpg","title":"People Mover","type":"Toyota Previa, Lucida, Estima or Similar","gearbox":"Manual or automatic","size":"x7","price":"NZ$84.00"},{"company":"AceRentals","image":"https:\/\/www.acerentalcars.co.nz\/images\/cars\/10seater_md.jpg","title":"10 Seater","type":"Toyota HiAce Van, Ford Econovan or Similar","gearbox":"Manual","size":"x10","price":"NZ$121.00"}]');
         echo json_encode($largeCarArray);
 		
 	}
