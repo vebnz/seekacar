@@ -415,6 +415,7 @@ class Rental extends CI_Controller {
 				
 				$results[] = array( 
                 'company' => "AceRentals",
+				'url' => "http://www.acerentals.co.nz",
 				'image' => $image, 
 				'title' => $title, 
 				'type' => $type, 
@@ -463,6 +464,7 @@ class Rental extends CI_Controller {
                 if ($price != "N/A") {
                     $results[] = array(
                         'company' => "Pegasus",
+			'url' => "http://www.rentalcars.co.nz",
                         'image' => $image,
                         'title' => $title,
                         'type' => $type,
@@ -508,6 +510,7 @@ class Rental extends CI_Controller {
 			
             $results[] = array(
             'company' => "Omega",
+	    'url' => "http://omegarentalcars.co.nz",
             'image' => $image,
             'title' => $title,
             'type' => $type,
@@ -571,6 +574,7 @@ class Rental extends CI_Controller {
 			{
 				$results[] = array(
 					'company' => "Thrifty",
+					'url' => "http://www.thrifty.co.nz",
 					'image' => $image,
 					'title' => $title,
 					'type' => $type,
@@ -620,6 +624,7 @@ class Rental extends CI_Controller {
                 if ($price != "N/A") {
                     $results[] = array(
                         'company' => "Britz",
+			'url' => "http://www.britz.co.nz",
                         'image' => $image,
                         'title' => $title,
                         'type' => $type,
@@ -720,6 +725,7 @@ class Rental extends CI_Controller {
 			
 			$results[] = array(
 				'company' => "Budget",
+				'url' => "http://www.budget.co.nz",
 				'image' => $image,
 				'title' => $title,
 				'type' => $type,
@@ -767,6 +773,7 @@ class Rental extends CI_Controller {
 
             $results[] = array(
 				'company' => "Apex",
+		'url' => "http://www.apexrentals.co.nz",
                 'image' => $image,
                 'title' => $title,
                 'type' => $type,
