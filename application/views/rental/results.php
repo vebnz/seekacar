@@ -6,6 +6,7 @@ $(document).ajaxStop(function () {
     $('#result_table').fadeOut();
 });
 $(document).ready(function() {	
+	var carArray = new Array();
 	$.ajax({
         url: 'list_companies',
         type:'POST',
@@ -19,6 +20,8 @@ $(document).ready(function() {
                     dataType: 'json',
                     data: {name: company.name, puc: company.puc, doc: company.doc, pickupdate: "<?php echo $pudate; ?>", pickuptime: "<?php echo $putime; ?>", dropoffdate: "<?php echo $dodate; ?>", dropofftime: "<?php echo $dotime; ?>"},
                     success: function(cars){
+						var companyCars = $.parseJSON(cars);
+						carArray = $.merge(companyCars, carArray);
 						$.each(cars, function(i, car) {
 							$('#carTable tr:last').after('<tr><td>&nbsp;</td><td>' + car.company + '</td><td>' + car.title + '</td><td>' + car.type + '</td><td>' + car.gearbox + '</td><td>' + car.size + '</td><td>' + car.price + '</td></tr>');
 						});							
