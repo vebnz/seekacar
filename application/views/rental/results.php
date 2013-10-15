@@ -18,6 +18,7 @@ $(document).ready(function() {
                     url: 'get_cars',
                     type: 'POST',
                     dataType: 'json',
+		    timeout: 30000, // 30 second timeout
                     data: {name: company.name, puc: company.puc, doc: company.doc, pickupdate: "<?php echo $pudate; ?>", pickuptime: "<?php echo $putime; ?>", dropoffdate: "<?php echo $dodate; ?>", dropofftime: "<?php echo $dotime; ?>"},
                     success: function(cars){
 						var companyCars = $.parseJSON(cars);
