@@ -47,6 +47,7 @@ $(document).ready(function() {
 				<p><a class="btn btn-default" href="#">View details &raquo;</a></p>
 			</div>
 			<div class="col-lg-8">
+				
 				<div id="vehicles-list">
 					<div class="vehicle">	
 						<article class=" ">

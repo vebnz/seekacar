@@ -14,6 +14,8 @@
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+  color: #000;
+  background: #ffffff;
   /*.dow {
     border-top: 1px solid #ddd !important;
   }*/
@@ -61,7 +63,7 @@
   cursor: pointer;
 }
 .datepicker td.day.disabled {
-  color: #eeeeee;
+  color: #eaeaea;
 }
 .datepicker td.old,
 .datepicker td.new {
