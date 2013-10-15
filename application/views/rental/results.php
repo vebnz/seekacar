@@ -23,7 +23,7 @@ $(document).ready(function() {
 						var companyCars = $.parseJSON(cars);
 						carArray = $.merge(companyCars, carArray);
 						$.each(cars, function(i, car) {
-							$('#carTable tr:last').after('<tr><td>&nbsp;</td><td>' + car.company + '</td><td>' + car.title + '</td><td>' + car.type + '</td><td>' + car.gearbox + '</td><td>' + car.size + '</td><td>' + car.price + '</td></tr>');
+							$('#carTable tr:last').after('<tr><td>&nbsp;</td><td>' + car.company + '</td><td>' + car.title + '</td><td>' + car.type + '</td><td>' + car.gearbox + '</td><td>' + car.size + '</td><td>' + car.price + '</td><td><a href="' + car.url + '">GO</a></td></tr>');
 						});							
 					}
 			    });
@@ -142,6 +142,7 @@ $(document).ready(function() {
 								<th>Gearbox</th>
 								<th>Size</th>
 								<th>Price</th>
+								<th>URL</th>
 							</tr>		
 						</thead>		
 						<tbody>
