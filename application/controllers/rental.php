@@ -748,40 +748,43 @@ class Rental extends CI_Controller {
         $carDom = new DOMDocument();
         $xpath = new DOMXPath($dom);
         
-        $site = $xpath->query("//div[@id='containerFooter']/div[@id='containerMain']/form[@id='aspnetForm']/div[@id='contentMain']/div[3]/div[2]/div[@id='ctl00_ContentPlaceHolder1_upCars']");
-        
+        $site = $xpath->query("//div[@id='containerFooter']/div[@id='containerMain']/div[@id='containerHeader']/form[@id='aspnetForm']/div[@id='contentMain']/div[3]/div[@class='mainRightContent']/div[@id='ctl00_ContentPlaceHolder1_upCars']");
+
         foreach ( $site as $item ) {
             $tempDom->appendChild($tempDom->importNode($item,true));
         }
+
         $tempDom->saveHTML();
         $carsXpath = new DOMXPath($tempDom);
         $results = array();
 
-        $cars = $carsXpath->query("table[@id='ctl00_ContentPlaceHolder1_dlVehicles']/tr/td");
-        
+        $cars = $carsXpath->query("//div[@class='dvVehicleItem']");
+
         foreach ($cars as $car) {
-            $newDom = new DOMDocument;
-            $newDom->appendChild($newDom->importNode($car,true));
-            $carXpath = new DOMXPath( $newDom );
+                $newDom = new DOMDocument;
+                $newDom->appendChild($newDom->importNode($car,true));
+                $carXpath = new DOMXPath( $newDom );
 
-            $image = "http://www.apexrentals.co.nz/".trim($carXpath->query("table/tr[1]/td[1]/img/@src")->item(0)->nodeValue);
-            $title = trim($carXpath->query("table/tr[1]/td[2]/a/text()")->item(0)->nodeValue);
-            $type =  trim($carXpath->query("table/tr[2]/td[2]/text()")->item(0)->nodeValue);
-            $gearbox =  trim($carXpath->query("table/tr[4]/td[2]/text()")->item(0)->nodeValue);
-            $size =  trim($carXpath->query("table/tr[6]/td[3]/text()[1]")->item(0)->nodeValue);
-            $price =  trim($carXpath->query("table/tr[2]/td[3]/span/b/text()")->item(0)->nodeValue);
+                $image = trim($carXpath->query("table/tr[2]/td[1]/div[3]/img/@src")->item(0)->nodeValue);
+                $title = trim($carXpath->query("table/tr[2]/td[1]/div[@class='h3 clean']/text()")->item(0)->nodeValue);
+                $price = trim($carXpath->query("table/tr[2]/td[3]/div/div[@class='dvBoxA']/span[@class='dvRate']/text()")->item(0)->nodeValue);
 
-            $results[] = array(
-				'company' => "Apex",
-		'url' => "http://www.apexrentals.co.nz",
-                'image' => $image,
-                'title' => $title,
-                'type' => $type,
-                'gearbox' => $gearbox,
-                'size' => $size,
-                'price' => $price
-            ); 
-        } 
+
+                $type =  trim($carXpath->query("table/tr[2]/td[1]/div[@class='h2']/text()")->item(0)->nodeValue);
+                $gearbox = "N/A"; //info is there, just hard to get
+                $size = "N/A"; //info is there, just hard to get
+
+                    $results[] = array(
+                        'company' => "Apex",
+                        'url' => "http://www.apexrentals.co.nz",
+                        'image' => $image,
+                        'title' => $title,
+                        'type' => $type,
+                        'gearbox' => $gearbox,
+                        'size' => $size,
+                        'price' => $price,
+                    );  
+        }
 
         return $results;
     }
