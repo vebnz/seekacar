@@ -55,8 +55,8 @@ div {
 }
 
 .centered {
-    float: none;
-    margin: 0 auto;
+    position: relative;
+    margin: 0 auto 0 auto; 
 }
 .centered img {
   padding: 25px;
