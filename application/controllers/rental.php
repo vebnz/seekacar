@@ -401,7 +401,7 @@ class Rental extends CI_Controller {
 				//if "pp_special" in car.extract():
 				//    carobj['price'] = car.select("td[3]/div/div/div[4]/div/span[2]/text()").extract()
 				//else:
-				$price = (trim($carXpath->query("td[3]/div/div/div[4]/span[2]/text()")->item(0)->nodeValue) != "") ? trim($carXpath->query("td[3]/div/div/div[4]/span[2]/text()")->item(0)->nodeValue) : 'N/A';
+				$price = trim($carXpath->query("td[3]/div/div/div[4]/span[2]/text()")->item(0)->nodeValue);
 				$type = trim($carXpath->query("td[2]/p/text()")->item(0)->nodeValue);
 				//if "pp_special" in car.extract():
 				//    carobj['gearbox'] = car.select("td[2]/ul/li[2]/text()").extract()
