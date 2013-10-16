@@ -55,14 +55,20 @@ div {
 }
 
 .centered {
-    position: relative;
+    text-align: center;
     margin: 0 auto 0 auto; 
+    float: center;
 }
-.centered img {
-  padding: 25px;
-  margin-left: 10px;
-  background-color: #fff;  
-}        
+.company {
+  width: 150px;
+  height: 100px;
+  margin-left: 30px;
+  background-color: #fff;
+}
+
+.company img {
+  margin-top: 25px;
+}
 
 #vehicles-list {
   margin: 10px 0px;
