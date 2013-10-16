@@ -96,7 +96,7 @@ class Rental extends CI_Controller {
                 'promocode' => '');
             
             $data = $this->scrapeSite($url, $postdata);
-            $largeCarArray = $this->AceCars($data);
+            $largeCarArray = @$this->AceCars($data);
             break;
         
             case 'Omega':
@@ -114,7 +114,7 @@ class Rental extends CI_Controller {
 					'action_SubmitQuoteForm' => '');
                 
                 $data = $this->scrapeSite($url, $postdata);
-                $largeCarArray = $this->OmegaCars($data);
+                $largeCarArray = @$this->OmegaCars($data);
             break;
             
             case 'Pegasus':
@@ -134,7 +134,7 @@ class Rental extends CI_Controller {
             	$postdata = array();
             	
             	$data = $this->scrapeSite($url, $postdata);
-            	$largeCarArray = $this->PegasusCars($data);
+            	$largeCarArray = @$this->PegasusCars($data);
             
             break;
             
@@ -190,7 +190,7 @@ class Rental extends CI_Controller {
                     'WHOLESALECARCLASS' => '');
                                 
                 $data = $this->scrapeSite($url, $postdata);
-                $largeCarArray = $this->ThriftyCars($data);
+                $largeCarArray = @$this->ThriftyCars($data);
             break;
             
             case 'Britz':
@@ -222,7 +222,7 @@ class Rental extends CI_Controller {
 					'pv' => '1.0'); 
                     
                 $data = $this->scrapeSite($url, $postdata);
-                $largeCarArray = $this->BritzCars($data);
+                $largeCarArray = @$this->BritzCars($data);
             break;
             
             case 'Budget':
@@ -268,7 +268,7 @@ class Rental extends CI_Controller {
             
 
                 $data = $this->scrapeSite($url, $postdata);								
-                $largeCarArray = $this->BudgetCars($data);
+                $largeCarArray = @$this->BudgetCars($data);
             break;
             
             case 'Jucy':
@@ -318,7 +318,7 @@ class Rental extends CI_Controller {
 );
 
 		$data = $this->scrapeSite($url, $postdata);
-                $largeCarArray = $this->ApexCars($data);
+                $largeCarArray = @$this->ApexCars($data);
             break;
         }
         echo json_encode($largeCarArray);
