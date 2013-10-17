@@ -341,6 +341,7 @@ class Rental extends CI_Controller {
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
 			curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookies2.txt'); // set cookie file to given file
 			curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookies2.txt'); // set same file as cookie jar
+			curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.69 Safari/537.36');
 
 			$content = curl_exec($ch);
 			$headers = curl_getinfo($ch);				
@@ -357,6 +358,7 @@ class Rental extends CI_Controller {
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 				curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookies2.txt'); // set cookie file to given file
 				curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookies2.txt'); // set same file as cookie jar
+				curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.69 Safari/537.36');
 
 				$content = curl_exec($ch);
 				$headers = curl_getinfo($ch);
