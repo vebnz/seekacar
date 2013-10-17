@@ -25,7 +25,7 @@ $(document).ready(function() {
 						//carArray = $.merge(companyCars, carArray);
 						$.each(cars, function(i, car) {
 							$('#carTable tr:last').after('<tr><td>&nbsp;</td><td>' + car.company + '</td><td>' + car.title + '</td><td>' + car.type + '</td><td>' + car.gearbox + '</td><td>' + car.size + '</td><td>' + car.price + '</td><td><a href="' + car.url + '">GO</a></td></tr>');
-							$('#car').append('<div id="vehicles-list"><div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">' + car.title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car.image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car.type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>' + car.size + '</li><li>1 Large Suitcase</li><li>' + car.gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a href="' + car.url + '" class="primary priced btn btn-primary">Select</a><strong class="price">' + car.price + '</strong><span>NZD</span></div></div></div></div></div></div></article></div></div>');
+							$('#cars').append('<div id="vehicles-list"><div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">' + car.title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car.image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car.type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>' + car.size + '</li><li>1 Large Suitcase</li><li>' + car.gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a href="' + car.url + '" class="primary priced btn btn-primary">Select</a><strong class="price">' + car.price + '</strong><span>NZD</span></div></div></div></div></div></div></article></div></div>');
 						});							
 					}
 			    });
@@ -48,8 +48,7 @@ $(document).ready(function() {
 				<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
 				<p><a class="btn btn-default" href="#">View details &raquo;</a></p>
 			</div>
-			<div id="cars" lass="col-lg-8">
-				
+			<div id="cars" class="col-lg-8">				
 				<div id="vehicles-list">
 					<div class="vehicle">	
 						<article class=" ">
