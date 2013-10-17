@@ -134,11 +134,11 @@ div {
   padding: 0px 0px 30px 0px;
   overflow: hidden;
 }
-#vehicles-list button.priced {
+#vehicles-list a.priced {
   position: absolute;
   bottom: 0px;
 }
-#vehicles-list button {
+#vehicles-list a.priced {
   float: none;
 }
 #vehicles-list strong.price {
