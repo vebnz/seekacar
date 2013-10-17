@@ -495,10 +495,10 @@ class Rental extends CI_Controller {
 			$newDom = new DOMDocument;
 			$newDom->appendChild($newDom->importNode($car,true));
 			$carXpath = new DOMXPath( $newDom );
-			$image = trim($carXpath->query("div[@class='list_left']/div[@class='list_image']/img/@src")->item(0)->nodeValue);
-			$title = trim($carXpath->query("div[@class='list_left']/div[@class='list_title']/h3/text()")->item(0)->nodeValue);
+			$image = "http://www.omegarentals.co.nz/" . trim($carXpath->query("div[@class='list_left']/div[@class='list_image']/img/@src")->item(0)->nodeValue);
+			$type = trim($carXpath->query("div[@class='list_left']/div[@class='list_title']/h3/text()")->item(0)->nodeValue);
 			$price = trim($carXpath->query("div[@class='list_right']/div[@class='list_price']/div[@class='price']/text()")->item(0)->nodeValue);
-			$type = trim($carXpath->query("div[@class='list_left']/div[@class='list_title']/h2/text()")->item(0)->nodeValue);
+			$title = trim($carXpath->query("div[@class='list_left']/div[@class='list_title']/h2/text()")->item(0)->nodeValue);
 			$gearbox = $carXpath->query("div[@class='list_right']/div[@class='list_features']/div[@class='feature'][1]/text()[contains(.,'Manual') or contains(.,'Automatic')]");
 			$gearbox = $gearbox->length ? trim($gearbox->item(0)->nodeValue) : "N/A";
 			$size = $carXpath->query("div[@class='list_right']/div[@class='list_icons']/div[@class='icon adult']");
@@ -667,7 +667,7 @@ class Rental extends CI_Controller {
 			//echo $i . $tmp_doc->saveHTML();   
 			$carXpath = new DOMXPath($tmp_doc);
 			
-			$image = trim($carXpath->query("//img/@src")->item(0)->nodeValue);
+			$image = "https://www.budget.co.nz/" . trim($carXpath->query("//img/@src")->item(0)->nodeValue);
 			
 			$i++;
 			
