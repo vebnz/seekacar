@@ -25,7 +25,7 @@ $(document).ready(function() {
 						//carArray = $.merge(companyCars, carArray);
 						$.each(cars, function(i, car) {
 							$('#carTable tr:last').after('<tr><td>&nbsp;</td><td>' + car.company + '</td><td>' + car.title + '</td><td>' + car.type + '</td><td>' + car.gearbox + '</td><td>' + car.size + '</td><td>' + car.price + '</td><td><a href="' + car.url + '">GO</a></td></tr>');
-							$('#cars table').before('<div id="vehicles-list"><div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">' + car.title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car.image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car.type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>' + car.size + '</li><li>1 Large Suitcase</li><li>' + car.gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a href="' + car.url + '" class="primary priced btn btn-primary">Select</a><strong class="price">' + car.price + '</strong><span>NZD</span></div></div></div></div></div></div></article></div></div>');
+							$('#debug').before('<div id="vehicles-list"><div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">' + car.title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car.image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car.type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>' + car.size + '</li><li>1 Large Suitcase</li><li>' + car.gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a href="' + car.url + '" class="primary priced btn btn-primary">Select</a><strong class="price">' + car.price + '</strong><span>NZD</span></div></div></div></div></div></div></article></div></div>');
 						});							
 					}
 			    });
@@ -49,90 +49,6 @@ $(document).ready(function() {
 				<p><a class="btn btn-default" href="#">View details &raquo;</a></p>
 			</div>
 			<div id="cars" class="col-lg-8">				
-				<div id="vehicles-list">
-					<div class="vehicle">	
-						<article class=" ">
-							<div class="row clearfix">
-								<div class="vehicle-header clearfix">					
-									<span class="vehicle-type">Economy Manual</span>
-									EDMR<span class="mobile-info icons-info">&nbsp;</span>
-								</div>
-								<div class="vehicle-info">
-									<figure>
-										<div class="image"><img src="http://images.hertz.com/vehicles/220x128/ZENZEDMR999.jpg"></div>	
-										<figcaption class="clearfix"> 
-											<div class="details">
-												<h1>Holden Spark</h1>			
-												<div class="features hidden-item">
-													<div class="wrapper">
-														<ul>										
-															<li>5 Passengers</li>							
-															<li>1 Large Suitcase</li>
-															<li>Manual Transmission</li>				
-														</ul>							
-													</div>
-												</div>
-											</div>
-										</figcaption>
-									</figure>
-									<div class="pricing">
-										<div class="single">
-											<div class="wrapper">
-												<div>
-													<button type="button" class="primary priced btn btn-primary">Select</button>
-													<strong class="price">149.04</strong>
-													<span>NZD</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</article>
-					</div>	
-				</div>				
-				<div id="vehicles-list">
-					<div class="vehicle">	
-						<article class=" ">
-							<div class="row clearfix">
-								<div class="vehicle-header clearfix">					
-									<span class="vehicle-type">Economy Manual</span>
-									EDMR<span class="mobile-info icons-info">&nbsp;</span>
-								</div>
-								<div class="vehicle-info">
-									<figure>
-										<div class="image"><img src="http://images.hertz.com/vehicles/220x128/ZENZEDMR999.jpg"></div>	
-										<figcaption class="clearfix"> 
-											<div class="details">
-												<h1>Holden Spark</h1>			
-												<div class="features hidden-item">
-													<div class="wrapper">
-														<ul>										
-															<li>5 Passengers</li>							
-															<li>1 Large Suitcase</li>
-															<li>Manual Transmission</li>				
-														</ul>							
-													</div>
-												</div>
-											</div>
-										</figcaption>
-									</figure>
-									<div class="pricing">
-										<div class="single">
-											<div class="wrapper">
-												<div>
-													<button type="button" class="primary priced btn btn-primary">Select</button>
-													<strong class="price">149.04</strong>
-													<span>NZD</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</article>
-					</div>			
-				</div>		
 				<div id="debug">
 					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="carTable">
 						<thead>
