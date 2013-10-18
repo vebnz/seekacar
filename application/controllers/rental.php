@@ -404,6 +404,7 @@ class Rental extends CI_Controller {
 				//    carobj['price'] = car.select("td[3]/div/div/div[4]/div/span[2]/text()").extract()
 				//else:
 				$price = trim($carXpath->query("td[3]/div/div/div[4]/span[2]/text()")->item(0)->nodeValue);
+				$price = str_replace(['+', '-'], '', filter_var($price, FILTER_SANITIZE_NUMBER_FLOAT));
 				$type = trim($carXpath->query("td[2]/p/text()")->item(0)->nodeValue);
 				//if "pp_special" in car.extract():
 				//    carobj['gearbox'] = car.select("td[2]/ul/li[2]/text()").extract()
@@ -411,16 +412,18 @@ class Rental extends CI_Controller {
 				$gearbox = trim($carXpath->query("td[2]/ul/li[1]/text()")->item(0)->nodeValue);
 				$size = trim($carXpath->query("td/text()[1]")->item(0)->nodeValue);
 				
-				$results[] = array( 
-                'company' => "AceRentals",
-				'url' => "http://www.acerentals.co.nz",
-				'image' => $image, 
-				'title' => $title, 
-				'type' => $type, 
-				'gearbox' => $gearbox,
-				'size' => $size,
-				'price' => $price,            
-				); 
+				if ($price != "") {
+					$results[] = array( 
+					'company' => "AceRentals",
+					'url' => "http://www.acerentals.co.nz",
+					'image' => $image, 
+					'title' => $title, 
+					'type' => $type, 
+					'gearbox' => $gearbox,
+					'size' => $size,
+					'price' => $price,            
+					); 
+				}
 			}
 			$i++;
 		}
@@ -429,10 +432,10 @@ class Rental extends CI_Controller {
     
     function PegasusCars($data) {
     	$dom = new DOMDocument();
-	@$dom->loadHTML($data);
-	$tempDom = new DOMDocument();
-	$carDom = new DOMDocument(); 
-	$xpath = new DOMXPath($dom); 
+		@$dom->loadHTML($data);
+		$tempDom = new DOMDocument();
+		$carDom = new DOMDocument(); 
+		$xpath = new DOMXPath($dom); 
 	
 	$site = $xpath->query("//div[@id='content']/div[@id='book-col-2']/div[@id='vehicle_holder']/ul[@class='vehicles']");
         foreach ( $site as $item ) {
@@ -453,16 +456,16 @@ class Rental extends CI_Controller {
                 $image = trim($carXpath->query("div[@class='car-col-1']/img/@src")->item(0)->nodeValue);
                 $title = trim($carXpath->query("h3[@class='blue_bar']/text()")->item(0)->nodeValue);
                 $price = trim($carXpath->query("div[@class='car-col-1']/p/text()")->item(0)->nodeValue);
-              
+				$price = str_replace(['+', '-'], '', filter_var($price, FILTER_SANITIZE_NUMBER_FLOAT));
                 
                 $type = trim($carXpath->query("div[@class='car-col-2']/ul/li[3]/text()")->item(0)->nodeValue);
                 $gearbox = trim($carXpath->query("div[@class='car-col-2']/ul/li[2]/text()")->item(0)->nodeValue);
                 $size = trim($carXpath->query("div[@class='car-col-2']/div/p[1]/text()")->item(0)->nodeValue);
                 
-                if ($price != "N/A") {
+                if ($price != "") {
                     $results[] = array(
                         'company' => "Pegasus",
-			'url' => "http://www.rentalcars.co.nz",
+						'url' => "http://www.rentalcars.co.nz",
                         'image' => $image,
                         'title' => $title,
                         'type' => $type,
@@ -500,22 +503,25 @@ class Rental extends CI_Controller {
 			$image = "http://www.omegarentals.co.nz/" . trim($carXpath->query("div[@class='list_left']/div[@class='list_image']/img/@src")->item(0)->nodeValue);
 			$type = trim($carXpath->query("div[@class='list_left']/div[@class='list_title']/h3/text()")->item(0)->nodeValue);
 			$price = trim($carXpath->query("div[@class='list_right']/div[@class='list_price']/div[@class='price']/text()")->item(0)->nodeValue);
+			$price = str_replace(['+', '-'], '', filter_var($price, FILTER_SANITIZE_NUMBER_FLOAT));
 			$title = trim($carXpath->query("div[@class='list_left']/div[@class='list_title']/h2/text()")->item(0)->nodeValue);
 			$gearbox = $carXpath->query("div[@class='list_right']/div[@class='list_features']/div[@class='feature'][1]/text()[contains(.,'Manual') or contains(.,'Automatic')]");
 			$gearbox = $gearbox->length ? trim($gearbox->item(0)->nodeValue) : "N/A";
 			$size = $carXpath->query("div[@class='list_right']/div[@class='list_icons']/div[@class='icon adult']");
 			$size = $size->length;
 			
-            $results[] = array(
-            'company' => "Omega",
-	    'url' => "http://www.omegarentalcars.co.nz",
-            'image' => $image,
-            'title' => $title,
-            'type' => $type,
-            'gearbox' => $gearbox,
-            'size' => $size,
-            'price' => $price,
-            );
+			if ($price != "") {
+				$results[] = array(
+				'company' => "Omega",
+				'url' => "http://www.omegarentalcars.co.nz",
+				'image' => $image,
+				'title' => $title,
+				'type' => $type,
+				'gearbox' => $gearbox,
+				'size' => $size,
+				'price' => $price,
+				);
+			}
         }
 
         return $results;
@@ -567,6 +573,7 @@ class Rental extends CI_Controller {
             $size =  trim($carXpath->query("p/text()[2]")->item(0)->nodeValue);
 			$price = $carXpath->query("//h1/text()");
             $price = $price->length ? $price->item(0)->nodeValue : "N/A";
+			$price = str_replace(['+', '-'], '', filter_var($price, FILTER_SANITIZE_NUMBER_FLOAT))
             $i=$i+2;
 			if ($price != "N/A")
 			{
@@ -614,6 +621,7 @@ class Rental extends CI_Controller {
                 $title = trim($carXpath->query("div[@class='VehicleItem']/div[@class='VehicleFeatures']/a[@class='PopUp']/text()")->item(0)->nodeValue);
                 $price = $carXpath->query("div[@class='PriceDetailsList NoFreeDays']/table[@class='chargesTable']/tbody/tr[1]/td[@class='dpd']/text()");
                 $price = $price->length ? trim($price->item(0)->nodeValue) : "N/A";
+				$price = str_replace(['+', '-'], '', filter_var($price, FILTER_SANITIZE_NUMBER_FLOAT))
                 
                 $type = "N/A";
                 $gearbox = "N/A";
@@ -622,7 +630,7 @@ class Rental extends CI_Controller {
                 if ($price != "N/A") {
                     $results[] = array(
                         'company' => "Britz",
-			'url' => "http://www.britz.co.nz",
+						'url' => "http://www.britz.co.nz",
                         'image' => $image,
                         'title' => $title,
                         'type' => $type,
@@ -703,6 +711,7 @@ class Rental extends CI_Controller {
 			$carXpath = new DOMXPath($tmp_doc);
 			
 			$price =  trim($carXpath->query("//div[3]/text()")->item(0)->nodeValue);
+			$price = str_replace(['+', '-'], '', filter_var($price, FILTER_SANITIZE_NUMBER_FLOAT))
 			
 			$i=$i+3;
 			
@@ -721,16 +730,18 @@ class Rental extends CI_Controller {
 			$size = $size->length;
 			$i=$i+2;
 			
-			$results[] = array(
-				'company' => "Budget",
-				'url' => "http://www.budget.co.nz",
-				'image' => $image,
-				'title' => $title,
-				'type' => $type,
-				'gearbox' => $gearbox,
-				'size' => $size,
-				'price' => $price
-			);             
+			if ($price != "") {
+				$results[] = array(
+					'company' => "Budget",
+					'url' => "http://www.budget.co.nz",
+					'image' => $image,
+					'title' => $title,
+					'type' => $type,
+					'gearbox' => $gearbox,
+					'size' => $size,
+					'price' => $price
+				);           
+			}
 		} 
 
         return $results;
@@ -766,12 +777,13 @@ class Rental extends CI_Controller {
                 $image = trim($carXpath->query("table/tr[2]/td[1]/div[3]/img/@src")->item(0)->nodeValue);
                 $title = trim($carXpath->query("table/tr[2]/td[1]/div[@class='h3 clean']/text()")->item(0)->nodeValue);
                 $price = trim($carXpath->query("table/tr[2]/td[3]/div/div[@class='dvBoxA']/span[@class='dvRate']/text()")->item(0)->nodeValue);
-
+				$price = str_replace(['+', '-'], '', filter_var($price, FILTER_SANITIZE_NUMBER_FLOAT))
 
                 $type =  trim($carXpath->query("table/tr[2]/td[1]/div[@class='h2']/text()")->item(0)->nodeValue);
                 $gearbox = "N/A"; //info is there, just hard to get
                 $size = "N/A"; //info is there, just hard to get
 
+				if ($price != "") {
                     $results[] = array(
                         'company' => "Apex",
                         'url' => "http://www.apexrentals.co.nz",
@@ -782,6 +794,7 @@ class Rental extends CI_Controller {
                         'size' => $size,
                         'price' => $price,
                     );  
+				}
         }
 
         return $results;
