@@ -1,10 +1,8 @@
-<script type='text/javascript' language='javascript'>
 $(document).ready(function() {	
 	$("#navHome").removeClass("active");
-	$("#navAbout").removeClass("active");
-	$("#navContact").addClass("active");	
+	$("#navAbout").addClass("active");
+	$("#navContact").removeClass("active");	
 });
-</script>
 <div class="jumbotron">
       <div class="container">
       </div>
@@ -17,7 +15,7 @@ $(document).ready(function() {
 
 			</div>
 			<div id="cars" class="col-lg-8">				
-				<h1>Contact Us</h1>
+				<h1>About Us</h1>
 			</div>
 		</div>
 		<hr>

@@ -61,6 +61,17 @@ class Rental extends CI_Controller {
         );  
         $this->template->load('templates/default', $sections);
 	}
+	
+	public function about() {
+		$data['page_title'] = $this->lang->line('page_title');
+		$this->load->vars($data);
+
+        // get the view section
+        $sections = array(
+            'content'       => 'rental/about',
+        );  
+        $this->template->load('templates/default', $sections);
+	}
     
     public function list_companies() {
         $plocation = $this->input->post('pickuplocation');

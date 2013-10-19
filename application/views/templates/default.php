@@ -36,9 +36,9 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="http://seekacar.co.nz">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="contact">Contact</a></li>
+            <li id="navHome" class="active"><a href="http://seekacar.co.nz">Home</a></li>
+            <li id="navAbout"><a href="about">About</a></li>
+            <li id="navContact"><a href="contact">Contact</a></li>
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
