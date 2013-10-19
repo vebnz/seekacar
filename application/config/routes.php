@@ -40,6 +40,7 @@
 $route['rental']                = 'rental';
 $route['rental/(:any)']         = 'rental/view/$1';
 $route['get_cars']              = 'rental/get_cars';
+$route['contact']				= 'rental/contact';
 $route['list_companies']        = 'rental/list_companies';
 $route['(:any)']                = 'pages/view/$1';
 $route['default_controller']    = 'rental';
