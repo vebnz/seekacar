@@ -68,7 +68,7 @@
     <div class="jumbotron ">
 		<div class="container">
 			<div class="col-lg-12 centered">
-                                <div class="company col-lg-2"><img src="/images/ace.jpg" alt="Ace Rental Cars" /></div><div class="company col-lg-2"><img src="/images/apex.jpg" alt="Apex Rental Cars" /></div><div class="company col-lg-2"><img src="/images/britz.jpg" alt="Britz Rental Cars" /></div><div class="company col-lg-2"><img src="/images/budget.jpg" alt="Budget Rental Cars" /></div><div class="company col-lg-2"><img src="/images/omega.jpg" alt="Omega Rental Cars" /></div><div class="company col-lg-2"><img src="/images/thrifty.jpg" alt="Thrifty Rental Cars" /></div>
+                                <div class="company col-lg-2"><img src="/images/ace.jpg" alt="Ace Rental Cars" /></div><div class="company col-lg-2"><img src="/images/apex.jpg" alt="Apex Rental Cars" /></div><div class="company col-lg-2"><img src="/images/britz.jpg" alt="Britz Rental Cars" /></div><div class="company col-lg-2"><img src="/images/budget.jpg" alt="Budget Rental Cars" /></div><div class="company col-lg-2"><img src="/images/omega.jpg" alt="Omega Rental Cars" /></div><div class="company col-lg-2"><img src="/images/pegasus.jpg" alt="Pegasus Rental Cars" /></div>
 
             </div>
 		</div>
