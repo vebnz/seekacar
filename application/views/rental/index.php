@@ -79,18 +79,15 @@
       <div class="row">
         <div class="col-lg-4">
           <h2>Search</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+          <p>Simply enter in the dates and times that you wish to rent a car and we'll return real-time real time results to you.</p>        
         </div>
         <div class="col-lg-4">
           <h2>Compare</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+          <p>Compare makes, models, sizes, and prices from a wide range of well known car rental companies in New Zealand.</p>
        </div>
         <div class="col-lg-4">
           <h2>Book</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+          <p>Once you've decided on a specific car and company, simply select the car and we'll send you directly to the companies website ready for you to book.</p>
         </div>
       </div>
 
