@@ -1,7 +1,7 @@
 $(document).ready(function() {	
-	$("#navHome").removeClass("active");
-	$("#navAbout").addClass("active");
+	$("#navHome").removeClass("active");	
 	$("#navContact").removeClass("active");	
+	$("#navAbout").addClass("active");
 });
 <div class="jumbotron">
       <div class="container">
