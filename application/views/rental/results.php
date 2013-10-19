@@ -25,7 +25,7 @@ $(document).ready(function() {
 						$.each(cars, function(i, car) {
 							$('#carTable tr:last').after('<tr><td>&nbsp;</td><td>' + car.company + '</td><td>' + car.title + '</td><td>' + car.type + '</td><td>' + car.gearbox + '</td><td>' + car.size + '</td><td>' + car.price + '</td><td><a href="' + car.url + '">GO</a></td></tr>');
 							$('#debug').before('<div id="vehicles-list"><div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">[' + car.company + '] ' + car.title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car.image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car.type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>Size: ' + car.size + '</li><li>Luggage: 1 Large Suitcase</li><li>Gearbox: ' + car.gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a target="_blank" href="' + car.url + '" class="primary priced btn btn-primary">Select</a><strong class="price">$' + car.price + '</strong><span> NZD</span></div></div></div></div></div></div></article></div></div>');
-							var carArry = [car.company, car.title, car.type, car.gearbox, car.size, car.price, car.url];
+							var companyCars = [car.company, car.title, car.type, car.gearbox, car.size, car.price, car.url];
 							carArray = $.merge(companyCars, carArray);
 						});							
 					}
@@ -33,7 +33,6 @@ $(document).ready(function() {
 		    });	
 		} // End of success function of ajax 
     }); // End of ajax call  
-	alert(carArray);
 });
 </script>
 <div class="jumbotron">
