@@ -1,8 +1,10 @@
+<script type='text/javascript' language='javascript'>
 $(document).ready(function() {	
 	$("#navHome").removeClass("active");	
 	$("#navContact").removeClass("active");	
 	$("#navAbout").addClass("active");
 });
+</script>
 <div class="jumbotron">
       <div class="container">
       </div>
