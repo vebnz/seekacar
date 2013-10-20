@@ -32,7 +32,23 @@ $(document).ready(function() {
 			    });
 		    });	
 		} // End of success function of ajax 
-    }); // End of ajax call  
+	}); // End of ajax call  
+    	$('#sortByName').click(function() {
+		// clear results
+		$('#debug').find('#vehicles-list').remove();
+      		
+		// sort the array by company name
+		carArray.sort(function(a, b){
+    			var a1= a[0].company, b1= b[0].company;
+    			if(a1== b1) return 0;
+    				return a1> b1? 1: -1;
+			});
+		
+		// re-draw the results
+		$.each(carArray, function(i, car)  {
+			$('#debug').before('<div id="vehicles-list"><div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">[' + car[0].company + '] ' + car[0].title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car[0].image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car[0].type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>Size: ' + car[0].size + '</li><li>Luggage: 1 Large Suitcase</li><li>Gearbox: ' + car[0].gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a target="_blank" href="' + car[0].url + '" class="primary priced btn btn-primary">Select</a><strong class="price">$' + car[0].price + '</strong><span> NZD</span></div></div></div></div></div></div></article></div></div>');	
+		});
+    	});
 });
 </script>
 <div class="jumbotron">
