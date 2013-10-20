@@ -1,12 +1,15 @@
 <script type='text/javascript' language='javascript'>
+
+var carArray = new Array();
+
 $(document).ajaxStart(function () {
     $('#result_table').fadeIn();
 });
 $(document).ajaxStop(function () {
     $('#result_table').fadeOut();
+    //$('#totalCount').text('Showing 1 - 10 of ' + carArray.length); 
 });
 $(document).ready(function() {	
-	var carArray = new Array();
 	$.ajax({
         url: 'list_companies',
         type:'POST',
