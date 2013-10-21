@@ -42,14 +42,14 @@ $(document).ready(function() {
 		$('#debug').find('#vehicles-list').remove();
       		
 		// sort the array by company name
-		carArray.sort(function(a, b){
+		disArray.sort(function(a, b){
     			var a1= a[0].company, b1= b[0].company;
     			if(a1== b1) return 0;
     				return a1> b1? 1: -1;
 			});
 		
 		// re-draw the results
-		$.each(carArray, function(i, car)  {
+		$.each(disArray, function(i, car)  {
 			$('#debug').before('<div id="vehicles-list"><div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">[' + car[0].company + '] ' + car[0].title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car[0].image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car[0].type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>Size: ' + car[0].size + '</li><li>Luggage: 1 Large Suitcase</li><li>Gearbox: ' + car[0].gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a target="_blank" href="' + car[0].url + '" class="primary priced btn btn-primary">Select</a><strong class="price">$' + car[0].price + '</strong><span> NZD</span></div></div></div></div></div></div></article></div></div>');	
 		});
     	});
@@ -80,9 +80,27 @@ $(document).ready(function() {
 		<!-- Example row of columns -->
 		<div class="row">
 			<div class="col-lg-4">
-				<h2>Search</h2>
-				<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-				<p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+				<h2>Filter Results</h2>
+				<div id="companies">
+				<label class="checkbox inline">
+					<input value='AceRentals' type="checkbox" checked> Ace Rentals
+				</label>
+				<label class="checkbox inline">
+					<input value='Pegasus' type="checkbox" checked> Pegasus
+				</label>
+				<label class="checkbox inline">
+					<input value='Omega' type="checkbox" checked> Omega
+				</label><br/>
+				<label class="checkbox inline">
+					<input value='Budget' type="checkbox" checked> Budget
+				</label>
+				<label class="checkbox inline">
+					<input value='Britz' type="checkbox" checked> Britz
+				</label>
+				<label class="checkbox inline">
+					<input value='Apex' type="checkbox" checked> Apex
+				</label>
+				</div>
 			</div>
 			<div id="cars" class="col-lg-8">				
 				<div id="debug">
