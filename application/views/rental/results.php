@@ -1,6 +1,7 @@
 <script type='text/javascript' language='javascript'>
 
 var carArray = new Array();
+var disArray = new Array();
 
 $(document).ajaxStart(function () {
     $('#result_table').fadeIn();
@@ -52,6 +53,21 @@ $(document).ready(function() {
 			$('#debug').before('<div id="vehicles-list"><div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">[' + car[0].company + '] ' + car[0].title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car[0].image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car[0].type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>Size: ' + car[0].size + '</li><li>Luggage: 1 Large Suitcase</li><li>Gearbox: ' + car[0].gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a target="_blank" href="' + car[0].url + '" class="primary priced btn btn-primary">Select</a><strong class="price">$' + car[0].price + '</strong><span> NZD</span></div></div></div></div></div></div></article></div></div>');	
 		});
     	});
+	$('#companies input[type=checkbox]').change(function() {
+    		$('#debug').find('#vehicles-list').remove();
+		disArray = carArray;
+    	
+		$("#companies input[type=checkbox]:checked").each(function () {
+			var name = $(this).val();
+        		disArray = $.grep(carArray, function( a ) {
+  				return a[0].company == name;
+			});
+			$.each(disArray, function(i, car) {
+        			$('#debug').before('<div id="vehicles-list"><div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">[' + car[0].company + '] ' + car[0].title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car[0].image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car[0].type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>Size: ' + car[0].size + '</li><li>Luggage: 1 Large Suitcase</li><li>Gearbox: ' + car[0].gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a target="_blank" href="' + car[0].url + '" class="primary priced btn btn-primary">Select</a><strong class="price">$' + car[0].price + '</strong><span> NZD</span></div></div></div></div></div></div></article></div></div>');  
+			});
+    		});
+
+	});
 });
 </script>
 <div class="jumbotron">
