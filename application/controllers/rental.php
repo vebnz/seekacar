@@ -434,7 +434,8 @@ class Rental extends CI_Controller {
 				//else:
 				$gearbox = trim($carXpath->query("td[2]/ul/li[1]/text()")->item(0)->nodeValue);
 				$size = trim($carXpath->query("td/text()[1]")->item(0)->nodeValue);
-				
+				$size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);			
+	
 				if ($price != "") {
 					$results[] = array( 
 					'company' => "AceRentals",
@@ -485,7 +486,8 @@ class Rental extends CI_Controller {
                 $type = trim($carXpath->query("div[@class='car-col-2']/ul/li[3]/text()")->item(0)->nodeValue);
                 $gearbox = trim($carXpath->query("div[@class='car-col-2']/ul/li[2]/text()")->item(0)->nodeValue);
                 $size = trim($carXpath->query("div[@class='car-col-2']/div/p[1]/text()")->item(0)->nodeValue);
-                
+		$size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);                
+
                 if ($price != "") {
                     $results[] = array(
                         'company' => "Pegasus",
@@ -534,7 +536,8 @@ class Rental extends CI_Controller {
 			$gearbox = $gearbox->length ? trim($gearbox->item(0)->nodeValue) : "N/A";
 			$size = $carXpath->query("div[@class='list_right']/div[@class='list_icons']/div[@class='icon adult']");
 			$size = $size->length;
-			
+			$size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);
+
 			if ($price != "") {
 				$results[] = array(
 				'company' => "Omega",
@@ -596,10 +599,12 @@ class Rental extends CI_Controller {
             
             $gearbox =  trim($carXpath->query("p/text()[1]")->item(0)->nodeValue);
             $size =  trim($carXpath->query("p/text()[2]")->item(0)->nodeValue);
-			$price = $carXpath->query("//h1/text()");
+	    $size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);	    
+
+	    $price = $carXpath->query("//h1/text()");
             $price = $price->length ? $price->item(0)->nodeValue : "N/A";
             
-	$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
+   	    $price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
                                 $price = number_format((float)$price, 2, '.', '');
 		$i=$i+2;
 			if ($price != "N/A")
@@ -756,6 +761,7 @@ class Rental extends CI_Controller {
 			
 			$size = $carXpath->query("//div[2]/div/img[@src='/images/ico_person.gif']/@src");
 			$size = $size->length;
+			$size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);
 			$i=$i+2;
 			
 			if ($price != "") {
