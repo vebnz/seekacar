@@ -426,7 +426,8 @@ class Rental extends CI_Controller {
 				//    carobj['price'] = car.select("td[3]/div/div/div[4]/div/span[2]/text()").extract()
 				//else:
 				$price = trim($carXpath->query("td[3]/div/div/div[4]/span[2]/text()")->item(0)->nodeValue);
-				$price = filter_var($price, FILTER_SANITIZE_NUMBER_FLOAT);
+				$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
+                                $price = number_format((float)$price, 2, '.', '');
 				$type = trim($carXpath->query("td[2]/p/text()")->item(0)->nodeValue);
 				//if "pp_special" in car.extract():
 				//    carobj['gearbox'] = car.select("td[2]/ul/li[2]/text()").extract()
@@ -478,8 +479,9 @@ class Rental extends CI_Controller {
                 $image = trim($carXpath->query("div[@class='car-col-1']/img/@src")->item(0)->nodeValue);
                 $title = trim($carXpath->query("h3[@class='blue_bar']/text()")->item(0)->nodeValue);
                 $price = trim($carXpath->query("div[@class='car-col-1']/p/text()")->item(0)->nodeValue);
-				$price = filter_var($price, FILTER_SANITIZE_NUMBER_FLOAT);
-                
+		$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
+                                $price = number_format((float)$price, 2, '.', '');               
+ 
                 $type = trim($carXpath->query("div[@class='car-col-2']/ul/li[3]/text()")->item(0)->nodeValue);
                 $gearbox = trim($carXpath->query("div[@class='car-col-2']/ul/li[2]/text()")->item(0)->nodeValue);
                 $size = trim($carXpath->query("div[@class='car-col-2']/div/p[1]/text()")->item(0)->nodeValue);
@@ -525,7 +527,8 @@ class Rental extends CI_Controller {
 			$image = "http://www.omegarentals.co.nz/" . trim($carXpath->query("div[@class='list_left']/div[@class='list_image']/img/@src")->item(0)->nodeValue);
 			$type = trim($carXpath->query("div[@class='list_left']/div[@class='list_title']/h3/text()")->item(0)->nodeValue);
 			$price = trim($carXpath->query("div[@class='list_right']/div[@class='list_price']/div[@class='price']/text()")->item(0)->nodeValue);
-			$price = filter_var($price, FILTER_SANITIZE_NUMBER_FLOAT);
+			$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
+                                $price = number_format((float)$price, 2, '.', '');
 			$title = trim($carXpath->query("div[@class='list_left']/div[@class='list_title']/h2/text()")->item(0)->nodeValue);
 			$gearbox = $carXpath->query("div[@class='list_right']/div[@class='list_features']/div[@class='feature'][1]/text()[contains(.,'Manual') or contains(.,'Automatic')]");
 			$gearbox = $gearbox->length ? trim($gearbox->item(0)->nodeValue) : "N/A";
@@ -595,8 +598,10 @@ class Rental extends CI_Controller {
             $size =  trim($carXpath->query("p/text()[2]")->item(0)->nodeValue);
 			$price = $carXpath->query("//h1/text()");
             $price = $price->length ? $price->item(0)->nodeValue : "N/A";
-			$price = filter_var($price, FILTER_SANITIZE_NUMBER_FLOAT);
-            $i=$i+2;
+            
+	$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
+                                $price = number_format((float)$price, 2, '.', '');
+		$i=$i+2;
 			if ($price != "N/A")
 			{
 				$results[] = array(
@@ -643,8 +648,8 @@ class Rental extends CI_Controller {
                 $title = trim($carXpath->query("div[@class='VehicleItem']/div[@class='VehicleFeatures']/a[@class='PopUp']/text()")->item(0)->nodeValue);
                 $price = $carXpath->query("div[@class='PriceDetailsList NoFreeDays']/table[@class='chargesTable']/tbody/tr[1]/td[@class='dpd']/text()");
                 $price = $price->length ? trim($price->item(0)->nodeValue) : "N/A";
-				$price = filter_var($price, FILTER_SANITIZE_NUMBER_FLOAT);
-                
+               $price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
+                                $price = number_format((float)$price, 2, '.', ''); 
                 $type = "N/A";
                 $gearbox = "N/A";
                 $size = "N/A"; 
@@ -733,8 +738,9 @@ class Rental extends CI_Controller {
 			$carXpath = new DOMXPath($tmp_doc);
 			
 			$price =  trim($carXpath->query("//div[3]/text()")->item(0)->nodeValue);
-			$price = filter_var($price, FILTER_SANITIZE_NUMBER_FLOAT);
-			
+			$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
+                                $price = number_format((float)$price, 2, '.', '');		
+	
 			$i=$i+3;
 			
 			$children = $cars->item($i)->childNodes;
@@ -799,8 +805,8 @@ class Rental extends CI_Controller {
                 $image = trim($carXpath->query("table/tr[2]/td[1]/div[3]/img/@src")->item(0)->nodeValue);
                 $title = trim($carXpath->query("table/tr[2]/td[1]/div[@class='h3 clean']/text()")->item(0)->nodeValue);
                 $price = trim($carXpath->query("table/tr[2]/td[3]/div/div[@class='dvBoxA']/span[@class='dvRate']/text()")->item(0)->nodeValue);
-				$price = filter_var($price, FILTER_SANITIZE_NUMBER_FLOAT);
-
+		$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
+                                $price = number_format((float)$price, 2, '.', '');
                 $type =  trim($carXpath->query("table/tr[2]/td[1]/div[@class='h2']/text()")->item(0)->nodeValue);
                 $gearbox = "N/A"; //info is there, just hard to get
                 $size = "N/A"; //info is there, just hard to get
