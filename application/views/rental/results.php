@@ -107,6 +107,8 @@ $(document).ready(function() {
 				</div>
 				<h2>Filter Results</h2>
 				<div id="companies">
+				<a href="" id="sortByName">Sort by Company</a><br/>
+				<a href="" id="sortByPrice">Sort by Price</a><br />
 				<label class="checkbox inline">
 					<input value='AceRentals' type="checkbox" checked> Ace Rentals
 				</label>
@@ -115,7 +117,7 @@ $(document).ready(function() {
 				</label>
 				<label class="checkbox inline">
 					<input value='Omega' type="checkbox" checked> Omega
-				</label><br/>
+				</label>
 				<label class="checkbox inline">
 					<input value='Budget' type="checkbox" checked> Budget
 				</label>
