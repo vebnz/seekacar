@@ -103,12 +103,12 @@ $(document).ready(function() {
 						<li>Drop-off Location: <?php echo $dlocation; ?> </li>
 						<li>Drop-off Time: <?php echo $dodate . ' ' . $dotime ?> </li>
 					</ul>
-					<p><a href="">Refine search</a></p> 
+					<p><a>Refine search</a></p> 
 				</div>
 				<h2>Filter Results</h2>
 				<div id="companies">
-				<a href="" id="sortByName">Sort by Company</a><br/>
-				<a href="" id="sortByPrice">Sort by Price</a><br />
+				<a id="sortByName">Sort by Company</a><br/>
+				<a id="sortByPrice">Sort by Price</a><br />
 				<label class="checkbox inline">
 					<input value='AceRentals' type="checkbox" checked> Ace Rentals
 				</label>
