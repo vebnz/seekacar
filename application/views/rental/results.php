@@ -98,6 +98,16 @@ d btn btn-primary">Select</a><strong class="price">$' + car[0].price + '</strong
 		<!-- Example row of columns -->
 		<div class="row">
 			<div class="col-lg-4">
+				<h2>Itinerary</h2>
+				<div>
+					<ul>
+						<li>Pickup Location: <?php echo $plocation; ?> </li>
+						<li>Pickup Time: <?php echo $pudate . ' ' . $putime; ?> </h1>
+						<li>Drop-off Location: <?php echo $dlocation; ?> </li>
+						<li>Drop-off Time: <?php echo $dodate . ' ' . $dotime ?> </li>
+					</ul>
+					<p><a href="">Refine search</a></p> 
+				</div>
 				<h2>Filter Results</h2>
 				<div id="companies">
 				<label class="checkbox inline">
