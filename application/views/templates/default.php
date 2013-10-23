@@ -32,7 +32,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://seekacar.co.nz"><img src="/images/seekacar-logo.png" /></a>
+          <a class="navbar-brand" href="http://seekacar.co.nz"><img id="logo" src="/images/seekacar-logo.png" /></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

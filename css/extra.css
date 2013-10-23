@@ -145,3 +145,6 @@ div {
   font-size: 1.8em;
   font-weight: normal;
 }
+#logo {
+	top: -20px; 
+}
