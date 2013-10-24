@@ -13,6 +13,7 @@
     <link href="/css/extra.css" rel="stylesheet" />
     <link href="/css/jquery.timepicker.css" rel="stylesheet" />
     <link href="/css/datepicker.css" rel="stylesheet" />
+    <link href="/css/slider.css" rel="stylesheet" />
     <style type="text/css">
 
     </style>
@@ -51,6 +52,6 @@
     <script type="text/javascript" src="/js/document.ready.all.js"></script>
     <script type="text/javascript" src="/js/jquery.timepicker.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap-datepicker.js"></script>
-
+    <script type="text/javascript" src="/js/bootstrap-slider.js"></script>
     </body>
 </html>
