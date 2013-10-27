@@ -22,7 +22,7 @@ $(document).ready(function() {
                     url: 'get_cars',
                     type: 'POST',
                     dataType: 'json',
-		    timeout: 30000, // 30 second timeout
+					timeout: 30000, // 30 second timeout
                     data: {name: company.name, puc: company.puc, doc: company.doc, pickupdate: "<?php echo $pudate; ?>", pickuptime: "<?php echo $putime; ?>", dropoffdate: "<?php echo $dodate; ?>", dropofftime: "<?php echo $dotime; ?>"},
                     success: function(cars){
 
@@ -31,43 +31,45 @@ $(document).ready(function() {
 							$('#vehicles-list').append('<div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">[' + car.company + '] ' + car.title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car.image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car.type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>Size: ' + car.size + '</li><li>Luggage: 1 Large Suitcase</li><li>Gearbox: ' + car.gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a target="_blank" href="' + car.url + '" class="primary priced btn btn-primary">Select</a><strong class="price">$' + car.price + '</strong><span> NZD</span></div></div></div></div></div></div></article></div>');
 							var companyCars = [{'company':car.company, 'title':car.title, 'type':car.type, 'gearbox':car.gearbox, 'size':car.size, 'price':car.price, 'image':car.image, 'url':car.url}];
 							carArray.push(companyCars);
-							disArray.push(companyCars);
+							filteredCar.push(companyCars);
 						});							
 					}
 			    });
 		    });	
 		} // End of success function of ajax 
 	}); // End of ajax call  
-    	$('#sortByName').click(function() {
+   
+	$('#sortByName').click(function() {
 		// clear results
-      		$('#vehicles-list').empty();
+    	$('#vehicles-list').empty();
 		// sort the array by company name
-		disArray.sort(function(a, b){
-    			var a1= a[0].company, b1= b[0].company;
-    			if(a1== b1) return 0;
-    				return a1> b1? 1: -1;
-			});
+		filteredCar.sort(function(a, b){
+    		var a1= a[0].company, b1= b[0].company;
+    		if(a1== b1) return 0;
+    			return a1> b1? 1: -1;
+		});
 		
 		// re-draw the results
-		$.each(disArray, function(i, car)  {
+		$.each(filteredCar, function(i, car)  {
 			$('#vehicles-list').append('<div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">[' + car[0].company + '] ' + car[0].title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car[0].image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car[0].type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>Size: ' + car[0].size + '</li><li>Luggage: 1 Large Suitcase</li><li>Gearbox: ' + car[0].gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a target="_blank" href="' + car[0].url + '" class="primary priced btn btn-primary">Select</a><strong class="price">$' + car[0].price + '</strong><span> NZD</span></div></div></div></div></div></div></article></div>');	
 		});
-    	});
+    });
+	
 	$('#sortByPrice').click(function() {
-                // clear results
-                $('#vehicles-list').empty();
-                // sort the array by company name
-                disArray.sort(function(a, b){
-                        var a1= a[0].price, b1= b[0].price;
-                        if(a1== b1) return 0;
-                                return a1> b1? 1: -1;
-                        });
-                
-                // re-draw the results
-                $.each(disArray, function(i, car)  {
-        	        $('#vehicles-list').append('<div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">[' + car[0].company + '] ' + car[0].title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car[0].image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car[0].type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>Size: ' + car[0].size + '</li><li>Luggage: 1 Large Suitcase</li><li>Gearbox: ' + car[0].gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a target="_blank" href="' + car[0].url + '" class="primary priced btn btn-primary">Select</a><strong class="price">$' + car[0].price + '</strong><span> NZD</span></div></div></div></div></div></div></article></div>');
-                });
+        // clear results
+        $('#vehicles-list').empty();
+        // sort the array by company name
+        filteredCar.sort(function(a, b){
+            var a1= a[0].price, b1= b[0].price;
+            if(a1== b1) return 0;
+                return a1> b1? 1: -1;
         });
+                
+        // re-draw the results
+        $.each(filteredCar, function(i, car)  {
+            $('#vehicles-list').append('<div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">[' + car[0].company + '] ' + car[0].title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car[0].image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car[0].type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>Size: ' + car[0].size + '</li><li>Luggage: 1 Large Suitcase</li><li>Gearbox: ' + car[0].gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a target="_blank" href="' + car[0].url + '" class="primary priced btn btn-primary">Select</a><strong class="price">$' + car[0].price + '</strong><span> NZD</span></div></div></div></div></div></div></article></div>');
+        });
+    });
 
 	function getVal() {
 		return $(this).val();
@@ -75,33 +77,33 @@ $(document).ready(function() {
 
 	var minPrice = 0, // Will be done by slider
     	maxPrice = 300, // Will be done by slider
-	minSize = 0, // Will be done by slider
-	maxSize = 10, // Will be done by slider
+		minSize = 0, // Will be done by slider
+		maxSize = 10, // Will be done by slider
     	companies = $("input[name='companies']:checked").map(getVal).get()
 
 	predicates = [
-        	function checkMinPrice(carArray)
-        	{
-            		return parseFloat(carArray.price) > minPrice;
-        	},
-        	function checkMaxPrice(carArray)
-        	{
-            		return parseFloat(carArray.price) < maxPrice;
-        	},
+        function checkMinPrice(carArray)
+        {
+        	return parseFloat(carArray.price) > minPrice;
+        },
+        function checkMaxPrice(carArray)
+        {
+        	return parseFloat(carArray.price) < maxPrice;
+        },
 		function checkMinSize(carArray)
-        	{
-            		return parseFloat(carArray.size) > minSize;
-        	},
-        	function checkMaxSize(carArray)
-        	{
-            		return parseFloat(carArray.size) < maxSize;
-        	},
-        	function checkColor(carArray)
-        	{
-            		return $.inArray(carArray.company, companies) !== -1;
-        	}
-    	],
-    	filteredCar;
+        {
+        	return parseFloat(carArray.size) > minSize;
+        },
+        function checkMaxSize(carArray)
+        {
+        	return parseFloat(carArray.size) < maxSize;
+        },
+        function checkColor(carArray)
+        {
+        	return $.inArray(carArray.company, companies) !== -1;
+        }
+    ],
+    filteredCar;
 
 	$('#filters').click(function() {
 
@@ -109,17 +111,17 @@ $(document).ready(function() {
     			filteredCars = carArray;
 		}
 		else {
-    			filteredCars = $.grep(carArray, function(element, index) {
-        			for (var i = 0; i < predicates.length; i++) {
-            				if (!predicates[i](element)) return false;
-        			}
-        			return true;
-    			});
+    		filteredCars = $.grep(carArray, function(element, index) {
+        		for (var i = 0; i < predicates.length; i++) {
+        			if (!predicates[i](element)) return false;
+        		}
+        		return true;
+    		});
 		}
 
 		$.each(filteredCars, function(i, car) {
-                                $('#vehicles-list').append('<div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">[' + car[0].company + '] ' + car[0].title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car[0].image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car[0].type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>Size: ' + car[0].size + '</li><li>Luggage: 1 Large Suitcase</li><li>Gearbox: ' + car[0].gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a target="_blank" href="' + car[0].url + '" class="primary priced btn btn-primary">Select</a><strong class="price">$' + car[0].price + '</strong><span> NZD</span></div></div></div></div></div></div></article></div>');  
-                });
+            $('#vehicles-list').append('<div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">[' + car[0].company + '] ' + car[0].title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car[0].image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car[0].type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>Size: ' + car[0].size + '</li><li>Luggage: 1 Large Suitcase</li><li>Gearbox: ' + car[0].gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a target="_blank" href="' + car[0].url + '" class="primary priced btn btn-primary">Select</a><strong class="price">$' + car[0].price + '</strong><span> NZD</span></div></div></div></div></div></div></article></div>');  
+        });
 
 	});
 	
