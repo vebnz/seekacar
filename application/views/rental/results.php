@@ -1,7 +1,7 @@
 <script type='text/javascript' language='javascript'>
 
 var carArray = new Array();
-var disArray = new Array();
+var filteredCar = new Array();
 
 $(document).ajaxStart(function () {
     $('#result_table').fadeIn();
