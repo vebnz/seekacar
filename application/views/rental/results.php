@@ -113,7 +113,7 @@ $(document).ready(function() {
 		else {
     		filteredCars = $.grep(carArray, function(element, index) {
         		for (var i = 0; i < predicates.length; i++) {
-        			if (!predicates[i](element)) return false;
+        			if (!predicates[i](element[0])) return false;
         		}
         		return true;
     		});
