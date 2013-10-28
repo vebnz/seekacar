@@ -2,7 +2,7 @@
 
 var carArray = new Array();
 var filteredCar = new Array();
-
+    
 $(document).ajaxStart(function () {
     $('#result_table').fadeIn();
 });
@@ -79,9 +79,9 @@ $(document).ready(function() {
     	maxPrice = 300, // Will be done by slider
 		minSize = 0, // Will be done by slider
 		maxSize = 10, // Will be done by slider
-    	companies = $("input[name='companies']:checked").map(getVal).get()
-
-	predicates = [
+        companies = $("input[name='companies']:checked").map(getVal).get()
+        
+    predicates = [
         function checkMinPrice(carArray)
         {
         	return parseFloat(carArray.price) > minPrice;
@@ -106,6 +106,11 @@ $(document).ready(function() {
     filteredCar;
 
 	$('#filters').click(function() {
+
+        // clear results
+        $('#vehicles-list').empty();
+
+        companies = $("input[name='companies']:checked").map(getVal).get()
 
 		if (!minPrice && !maxPrice) {
     			filteredCars = carArray;
