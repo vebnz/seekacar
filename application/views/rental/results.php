@@ -155,22 +155,22 @@ $(document).ready(function() {
 				<a id="sortByName">Sort by Company</a><br/>
 				<a id="sortByPrice">Sort by Price</a><br />
 				<label class="checkbox inline">
-					<input value='AceRentals' type="checkbox" checked> Ace Rentals
+					<input value='AceRentals' name='companies' type="checkbox" checked> Ace Rentals
 				</label>
 				<label class="checkbox inline">
-					<input value='Pegasus' type="checkbox" checked> Pegasus
+					<input value='Pegasus' name='companies' type="checkbox" checked> Pegasus
 				</label>
 				<label class="checkbox inline">
-					<input value='Omega' type="checkbox" checked> Omega
+					<input value='Omega' name='companies' type="checkbox" checked> Omega
 				</label>
 				<label class="checkbox inline">
-					<input value='Budget' type="checkbox" checked> Budget
+					<input value='Budget' name='companies' type="checkbox" checked> Budget
 				</label>
 				<label class="checkbox inline">
-					<input value='Britz' type="checkbox" checked> Britz
+					<input value='Britz' name='companies' type="checkbox" checked> Britz
 				</label>
 				<label class="checkbox inline">
-					<input value='Apex' type="checkbox" checked> Apex
+					<input value='Apex' name='companies' type="checkbox" checked> Apex
 				</label>
 				</div>
 				<div>
