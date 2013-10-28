@@ -14,7 +14,7 @@ var DEFAULTAPP = (function ($) {
         /* Javascript goes in here */
 		$(function() {	
 			var nowTemp = new Date();
-			var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+			var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate()+1, 0, 0, 0, 0);
 
 			var pickup = $('#pickupdate').datepicker({
 				format: 'dd/mm/yyyy',
