@@ -2,6 +2,20 @@ div {
   display: block;
 }   
 
+.info, .success, .warning, .error, .validation {
+  border: 1px solid;
+  margin: 10px 0px;
+  padding: 0px 0px 0px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px 10px;
+}
+
+.error {
+  color: #D8000C;
+  background-color: #FFBABA;
+  background-image: url('/images/error.png');
+}
+
 #header {
   z-index: 1;
   position: relative;
@@ -46,7 +60,7 @@ div {
 }
 
 .formc {
-	margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .well {
@@ -55,9 +69,9 @@ div {
 }
 
 .centered {
-    text-align: center;
-    margin: 0 auto 0 auto; 
-    float: center;
+  text-align: center;
+  margin: 0 auto 0 auto; 
+  float: center;
 }
 .company {
   width: 150px;
@@ -146,6 +160,6 @@ div {
   font-weight: normal;
 }
 #logo {
-	margin-top: -18px; 
+  margin-top: -18px; 
   margin-bottom: -35px;
 }
