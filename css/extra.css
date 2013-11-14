@@ -2,6 +2,11 @@ div {
   display: block;
 }   
 
+.background-image {
+  background-image: url('/images/background.jpg');
+  background-repeat: no-repeat;
+}
+
 .info, .success, .warning, .error, .validation {
   border: 1px solid;
   margin: 10px 0px;

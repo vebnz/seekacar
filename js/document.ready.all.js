@@ -52,6 +52,7 @@ var DEFAULTAPP = (function ($) {
      */
     $(document).ready(function() {
         default_init();
+          //$.backstretch("images/background.jpg");
     });
 
 

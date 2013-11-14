@@ -1,4 +1,5 @@
 <div id="header" style="display:block;">
+    <!--<div id="background-image"></div>-->
     <ul class="list-unstyled" id="bgimage">
         <li>
         <img src="images/background.jpg" height="700" width="1600" style="min-width: 1600px; top: -100.3658536585366px;">
@@ -74,8 +75,24 @@
     <div class="jumbotron ">
         <div class="container">
             <div class="col-lg-12 centered">
-                                <div class="company col-lg-2"><img src="/images/ace.jpg" alt="Ace Rental Cars" /></div><div class="company col-lg-2"><img src="/images/apex.jpg" alt="Apex Rental Cars" /></div><div class="company col-lg-2"><img src="/images/britz.jpg" alt="Britz Rental Cars" /></div><div class="company col-lg-2"><img src="/images/budget.jpg" alt="Budget Rental Cars" /></div><div class="company col-lg-2"><img src="/images/omega.jpg" alt="Omega Rental Cars" /></div><div class="company col-lg-2"><img src="/images/pegasus.jpg" alt="Pegasus Rental Cars" /></div>
-
+            <div class="company col-lg-2">
+                <img src="/images/ace.jpg" alt="Ace Rental Cars" />
+                </div>
+                <div class="company col-lg-2">
+                    <img src="/images/apex.jpg" alt="Apex Rental Cars" />
+                </div>
+                <div class="company col-lg-2">
+                    <img src="/images/britz.jpg" alt="Britz Rental Cars" />
+                </div>
+                <div class="company col-lg-2">
+                    <img src="/images/budget.jpg" alt="Budget Rental Cars" />
+                </div>
+                <div class="company col-lg-2">
+                    <img src="/images/omega.jpg" alt="Omega Rental Cars" />
+                </div>
+                <div class="company col-lg-2">
+                    <img src="/images/pegasus.jpg" alt="Pegasus Rental Cars" />
+                </div>
             </div>
         </div>
     </div>
