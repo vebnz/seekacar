@@ -12,7 +12,7 @@ var DEFAULTAPP = (function ($) {
     default_init = function() {
 
         /* Javascript goes in here */
-        $("#debug").hide(); // hide debug stuff at bottom of screen
+        $(".debug").hide(); // hide debug stuff at bottom of screen
 
 		$(function() {	
 			var nowTemp = new Date();
