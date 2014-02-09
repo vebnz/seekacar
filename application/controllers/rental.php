@@ -72,7 +72,7 @@ class Rental extends CI_Controller {
         );  
         $this->template->load('templates/default', $sections);
 	}
-    
+	
     public function list_companies() {
         $plocation = $this->input->post('pickuplocation');
 		$dlocation = $this->input->post('dropofflocation');
@@ -102,7 +102,7 @@ class Rental extends CI_Controller {
             $puDateSplit = explode("/", $pudate);
             $doDateSplit = explode("/", $dodate);
                 
-            $url = 'http://www.acerentalcars.co.nz/inet/formprocess.php';
+            $url = 'https://www.acerentalcars.co.nz/inet/formprocess.php';
             $postdata = array('nextstep' => "2",
                 'pickuplocationid' => "$locOne",
                 'pdate_day' => "$puDateSplit[0]",
@@ -348,13 +348,6 @@ class Rental extends CI_Controller {
 	}
 	
 	function scrapeSite($url, $postdata) {
-		
-		/*$this->load->library('curl'); 
-		$this->curl->create($url);
-		$this->curl->post($postdata);
-		return $this->curl->execute();*/
-		$ch = @curl_init();
-
 		if($ch){
 			curl_setopt($ch, CURLOPT_URL, $url);
 			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 15);
@@ -363,35 +356,16 @@ class Rental extends CI_Controller {
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
 			curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookies2.txt'); // set cookie file to given file
 			curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookies2.txt'); // set same file as cookie jar
-			curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.69 Safari/537.36');
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+			curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.69 Safari/537.36');
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 
 			$content = curl_exec($ch);
-			$headers = curl_getinfo($ch);				
-			
-			curl_close($ch);
+			$headers = curl_getinfo($ch);	
 
-            if($headers['http_code'] == 200){ 
-                return $content;
-            }
-			else if ($headers['http_code'] == 302){
-				$ch = @curl_init();
-				curl_setopt($ch, CURLOPT_URL, $headers['redirect_url']);
-				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 15);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookies2.txt'); // set cookie file to given file
-				curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookies2.txt'); // set same file as cookie jar
-				curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.69 Safari/537.36');
-
-				$content = curl_exec($ch);
-				$headers = curl_getinfo($ch);
-				
-				curl_close($ch);
-				
-				if($headers['http_code'] == 200){ 
-					return $content;
-				}
-			}
+			curl_close($ch);		
 		}
+		return $content;		
 	}
 	
 	function AceCars($data) {
@@ -402,7 +376,7 @@ class Rental extends CI_Controller {
 		$carDom = new DOMDocument();
 		
 		$xpath = new DOMXPath($dom);
-		$site = $xpath->query("//div[@id='container']/div[@id='right_column']/div[@class='section']/form/table[@class='displaytable'][2]"); 
+		$site = $xpath->query("//div[@id='container']/div[@id='right_column']/div[@class='section']/form/table[@class='displaytable'][1]"); 
 		foreach ( $site as $item ) { 
 			$tempDom->appendChild($tempDom->importNode($item,true)); 
 		}
