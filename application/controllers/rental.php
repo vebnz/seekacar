@@ -123,7 +123,7 @@ class Rental extends CI_Controller {
         
             case 'Omega':
         		
-                $url = 'https://www.omegarentalcars.com/book/QuoteForm';
+                $url = 'https://www.omegarentalcars.com/home/QuoteForm';
 				$postdata = array('PickupForm' => "$locOne",
 					'PickupDate' => "$pudate",
 					'PickupTime' => '1000',
