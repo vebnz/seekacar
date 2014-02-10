@@ -475,7 +475,7 @@ class Rental extends CI_Controller {
 					$size = trim($carXpath->query("div/div[@class='seating']/ul/li[1]/span")->item(0)->nodeValue);
 					$size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);                
 
-					if ($price != "") {
+					if ($price != "0.00") {
 						$results[] = array(
 							'company' => "Pegasus",
 							'url' => "http://www.rentalcars.co.nz",
