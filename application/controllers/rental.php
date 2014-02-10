@@ -146,7 +146,7 @@ class Rental extends CI_Controller {
 					
 				$url = "http://www.rentalcars.co.nz/bookings/?PickUp=". $locOne ."&DropOff=". $locTwo ."&PickUpDate=". $fDateReplaced ."&PickUpTime=1000&DropOffDate=". $tDateReplaced ."&DropOffTime=1000&CarType=1&MinAge=26";
 
-            	$data = $this->scrapeSite($url, $postdata);
+            	$data = $this->simpleScrape($url, $postdata);
             	$largeCarArray = @$this->PegasusCars($data);
             
             break;
