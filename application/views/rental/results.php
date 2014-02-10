@@ -121,7 +121,7 @@ $(document).ready(function() {
 				if (!predicates[i](element[0])) return false;
 			}
 			return true;
-		)};
+		});
 		
 		// finally display the cars
 		$.each(filteredCars, function(i, car) {
