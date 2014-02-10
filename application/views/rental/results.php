@@ -12,9 +12,34 @@ $(document).ajaxStop(function () {
 });
 $(document).ready(function() {	
 
-	$('#slprice').slider();
-	$('#slsize').slider();
-
+	var minPrice = 0, // Will be done by slider
+    	maxPrice = 300, // Will be done by slider
+		minSize = 0, // Will be done by slider
+		maxSize = 10, // Will be done by slider
+        companies = $("input[name='companies']:checked").map(getVal).get(),
+		pricesort = 0,
+		namesort = 0
+		
+	var priceSlider = $('#slprice').slider()
+				.on('slide', changePriceSlide)
+				.data('slider');
+				
+	var sizeSlider = $('#slsize').slider()
+				.on('slide', changeSizeSlide)
+				.data('slider');
+				
+	var changePriceSlide = function() {
+		prices = priceSlider.getValue().split(",");
+		minPrice = prices[0];
+		maxPrice = prices[1];
+	};
+	
+	var changeSizeSlide = function() {
+		sizes = sizeSlider.getValue().split(",");
+		minSize = sizes[0];
+		maxSize = sizes[1];
+	};
+        
 	$.ajax({
         url: 'list_companies',
         type:'POST',
@@ -43,9 +68,6 @@ $(document).ready(function() {
 		} // End of success function of ajax 
 	}); // End of ajax call  
 	
-	var pricesort = 0,
-		namesort = 0
-   
 	$('#sortByName').click(function() {
 		// clear results
     	$('#vehicles-list').empty();
@@ -94,14 +116,8 @@ $(document).ready(function() {
 
 	function getVal() {
 		return $(this).val();
-	}	
-
-	var minPrice = 0, // Will be done by slider
-    	maxPrice = 300, // Will be done by slider
-		minSize = 0, // Will be done by slider
-		maxSize = 10, // Will be done by slider
-        companies = $("input[name='companies']:checked").map(getVal).get()
-        
+	}			
+		
     predicates = [
         function checkMinPrice(carArray)
         {
