@@ -143,18 +143,9 @@ class Rental extends CI_Controller {
             	
             	$fDateReplaced = urlencode($pudate); 
             	$tDateReplaced = urlencode($dodate); 
-            	
-            	if ($locOne == $locTwo)
-            		$locTwo= '-1';
-            	
-                $url = 'http://www.rentalcars.co.nz/home/getVehicles?from_location='
-                        .$locOne.'&from_date='
-                        .$fDateReplaced.'&from_time=1000&to_location='
-                        .$locTwo.'&to_date='.
-                        $tDateReplaced.'&to_time=1000&surname=&email=&start.x=68&start.y=15';
+					
+				$url = "http://www.rentalcars.co.nz/bookings/?PickUp=". $locOne ."&DropOff=". $locTwo ."&PickUpDate=". $fDateReplaced ."&PickUpTime=1000&DropOffDate=". $tDateReplaced ."&DropOffTime=1000&CarType=1&MinAge=26";
 
-            	$postdata = array();
-            	
             	$data = $this->scrapeSite($url, $postdata);
             	$largeCarArray = @$this->PegasusCars($data);
             
@@ -369,6 +360,24 @@ class Rental extends CI_Controller {
 		return $content;		
 	}
 	
+	function simpleScrape($url) {
+		$ch = curl_init();
+		
+		if($ch){
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.69 Safari/537.36');
+			
+			$content = curl_exec($ch);
+			$headers = curl_getinfo($ch);
+			
+			curl_close($ch);
+		}
+		
+		return $content;
+	}	
+	
 	function AceCars($data) {
 
 		$dom = new DOMDocument(); 
@@ -431,55 +440,58 @@ class Rental extends CI_Controller {
 	}
     
     function PegasusCars($data) {
-    	$dom = new DOMDocument();
+		$dom = new DOMDocument();
 		@$dom->loadHTML($data);
 		$tempDom = new DOMDocument();
 		$carDom = new DOMDocument(); 
 		$xpath = new DOMXPath($dom); 
-	
-	$site = $xpath->query("//div[@id='content']/div[@id='book-col-2']/div[@id='vehicle_holder']/ul[@class='vehicles']");
-        foreach ( $site as $item ) {
-            $tempDom->appendChild($tempDom->importNode($item,true));
-        }
 
-        $tempDom->saveHTML();
-        $carsXpath = new DOMXPath($tempDom);
-        $results = array();
+		$site = $xpath->query("/html/body/div[@class='extracontentbg']/div[@class='wrapper']/div[@class=' container']/div[@class='main_content inner2 inner5']");
+		foreach ( $site as $item ) {
+			$tempDom->appendChild($tempDom->importNode($item,true));
+		}
 
-        $cars = $carsXpath->query("//li[@class='clearfix']");
+		$tempDom->saveHTML();
+		$carsXpath = new DOMXPath($tempDom);
+		$results = array();
 
-        foreach ($cars as $car) {
-                $newDom = new DOMDocument;
-                $newDom->appendChild($newDom->importNode($car,true));
-                $carXpath = new DOMXPath( $newDom );
+		$cars = $carsXpath->query("//div[position()>1]");
+		$i = 0;
+		
+		foreach ($cars as $car) {
+			if ($i % 5 == 0) {
+				$newDom = new DOMDocument;
+					$newDom->appendChild($newDom->importNode($car,true));
+					$carXpath = new DOMXPath( $newDom );
 
-                $image = trim($carXpath->query("div[@class='car-col-1']/img/@src")->item(0)->nodeValue);
-                $title = trim($carXpath->query("h3[@class='blue_bar']/text()")->item(0)->nodeValue);
-                $price = trim($carXpath->query("div[@class='car-col-1']/p/text()")->item(0)->nodeValue);
-		$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
-                                $price = number_format((float)$price, 2, '.', '');               
- 
-                $type = trim($carXpath->query("div[@class='car-col-2']/ul/li[3]/text()")->item(0)->nodeValue);
-                $type = trim(str_replace(array( '(', ')', '-' ), '', $type));
-		$gearbox = trim($carXpath->query("div[@class='car-col-2']/ul/li[2]/text()")->item(0)->nodeValue);
-                $size = trim($carXpath->query("div[@class='car-col-2']/div/p[1]/text()")->item(0)->nodeValue);
-		$size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);                
+					$image = trim($carXpath->query("div/div[@class='text_cont']/p[@class='image']/img/@src")->item(0)->nodeValue);
+					$title = trim($carXpath->query("div/div[@class='text_cont']/ul[@id='price']/li[1]/span[@class='name']")->item(0)->nodeValue);
+					$price = trim($carXpath->query("div/div[@class='text_cont']/ul[@id='price']/li[2]/span[@class='name']")->item(0)->nodeValue);
+					$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
+					$price = number_format((float)$price, 2, '.', '');               
 
-                if ($price != "") {
-                    $results[] = array(
-                        'company' => "Pegasus",
-						'url' => "http://www.rentalcars.co.nz",
-                        'image' => $image,
-                        'title' => $title,
-                        'type' => $type,
-                        'gearbox' => $gearbox,
-                        'size' => $size,
-                        'price' => $price,
-                    );   
-                }
-        } 
-    	return $results;
-    }
+					$type = "N/A";
+					$gearbox = "N/A";
+					$size = trim($carXpath->query("div/div[@class='seating']/ul/li[1]/span")->item(0)->nodeValue);
+					$size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);                
+
+					if ($price != "") {
+						$results[] = array(
+							'company' => "Pegasus",
+							'url' => "http://www.rentalcars.co.nz",
+							'image' => $image,
+							'title' => $title,
+							'type' => $type,
+							'gearbox' => $gearbox,
+							'size' => $size,
+							'price' => $price,
+						);   
+					}
+			}
+			$i++;
+		} 
+		return $results;
+	}
     
     function OmegaCars($data) {	
 		
