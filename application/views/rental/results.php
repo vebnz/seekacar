@@ -11,6 +11,10 @@ $(document).ajaxStop(function () {
     //$('#totalCount').text('Showing 1 - 10 of ' + carArray.length); 
 });
 $(document).ready(function() {	
+
+	$('#slprice').slider();
+	$('#slsize').slider();
+
 	$.ajax({
         url: 'list_companies',
         type:'POST',
@@ -38,6 +42,9 @@ $(document).ready(function() {
 		    });	
 		} // End of success function of ajax 
 	}); // End of ajax call  
+	
+	var pricesort = 0,
+		namesort = 0
    
 	$('#sortByName').click(function() {
 		// clear results
@@ -48,6 +55,13 @@ $(document).ready(function() {
     		if(a1== b1) return 0;
     			return a1> b1? 1: -1;
 		});
+		
+		if (namesort==1) {
+			filteredCar.reverse();
+			namesort=0;
+		} else {
+			namesort=1;
+		}
 		
 		// re-draw the results
 		$.each(filteredCar, function(i, car)  {
@@ -64,6 +78,13 @@ $(document).ready(function() {
             if(a1== b1) return 0;
                 return a1> b1? 1: -1;
         });
+		
+		if (pricesort==1) {
+			filteredCar.reverse();
+			pricesort=0;
+		} else {
+			pricesort=1;
+		}
                 
         // re-draw the results
         $.each(filteredCar, function(i, car)  {
@@ -128,10 +149,6 @@ $(document).ready(function() {
 			$('#vehicles-list').append('<div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">[' + car[0].company + '] ' + car[0].title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car[0].image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car[0].type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>Size: ' + car[0].size + '</li><li>Luggage: 1 Large Suitcase</li><li>Gearbox: ' + car[0].gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a target="_blank" href="' + car[0].url + '" class="primary priced btn btn-primary">Select</a><strong class="price">$' + car[0].price + '</strong><span> NZD</span></div></div></div></div></div></div></article></div>');  
 		});
 	});
-
-	$('#slprice').slider();
-	$('#slsize').slider();
-
 });
 </script>
 <div class="jumbotron">
