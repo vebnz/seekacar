@@ -348,6 +348,7 @@ class Rental extends CI_Controller {
 	}
 	
 	function scrapeSite($url, $postdata) {
+		$ch = @curl_init();
 		if($ch){
 			curl_setopt($ch, CURLOPT_URL, $url);
 			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 15);
