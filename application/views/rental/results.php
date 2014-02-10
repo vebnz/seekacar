@@ -60,7 +60,7 @@ $(document).ready(function() {
         $('#vehicles-list').empty();
         // sort the array by company name
         filteredCar.sort(function(a, b){
-            var a1= a[0].price, b1= b[0].price;
+            var a1= parseInt(a[0].price), b1= parseInt(b[0].price);
             if(a1== b1) return 0;
                 return a1> b1? 1: -1;
         });
