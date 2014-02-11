@@ -21,23 +21,17 @@ $(document).ready(function() {
 
 	companies = $("input[name='companies']:checked").map(getVal).get();
 
-	var priceSlider = $('#slprice').slider();
+	var h = $('#slprice').slider()
+				.on('slide', changePriceSlide)
+				.data('slider');
 				
-	var sizeSlider = $('#slsize').slider();
-			
-	/*var changePriceSlide = function() {
-		prices = priceSlider.getValue().split(",");
-		minPrice = prices[0];
-		maxPrice = prices[1];
-		alert("Max: " + maxPrice);
-		alert("Min: " + minPrice);
-	};
-
-	var changeSizeSlide = function() {
-		sizes = sizeSlider.getValue().split(",");
-		minSize = sizes[0];
-		maxSize = sizes[1];
-	};*/
+	var changePriceSlide = function() {
+			var prices = h.getValue();
+			minPrice = prices[0];
+			maxPrice = prices[1];
+			console.log("Max: " + maxPrice);
+			console.log("Min: " + minPrice);
+		};
 
 	$.ajax({
         url: 'list_companies',
