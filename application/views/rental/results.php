@@ -21,17 +21,17 @@ $(document).ready(function() {
 
 	companies = $("input[name='companies']:checked").map(getVal).get();
 
-	var h = $('#slprice').slider()
+	var priceSlider = $('#slprice').slider()
 				.on('slide', changePriceSlide)
 				.data('slider');
 				
 	var changePriceSlide = function() {
-			var prices = h.getValue();
-			minPrice = prices[0];
-			maxPrice = prices[1];
-			console.log("Max: " + maxPrice);
-			console.log("Min: " + minPrice);
-		};
+		var prices = priceSlider.getValue();
+		minPrice = prices[0];
+		maxPrice = prices[1];
+		console.log("Max: " + maxPrice);
+		console.log("Min: " + minPrice);
+	};
 
 	$.ajax({
         url: 'list_companies',
@@ -137,7 +137,6 @@ $(document).ready(function() {
 	
 	$('#filters').click(function() {
 	
-		alert(priceSlider.getValue());
 		// clear results
 		$('#vehicles-list').empty();
 		
