@@ -21,13 +21,9 @@ $(document).ready(function() {
 
 	companies = $("input[name='companies']:checked").map(getVal).get();
 
-	var priceSlider = $('#slprice').slider()
-				.on('slide', changePriceSlide)
-				.data('slider');
+	var priceSlider = $('#slprice').slider();
 				
-	var sizeSlider = $('#slsize').slider()
-				.on('slide', changeSizeSlide)
-				.data('slider');
+	var sizeSlider = $('#slsize').slider();
 			
 	/*var changePriceSlide = function() {
 		prices = priceSlider.getValue().split(",");
