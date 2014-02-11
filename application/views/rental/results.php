@@ -32,6 +32,8 @@ $(document).ready(function() {
 		prices = priceSlider.getValue().split(",");
 		minPrice = prices[0];
 		maxPrice = prices[1];
+		alert("Max: " + maxPrice);
+		alert("Min: " + minPrice);
 	};
 	
 	var changeSizeSlide = function() {
