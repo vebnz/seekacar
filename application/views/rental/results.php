@@ -19,6 +19,8 @@ $(document).ajaxStop(function () {
 	});
 $(document).ready(function() {	
 
+	$('#searchForm').hide();
+
 	companies = $("input[name='companies']:checked").map(getVal).get();
 
 	var priceSlider = $('#slprice').slider()
@@ -178,13 +180,15 @@ $(document).ready(function() {
 			<div class="col-lg-4">
 				<h2>Itinerary</h2>
 				<div id="topLeft">
-					<ul id="itinerary">
-						<li>Pickup Location: <?php echo $plocation; ?> </li>
-						<li>Pickup Time: <?php echo $pudate . ' ' . $putime; ?> </h1>
-						<li>Drop-off Location: <?php echo $dlocation; ?> </li>
-						<li>Drop-off Time: <?php echo $dodate . ' ' . $dotime ?> </li>
-					</ul>
-					<p><a id="refineSearch">Refine search</a></p> 
+					<div id="itinerary">
+						<ul>
+							<li>Pickup Location: <?php echo $plocation; ?> </li>
+							<li>Pickup Time: <?php echo $pudate . ' ' . $putime; ?> </h1>
+							<li>Drop-off Location: <?php echo $dlocation; ?> </li>
+							<li>Drop-off Time: <?php echo $dodate . ' ' . $dotime ?> </li>
+						</ul>
+						<p><a id="refineSearch">Refine search</a></p> 
+					</div>
 					<div id="searchForm">
 						<p>blahblahblah</p>
 					</div>
