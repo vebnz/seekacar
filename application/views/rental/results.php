@@ -6,7 +6,7 @@ var filteredCar = new Array();
 var minPrice = 0, // Will be done by slider
     	maxPrice = 300, // Will be done by slider
 		minSize = 0, // Will be done by slider
-		maxSize = 10, // Will be done by slider
+		maxSize = 10, // Will be done by slider        
 		pricesort = 0,
 		namesort = 0
 		    
@@ -29,7 +29,7 @@ $(document).ready(function() {
 				.on('slide', changeSizeSlide)
 				.data('slider');
 			
-	var changePriceSlide = function() {
+	/*var changePriceSlide = function() {
 		prices = priceSlider.getValue().split(",");
 		minPrice = prices[0];
 		maxPrice = prices[1];
@@ -41,7 +41,7 @@ $(document).ready(function() {
 		sizes = sizeSlider.getValue().split(",");
 		minSize = sizes[0];
 		maxSize = sizes[1];
-	};
+	};*/
 
 	$.ajax({
         url: 'list_companies',
@@ -146,6 +146,8 @@ $(document).ready(function() {
     filteredCar;
 	
 	$('#filters').click(function() {
+	
+		alert(priceSlider.getValue());
 		// clear results
 		$('#vehicles-list').empty();
 		
