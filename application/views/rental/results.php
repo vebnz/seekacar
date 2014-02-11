@@ -2,6 +2,36 @@
 
 var carArray = new Array();
 var filteredCar = new Array();
+
+var minPrice = 0, // Will be done by slider
+    	maxPrice = 300, // Will be done by slider
+		minSize = 0, // Will be done by slider
+		maxSize = 10, // Will be done by slider
+        companies = $("input[name='companies']:checked").map(getVal).get(),
+		pricesort = 0,
+		namesort = 0
+		
+var priceSlider = $('#slprice').slider()
+				.on('slide', changePriceSlide)
+				.data('slider');
+				
+var sizeSlider = $('#slsize').slider()
+			.on('slide', changeSizeSlide)
+			.data('slider');
+			
+var changePriceSlide = function() {
+	prices = priceSlider.getValue().split(",");
+	minPrice = prices[0];
+	maxPrice = prices[1];
+	alert("Max: " + maxPrice);
+    alert("Min: " + minPrice);
+};
+
+var changeSizeSlide = function() {
+	sizes = sizeSlider.getValue().split(",");
+	minSize = sizes[0];
+	maxSize = sizes[1];
+};
     
 $(document).ajaxStart(function () {
     $('#result_table').fadeIn();
@@ -12,36 +42,6 @@ $(document).ajaxStop(function () {
 });
 $(document).ready(function() {	
 
-	var minPrice = 0, // Will be done by slider
-    	maxPrice = 300, // Will be done by slider
-		minSize = 0, // Will be done by slider
-		maxSize = 10, // Will be done by slider
-        companies = $("input[name='companies']:checked").map(getVal).get(),
-		pricesort = 0,
-		namesort = 0
-		
-	var priceSlider = $('#slprice').slider()
-				.on('slide', changePriceSlide)
-				.data('slider');
-				
-	var sizeSlider = $('#slsize').slider()
-				.on('slide', changeSizeSlide)
-				.data('slider');
-				
-	var changePriceSlide = function() {
-		prices = priceSlider.getValue().split(",");
-		minPrice = prices[0];
-		maxPrice = prices[1];
-		alert("Max: " + maxPrice);
-		alert("Min: " + minPrice);
-	};
-	
-	var changeSizeSlide = function() {
-		sizes = sizeSlider.getValue().split(",");
-		minSize = sizes[0];
-		maxSize = sizes[1];
-	};
-        
 	$.ajax({
         url: 'list_companies',
         type:'POST',
