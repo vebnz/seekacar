@@ -7,7 +7,6 @@ var minPrice = 0, // Will be done by slider
     	maxPrice = 300, // Will be done by slider
 		minSize = 0, // Will be done by slider
 		maxSize = 10, // Will be done by slider
-        companies = $("input[name='companies']:checked").map(getVal).get(),
 		pricesort = 0,
 		namesort = 0
 		    
@@ -19,6 +18,8 @@ $(document).ajaxStop(function () {
 		//$('#totalCount').text('Showing 1 - 10 of ' + carArray.length); 
 	});
 $(document).ready(function() {	
+
+	companies = $("input[name='companies']:checked").map(getVal).get();
 
 	var priceSlider = $('#slprice').slider()
 				.on('slide', changePriceSlide)
