@@ -124,19 +124,19 @@ $(document).ready(function() {
     predicates = [
         function checkMinPrice(carArray)
         {
-        	return parseFloat(carArray.price) > minPrice;
+        	return parseFloat(carArray.price) >= minPrice;
         },
         function checkMaxPrice(carArray)
         {
-        	return parseFloat(carArray.price) < maxPrice;
+        	return parseFloat(carArray.price) <= maxPrice;
         },
 		function checkMinSize(carArray)
         {
-        	return parseFloat(carArray.size) > minSize;
+        	return parseFloat(carArray.size) >= minSize;
         },
         function checkMaxSize(carArray)
         {
-        	return parseFloat(carArray.size) < maxSize;
+        	return parseFloat(carArray.size) <= maxSize;
         },
         function checkColor(carArray)
         {
