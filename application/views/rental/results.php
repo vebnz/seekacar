@@ -39,7 +39,7 @@ $(document).ready(function() {
 		maxSize = sizes[1];
 	}
 
-	var sizeSlider = $('slsize').slider()
+	var sizeSlider = $('#slsize').slider()
 		.on('slide', changeSizeSlide)
 		.data('slider');
 
