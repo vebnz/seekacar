@@ -233,7 +233,7 @@ $(document).ready(function() {
 			<div id="cars" class="col-lg-8">				
 				<div id="debug">
 					<div id="vehicles-list">
-
+						<div id="result_table"><p style="text-align: center;"><img src="http://www.sanbaldo.com/wordpress/wp-content/bigrotation2.gif" id="img-load" /> Finding Cars...</p></div>
 					</div>
 					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="carTable">
 						<thead>
