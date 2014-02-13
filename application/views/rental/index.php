@@ -117,7 +117,7 @@
       <hr>
 
       <footer>
-        <p>&copy; SeekACar 2013</p>
+        <p>&copy; Seek A Car 2014</p>
       </footer>
     </div> <!-- /container -->
 
