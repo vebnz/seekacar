@@ -46,7 +46,7 @@ $route['list_companies']        = 'rental/list_companies';
 $route['(:any)']                = 'pages/view/$1';
 $route['default_controller']    = 'rental';
 $route['404_override']          = '';
-
+$route['git/pull']		= 'git/pull';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
