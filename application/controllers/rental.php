@@ -84,6 +84,10 @@ class Rental extends CI_Controller {
     public function get_cars() {
 	
 		$data['locations'] = $this->rental_model->populateFormLocations();
+		echo "<pre>";
+		echo $data['locations'];
+		echo "</pre>";
+		die;
         
         $this->form_validation->set_rules('pickuplocation', 'Pick-Up Location', 'required');
         $this->form_validation->set_rules('pickupdate', 'Pick-Up Date', 'required');
