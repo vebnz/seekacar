@@ -198,7 +198,66 @@ $(document).ready(function() {
 						<p><a id="refineSearch">Refine search</a></p> 
 					</div>
 					<div id="searchForm">
-						<p>blahblahblah</p>
+						<?php 
+							if (validation_errors()) {
+								echo "<div class=\"error\">";
+								echo validation_errors(); 
+								echo "</div>";
+							}
+						?>
+						<?php echo form_open('rental') ?>
+							<div class="row formc">
+								<div class="form-group col-lg-12">
+									<select id="pickuplocation" name="pickuplocation" class="form-control">
+										<?php foreach ($locations as $location): ?>
+											<option value="<?php echo $location['city']; ?>"><?php echo  $location['city']; ?></option>
+										<?php endforeach ?>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-lg-7">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+										<input type="text" class="form-control" id="pickupdate"  name="pickupdate" placeholder="Pickup Date" value="<?php echo set_value('pickupdate'); ?>" />
+									</div>
+								</div>
+								<div class="form-group col-lg-5">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+										<input type="text" class="form-control" id="pickuptime"  name="pickuptime"  placeholder="Time" />
+									</div>
+								</div>
+							</div>
+							<div class="row formc">
+								<div class="form-group col-lg-12">
+									<select id="dropofflocation" name="dropofflocation" class="form-control">
+										<?php foreach ($locations as $location): ?>
+											<option value="<?php echo $location['city']; ?>"><?php echo  $location['city']; ?></option>
+										<?php endforeach ?>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-lg-7">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+										<input type="text" class="form-control" id="dropoffdate" name="dropoffdate" placeholder="Dropoff Date" value="<?php echo set_value('dropoffdate'); ?>" />
+									</div>
+								</div>
+								<div class="form-group col-lg-5">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+										<input type="text" class="form-control" id="dropofftime" name="dropofftime" name="dropofftime" placeholder="Time" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-lg-12">
+									<button type="submit" class="btn btn-primary btn-block">Submit</button>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 				<h2>Filter Results</h2>

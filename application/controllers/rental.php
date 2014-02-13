@@ -82,6 +82,45 @@ class Rental extends CI_Controller {
     }
     
     public function get_cars() {
+	
+		$data['locations'] = $this->rental_model->populateFormLocations();
+        
+        $this->form_validation->set_rules('pickuplocation', 'Pick-Up Location', 'required');
+        $this->form_validation->set_rules('pickupdate', 'Pick-Up Date', 'required');
+        $this->form_validation->set_rules('pickuptime', 'Pick-Up Time', 'required');
+        $this->form_validation->set_rules('dropofflocation', 'Drop-Off Location', 'required');
+        $this->form_validation->set_rules('dropoffdate', 'Drop-Off Date', 'required');
+        $this->form_validation->set_rules('dropofftime', 'Drop-Off Time', 'required');
+        
+        if ($this->form_validation->run() === FALSE)
+		{
+            // load values for the view
+            $this->load->vars($data);
+			
+			$sections = array(
+                'content'       => 'rental/results',
+            );  
+            $this->template->load('templates/default', $sections);
+		}
+        else
+        {
+            //$this->rental_model->search_cars();
+            $data['plocation'] = $this->input->post('pickuplocation');
+            $data['dlocation'] = $this->input->post('dropofflocation');
+            $data['pudate'] = $this->input->post('pickupdate');
+            $data['putime'] = $this->input->post('pickuptime');
+            $data['dodate'] = $this->input->post('dropoffdate');
+            $data['dotime'] = $this->input->post('dropofftime');
+            //$data['cars'] = $this->get_cars();            
+
+            // load values for the view
+            $this->load->vars($data);
+			
+			$sections = array(
+                'content'       => 'rental/results',
+            );  
+            $this->template->load('templates/default', $sections);
+		}
     
         $name = $this->input->post('name');
 		$puc = $this->input->post('puc');
@@ -475,7 +514,7 @@ class Rental extends CI_Controller {
 					$size = trim($carXpath->query("div/div[@class='seating']/ul/li[1]/span")->item(0)->nodeValue);
 					$size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);                
 
-					if ($price != "0.00") {
+					if ($price != "") {
 						$results[] = array(
 							'company' => "Pegasus",
 							'url' => "http://www.rentalcars.co.nz",
