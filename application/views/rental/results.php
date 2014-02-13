@@ -27,13 +27,21 @@ $(document).ready(function() {
 		var prices = priceSlider.getValue();
 		minPrice = prices[0];
 		maxPrice = prices[1];
-		console.log("Max: " + maxPrice);
-		console.log("Min: " + minPrice);
 	};
 
 	var priceSlider = $('#slprice').slider()
                 .on('slide', changePriceSlide)
                 .data('slider');
+
+	var changeSizeSlide = function() {
+		var sizes = sizeSlider.getValue();
+		minSize = sizes[0];
+		maxSize = sizes[1];
+	}
+
+	var sizeSlider = $('slsize').slider()
+		.on('slide', changeSizeSlide)
+		.data('slider');
 
 	$.ajax({
         url: 'list_companies',
