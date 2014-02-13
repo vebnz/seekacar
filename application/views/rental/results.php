@@ -22,10 +22,6 @@ $(document).ready(function() {
 	$('#searchForm').hide();
 
 	companies = $("input[name='companies']:checked").map(getVal).get();
-
-	var priceSlider = $('#slprice').slider()
-				.on('slide', changePriceSlide)
-				.data('slider');
 				
 	var changePriceSlide = function() {
 		var prices = priceSlider.getValue();
@@ -34,6 +30,10 @@ $(document).ready(function() {
 		console.log("Max: " + maxPrice);
 		console.log("Min: " + minPrice);
 	};
+
+	var priceSlider = $('#slprice').slider()
+                .on('slide', changePriceSlide)
+                .data('slider');
 
 	$.ajax({
         url: 'list_companies',
