@@ -73,10 +73,10 @@
 </div>
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron ">
-        <div class="container">
+        <div class="container hidden-sm hidden-xs hidden-md">
             <div class="col-lg-12 centered">
-            <div class="company col-lg-2">
-                <img src="/images/ace.jpg" alt="Ace Rental Cars" />
+				<div class="company col-lg-2">
+					<img src="/images/ace.jpg" alt="Ace Rental Cars" />
                 </div>
                 <div class="company col-lg-2">
                     <img src="/images/apex.jpg" alt="Apex Rental Cars" />
@@ -117,7 +117,7 @@
       <hr>
 
       <footer>
-        <p>&copy; Seek A Car 2014</p>
+        <p>&copy; Seek A Car 2013</p>
       </footer>
     </div> <!-- /container -->
 
