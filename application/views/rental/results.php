@@ -225,7 +225,7 @@ $(document).ready(function() {
 								<div class="form-group col-lg-5">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-										<input type="text" class="form-control" id="pickuptime"  name="pickuptime"  placeholder="Time" />
+										<input type="text" class="form-control" id="pickuptime"  name="pickuptime"  placeholder="Time" value="<?php echo set_value('pickuptime'); ?>" />
 									</div>
 								</div>
 							</div>
@@ -248,7 +248,7 @@ $(document).ready(function() {
 								<div class="form-group col-lg-5">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-										<input type="text" class="form-control" id="dropofftime" name="dropofftime" name="dropofftime" placeholder="Time" />
+										<input type="text" class="form-control" id="dropofftime" name="dropofftime" name="dropofftime" placeholder="Time" value="<?php echo set_value('dropofftime'); ?>" />
 									</div>
 								</div>
 							</div>
