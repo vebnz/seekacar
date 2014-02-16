@@ -206,8 +206,8 @@ $(document).ready(function() {
 							}
 						?>
 						<?php echo form_open('rental') ?>
-							<div class="row formc">
-								<div class="form-group col-lg-12">
+							<div class="row">
+								<div class="form-group col-lg-10 resultform">
 									<select id="pickuplocation" name="pickuplocation" class="form-control">
 										<?php foreach ($locations as $location): ?>
 											<option value="<?php echo $location['city']; ?>"><?php echo  $location['city']; ?></option>
@@ -216,21 +216,21 @@ $(document).ready(function() {
 								</div>
 							</div>
 							<div class="row">
-								<div class="form-group col-lg-7">
+								<div class="form-group col-lg-6 resultform">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 										<input type="text" class="form-control" id="pickupdate"  name="pickupdate" placeholder="Pickup Date" value="<?php echo set_value('pickupdate'); ?>" />
 									</div>
 								</div>
-								<div class="form-group col-lg-5">
+								<div class="form-group col-lg-5 resultform">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 										<input type="text" class="form-control" id="pickuptime"  name="pickuptime"  placeholder="Time" value="<?php echo set_value('pickuptime'); ?>" />
 									</div>
 								</div>
 							</div>
-							<div class="row formc">
-								<div class="form-group col-lg-12">
+							<div class="row">
+								<div class="form-group col-lg-10 resultform">
 									<select id="dropofflocation" name="dropofflocation" class="form-control">
 										<?php foreach ($locations as $location): ?>
 											<option value="<?php echo $location['city']; ?>"><?php echo  $location['city']; ?></option>
@@ -239,13 +239,13 @@ $(document).ready(function() {
 								</div>
 							</div>
 							<div class="row">
-								<div class="form-group col-lg-7">
+								<div class="form-group col-lg-6 resultform">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 										<input type="text" class="form-control" id="dropoffdate" name="dropoffdate" placeholder="Dropoff Date" value="<?php echo set_value('dropoffdate'); ?>" />
 									</div>
 								</div>
-								<div class="form-group col-lg-5">
+								<div class="form-group col-lg-5 resultform">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 										<input type="text" class="form-control" id="dropofftime" name="dropofftime" name="dropofftime" placeholder="Time" value="<?php echo set_value('dropofftime'); ?>" />
@@ -253,7 +253,7 @@ $(document).ready(function() {
 								</div>
 							</div>
 							<div class="row">
-								<div class="form-group col-lg-12">
+								<div class="form-group col-lg-10 resultform">
 									<button type="submit" class="btn btn-primary btn-block">Submit</button>
 								</div>
 							</div>
