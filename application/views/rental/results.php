@@ -1,13 +1,3 @@
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-48131048-1', 'seekacar.co.nz');
-  ga('send', 'pageview');
-
-</script>
 <script type='text/javascript' language='javascript'>
 
 var carArray = new Array();
@@ -69,8 +59,22 @@ $(document).ready(function() {
                     success: function(cars){
 
 						$.each(cars, function(i, car) {
+							varCompanyImg = '';
+							if (car.company == "AceRentals") {
+								varCompanyImg = 'ace.jpg';
+							} else if (car.company == "Apex") {
+								varCompanyImg = 'apex.jpg';
+							} else if (car.company == "Budget") {
+								varCompanyImg = 'budget.jpg';
+							} else if (car.company == "Britz") {
+								varCompanyImg = 'britz.jpg';
+							} else if (car.company == "Pegasus") {
+								varCompanyImg = 'pegasus.jpg';
+							} else if (car.company == "Omega") {
+								varCompanyImg = 'omega.jpg';
+							}
 							$('#carTable tr:last').after('<tr><td>&nbsp;</td><td>' + car.company + '</td><td>' + car.title + '</td><td>' + car.type + '</td><td>' + car.gearbox + '</td><td>' + car.size + '</td><td>' + car.price + '</td><td><a href="' + car.url + '">GO</a></td></tr>');
-							$('#vehicles-list').append('<div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type">[' + car.company + '] ' + car.title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car.image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car.type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>Size: ' + car.size + '</li><li>Luggage: 1 Large Suitcase</li><li>Gearbox: ' + car.gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a target="_blank" href="' + car.url + '" class="primary priced btn btn-primary">Select</a><strong class="price">$' + car.price + '</strong><span> NZD</span></div></div></div></div></div></div></article></div>');
+							$('#vehicles-list').append('<div class="vehicle"><article class=" "><div class="row clearfix"><div class="vehicle-header clearfix"><span class="vehicle-type"><img style="width: 40px; height: 20px; margin-right: 10px;" src="/images/' + varCompanyImg + '" /> ' + car.title + '</span></div><div class="vehicle-info"><figure><div class="image"><img src="' + car.image + '"></div><figcaption class="clearfix"><div class="details"><h1>' + car.type + '</h1><div class="features hidden-item"><div class="wrapper"><ul><li>Size: ' + car.size + '</li><li>Luggage: 1 Large Suitcase</li><li>Gearbox: ' + car.gearbox + '</li></ul></div></div></div></figcaption></figure><div class="pricing"><div class="single"><div class="wrapper"><div><a target="_blank" href="' + car.url + '" class="primary priced btn btn-primary">Select</a><strong class="price">$' + car.price + '</strong><span> NZD</span></div></div></div></div></div></div></article></div>');
 							var companyCars = [{'company':car.company, 'title':car.title, 'type':car.type, 'gearbox':car.gearbox, 'size':car.size, 'price':car.price, 'image':car.image, 'url':car.url}];
 							carArray.push(companyCars);
 							filteredCar.push(companyCars);
