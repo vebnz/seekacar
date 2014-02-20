@@ -455,41 +455,57 @@ class Rental extends CI_Controller {
 		$carsXpath = new DOMXPath($tempDom);
 		$results = array();
 
-		$cars = $carsXpath->query("//div[position()>1]");
+
+		$cars = $carsXpath->query("//div[position()>3]");
+		$count = $cars->length;    		
 		$i = 0;
 		
-		foreach ($cars as $car) {
-			if ($i % 5 == 0) {
-				$newDom = new DOMDocument;
-					$newDom->appendChild($newDom->importNode($car,true));
-					$carXpath = new DOMXPath( $newDom );
+		while ($i < $count) {
 
-					$image = trim($carXpath->query("div/div[@class='text_cont']/p[@class='image']/img/@src")->item(0)->nodeValue);
-					$title = trim($carXpath->query("div/div[@class='text_cont']/ul[@id='price']/li[1]/span[@class='name']")->item(0)->nodeValue);
-					$price = trim($carXpath->query("div/div[@class='text_cont']/ul[@id='price']/li[2]/span[@class='name']")->item(0)->nodeValue);
-					$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
-					$price = number_format((float)$price, 2, '.', '');               
+			$children = $cars->item($i)->childNodes;
+			$tmp_doc = new DOMDocument();
 
-					$type = "N/A";
-					$gearbox = "N/A";
-					$size = trim($carXpath->query("div/div[@class='seating']/ul/li[1]/span")->item(0)->nodeValue);
-					$size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);                
-
-					if ($price != "") {
-						$results[] = array(
-							'company' => "Pegasus",
-							'url' => "http://www.rentalcars.co.nz",
-							'image' => $image,
-							'title' => $title,
-							'type' => $type,
-							'gearbox' => $gearbox,
-							'size' => $size,
-							'price' => $price,
-						);   
-					}
+			for($j = 0; $j < $children->length; $j++){  
+				$tmp_doc->appendChild($tmp_doc->importNode($children->item($j), true));     
+				$tmp_doc->saveHTML();     
 			}
-			$i++;
-		} 
+
+			$carXpath = new DOMXPath($tmp_doc);
+			$image = trim($carXpath->query("//div/div[@class='text_cont']/p[@class='image']/img/@src")->item(0)->nodeValue);
+			$price = trim($carXpath->query("//div/div[@class='text_cont']/ul[@id='price']/li[2]/span[@class='name']")->item(0)->nodeValue);
+			$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
+			$price = number_format((float)$price, 2, '.', '');  
+			$size = trim($carXpath->query("//div/div[@class='seating']/ul/li[1]/span")->item(0)->nodeValue);
+			$size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);
+
+			$i=$i+7;
+
+			$children = $cars->item($i)->childNodes;
+			$tmp_doc = new DOMDocument();
+
+			for($j = 0; $j < $children->length; $j++){ 
+				$tmp_doc->appendChild($tmp_doc->importNode($children->item($j), true));     
+			$tmp_doc->saveHTML();     
+			}
+			
+			$carXpath = new DOMXPath($tmp_doc);
+			$title = trim($carXpath->query("//h3/text()")->item(0)->nodeValue);
+
+			$i=$i+4;
+
+			if ($price != "") {
+				$results[] = array(
+				'company' => "Pegasus",
+				'url' => "http://www.rentalcars.co.nz",
+				'image' => $image,
+				'title' => $title,
+				'type' => $type,
+				'gearbox' => $gearbox,
+				'size' => $size,
+				'price' => $price,
+			);   
+			}
+		}
 		return $results;
 	}
     
