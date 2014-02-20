@@ -493,6 +493,7 @@ class Rental extends CI_Controller {
 
 			$i=$i+4;
 			$type = "N/A";
+			$gearbox = "N/A";
 			if ($price != "") {
 				$results[] = array(
 				'company' => "Pegasus",
