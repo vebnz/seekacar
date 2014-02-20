@@ -492,7 +492,7 @@ class Rental extends CI_Controller {
 			$title = trim($carXpath->query("//h3/text()")->item(0)->nodeValue);
 
 			$i=$i+4;
-
+			$type = "N/A";
 			if ($price != "") {
 				$results[] = array(
 				'company' => "Pegasus",
