@@ -421,7 +421,7 @@ class Rental extends CI_Controller {
 				$size = trim($carXpath->query("td/text()[1]")->item(0)->nodeValue);
 				$size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);			
 	
-				if ($price != "") {
+				if ($price != "" && $price != "0.00") {
 					$results[] = array( 
 					'company' => "AceRentals",
 					'url' => "http://www.acerentals.co.nz",
@@ -494,7 +494,7 @@ class Rental extends CI_Controller {
 			$i=$i+4;
 			$type = "N/A";
 			$gearbox = "N/A";
-			if ($price != "") {
+			if ($price != ""  && $price != "0.00") {
 				$results[] = array(
 				'company' => "Pegasus",
 				'url' => "http://www.rentalcars.co.nz",
@@ -545,7 +545,7 @@ class Rental extends CI_Controller {
 			$size = $size->length;
 			$size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);
 
-			if ($price != "") {
+			if ($price != "" && $price != "0.00") {
 				$results[] = array(
 				'company' => "Omega",
 				'url' => "http://www.omegarentalcars.co.nz",
@@ -667,7 +667,7 @@ class Rental extends CI_Controller {
                 $gearbox = "N/A";
                 $size = "N/A"; 
                 
-                if ($price != "N/A") {
+                if ($price != "N/A"  && $price != "0.00") {
                     $results[] = array(
                         'company' => "Britz",
 						'url' => "http://www.britz.co.nz",
@@ -773,7 +773,7 @@ class Rental extends CI_Controller {
 			$size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);
 			$i=$i+2;
 			
-			if ($price != "") {
+			if ($price != "" && $price != "0.00") {
 				$results[] = array(
 					'company' => "Budget",
 					'url' => "http://www.budget.co.nz",
@@ -827,7 +827,7 @@ class Rental extends CI_Controller {
 		$gearbox = "N/A"; //info is there, just hard to get
                 $size = "N/A"; //info is there, just hard to get
 
-				if ($price != "") {
+				if ($price != "" && $price != "0.00") {
                     $results[] = array(
                         'company' => "Apex",
                         'url' => "http://www.apexrentals.co.nz",
