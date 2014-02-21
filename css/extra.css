@@ -126,6 +126,7 @@ div {
   margin-left: 19px;
   margin-top: 0px;
   padding-bottom: 10px;
+  padding-right:50px;
   float: none;
   text-align: left;
 }
@@ -137,9 +138,9 @@ div {
   margin: 0;
 }
 #vehicles-list div.pricing {
-  width: 40%;
+  width: 25%;
   margin-top: 0px;
-  float: center;
+  float: right;
   position: relative;
 }
 #vehicles-list div.pricing div {
