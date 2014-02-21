@@ -53,6 +53,6 @@
     <script type="text/javascript" src="/js/jquery.timepicker.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="/js/bootstrap-slider.js"></script>
-    <script type="text/javascript" src="/js/jquery.backstretch.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
     </body>
 </html>
