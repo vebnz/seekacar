@@ -5642,6 +5642,28 @@ td.visible-lg {
     display: table-cell !important;
   }
 }
+.hidden-xxs {
+  display: block !important;
+}
+tr.hidden-xxs {
+  display: table-row !important;
+}
+th.hidden-xxs,
+td.hidden-xxs {
+  display: table-cell !important;
+}
+@media (max-width: 480px) {
+  .hidden-xxs {
+    display: none !important;
+  }
+  tr.hidden-xxs {
+    display: none !important;
+  }
+  th.hidden-xxs,
+  td.hidden-xxs {
+    display: none !important;
+  }
+}
 .hidden-xs {
   display: block !important;
 }
