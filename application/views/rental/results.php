@@ -345,8 +345,8 @@ $(document).ready(function() {
 				</label>
 				</div>
 				<div>
-					Price: <b>$0</b> <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="500" data-slider-step="5" data-slider-value="[0,500]" id="slprice" > <b>$500</b><br />
-					Size: <b>1</b> <input type="text" class="span2" value="" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="[1,10]" id="slsize" > <b>10</b>
+					Price: <b>$0</b>&nbsp; <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="500" data-slider-step="5" data-slider-value="[0,500]" id="slprice" >&nbsp; <b>$500</b><br />
+					Size: <b>1</b>&nbsp; <input type="text" class="span2" value="" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="[1,10]" id="slsize" >&nbsp; <b>10</b>
 				</div>
 				<div><button id="filters" class="primary priced btn btn-primary">Filter</button></div>
 			</div>
