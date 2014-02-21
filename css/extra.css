@@ -139,7 +139,7 @@ div {
 #vehicles-list div.pricing {
   width: 40%;
   margin-top: 0px;
-  float: left;
+  float: center;
   position: relative;
 }
 #vehicles-list div.pricing div {
