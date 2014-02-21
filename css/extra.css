@@ -60,8 +60,16 @@ div {
 
 .contained {
   position: relative;
-  width: 400px;
+  width: 380px;
   margin: 0 auto 0 auto;  
+}
+
+@media (max-width: 500px) {
+  .contained {
+    position: relative;
+    width: 98%;
+    margin: 0 auto 0 auto;  
+  }
 }
 
 .formc {
