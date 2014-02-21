@@ -14,6 +14,8 @@
     <link href="/css/jquery.timepicker.css" rel="stylesheet" />
     <link href="/css/datepicker.css" rel="stylesheet" />
     <link href="/css/slider.css" rel="stylesheet" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <style type="text/css">
 
     </style>
