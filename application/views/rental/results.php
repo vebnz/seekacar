@@ -355,24 +355,7 @@ $(document).ready(function() {
 					<div id="result_table" style="clear: both; z-index: 999;"><p style="text-align: center;"><img src="http://www.sanbaldo.com/wordpress/wp-content/bigrotation2.gif" id="img-load" /> Finding Cars...</p></div>
 					<div id="vehicles-list">
 
-					</div>
-					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="carTable">
-						<thead>
-							<tr>
-								<th>Image</th>
-								<th>Company Name</th>
-								<th>Title</th>
-								<th>Type</th>
-								<th>Gearbox</th>
-								<th>Size</th>
-								<th>Price</th>
-								<th>URL</th>
-							</tr>		
-						</thead>		
-						<tbody>
-							<tr id="result_table"><td colspan="8" style="text-align: center;"><img src="http://www.sanbaldo.com/wordpress/wp-content/bigrotation2.gif" id="img-load" /> Finding Cars...</td></tr>
-						</tbody>
-					</table>	
+					</div>				
 				</div>
 			</div>
 		</div>
