@@ -386,7 +386,12 @@ class Rental extends CI_Controller {
 		$carDom = new DOMDocument();
 		
 		$xpath = new DOMXPath($dom);
-		$site = $xpath->query("//div[@id='container']/div[@id='right_column']/div[@class='section']/form/table[@class='displaytable'][1]"); 
+		$table = 1;
+		if ($xpath->query("//div[@id='container']/div[@id='right_column']/div[@class='section'][1]/form/h3")->item(0)->nodeValue == "Special Rates available now!")
+			$table = 2;
+			
+		$site = $xpath->query("//div[@id='container']/div[@id='right_column']/div[@class='section']/form/table[@class='displaytable'][".$table."]"); 
+		
 		foreach ( $site as $item ) { 
 			$tempDom->appendChild($tempDom->importNode($item,true)); 
 		}
@@ -406,17 +411,13 @@ class Rental extends CI_Controller {
 				
 				$image = trim($carXpath->query("td/img[1]/@src")->item(0)->nodeValue);
 				$title = trim($carXpath->query("td[2]/h3/text()")->item(0)->nodeValue);
-				//if "pp_special" in car.extract():
-				//    carobj['price'] = car.select("td[3]/div/div/div[4]/div/span[2]/text()").extract()
-				//else:
+
 				$price = trim($carXpath->query("td[3]/div/div/div[4]/span[2]/text()")->item(0)->nodeValue);
 				$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
                                 $price = number_format((float)$price, 2, '.', '');
 				$type = trim($carXpath->query("td[2]/p/text()")->item(0)->nodeValue);
 				$type = trim(str_replace(array( '(', ')', '-' ), '', $type));
-				//if "pp_special" in car.extract():
-				//    carobj['gearbox'] = car.select("td[2]/ul/li[2]/text()").extract()
-				//else:
+
 				$gearbox = trim($carXpath->query("td[2]/ul/li[1]/text()")->item(0)->nodeValue);
 				$size = trim($carXpath->query("td/text()[1]")->item(0)->nodeValue);
 				$size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);			
