@@ -144,7 +144,7 @@ class Rental extends CI_Controller {
 				$fDateReplaced = urlencode($pudate); 
 				$tDateReplaced = urlencode($dodate); 
 					
-				$url = "http://www.rentalcars.co.nz/bookings/?PickUp=". $locOne ."&DropOff=". $locTwo ."&PickUpDate=". $fDateReplaced ."&PickUpTime=1000&DropOffDate=". $tDateReplaced ."&DropOffTime=1000&CarType=1&MinAge=26";
+				$url = "http://www.rentalcars.co.nz/bookings/?PickUp=". $locOne ."&DropOff=". $locTwo ."&PickUpDate=". $fDateReplaced ."&PickUpTime=1000&DropOffDate=". $tDateReplaced ."&DropOffTime=1000&CarType=1&MinAge=26http://www.rentalcars.co.nz/bookings/?PickUp=18&DropOff=18&PickUpDate=12%2F12%2F14&PickUpTime=1000&DropOffDate=15%2F12%2F14&DropOffTime=1000&CarType=1&MinAge=26&action_doQuoteForm=Quote";
 
 				$data = $this->simpleScrape($url);
 				$largeCarArray = @$this->PegasusCars($data);
