@@ -144,7 +144,7 @@ class Rental extends CI_Controller {
 				$fDateReplaced = urlencode($pudate); 
 				$tDateReplaced = urlencode($dodate); 
 					
-				$url = "http://www.rentalcars.co.nz/bookings/?PickUp=". $locOne ."&DropOff=". $locTwo ."&PickUpDate=". $fDateReplaced ."&PickUpTime=1000&DropOffDate=". $tDateReplaced ."&DropOffTime=1000&CarType=1&MinAge=26http://www.rentalcars.co.nz/bookings/?PickUp=18&DropOff=18&PickUpDate=12%2F12%2F14&PickUpTime=1000&DropOffDate=15%2F12%2F14&DropOffTime=1000&CarType=1&MinAge=26&action_doQuoteForm=Quote";
+				$url = "http://www.rentalcars.co.nz/bookings/?PickUp=". $locOne ."&DropOff=". $locTwo ."&PickUpDate=". $fDateReplaced ."&PickUpTime=1000&DropOffDate=". $tDateReplaced ."&DropOffTime=1000&CarType=1&MinAge=26&action_doQuoteForm=Quote";
 
 				$data = $this->simpleScrape($url);
 				$largeCarArray = @$this->PegasusCars($data);
@@ -440,50 +440,38 @@ class Rental extends CI_Controller {
 		return $results;
 	}
     
-    function PegasusCars($data) {
+    	function PegasusCars($data) {
 		$dom = new DOMDocument();
 		@$dom->loadHTML($data);
 		$tempDom = new DOMDocument();
 		$carDom = new DOMDocument(); 
 		$xpath = new DOMXPath($dom); 
-
 		$site = $xpath->query("/html/body/div[@class='extracontentbg']/div[@class='wrapper']/div[@class=' container']/div[@class='main_content inner2 inner5']");
 		foreach ( $site as $item ) {
 			$tempDom->appendChild($tempDom->importNode($item,true));
 		}
-
 		$tempDom->saveHTML();
 		$carsXpath = new DOMXPath($tempDom);
 		$results = array();
-
-
 		$cars = $carsXpath->query("//div[position()>3]");
-		$count = $cars->length;    		
+		$count = $cars->length;   
 		$i = 0;
 		
 		while ($i < $count) {
-
 			$children = $cars->item($i)->childNodes;
 			$tmp_doc = new DOMDocument();
-
 			for($j = 0; $j < $children->length; $j++){  
 				$tmp_doc->appendChild($tmp_doc->importNode($children->item($j), true));     
 				$tmp_doc->saveHTML();     
 			}
-
 			$carXpath = new DOMXPath($tmp_doc);
 			$image = trim($carXpath->query("//div/div[@class='text_cont']/p[@class='image']/img/@src")->item(0)->nodeValue);
-			$price = trim($carXpath->query("//div/div[@class='text_cont']/ul[@id='price']/li[2]/span[@class='name']")->item(0)->nodeValue);
-			$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
-			$price = number_format((float)$price, 2, '.', '');  
 			$size = trim($carXpath->query("//div/div[@class='seating']/ul/li[1]/span")->item(0)->nodeValue);
-			$size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);
-
-			$i=$i+7;
-
+			
+			$i+=4;
+			
 			$children = $cars->item($i)->childNodes;
 			$tmp_doc = new DOMDocument();
-
 			for($j = 0; $j < $children->length; $j++){ 
 				$tmp_doc->appendChild($tmp_doc->importNode($children->item($j), true));     
 			$tmp_doc->saveHTML();     
@@ -491,8 +479,9 @@ class Rental extends CI_Controller {
 			
 			$carXpath = new DOMXPath($tmp_doc);
 			$title = trim($carXpath->query("//h3/text()")->item(0)->nodeValue);
-
-			$i=$i+4;
+			$price = trim($carXpath->query("/div[@class='bottom']/h4/text()")->item(0)->nodeValue);
+			$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
+			$price = number_format((float)$price, 2, '.', '');
 			$type = "N/A";
 			$gearbox = "N/A";
 			if ($price != ""  && $price != "0.00") {
@@ -505,8 +494,9 @@ class Rental extends CI_Controller {
 				'gearbox' => $gearbox,
 				'size' => $size,
 				'price' => $price,
-			);   
+				);   
 			}
+			$i+=4;		
 		}
 		return $results;
 	}
