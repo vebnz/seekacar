@@ -352,7 +352,7 @@ $(document).ready(function() {
 			</div>
 			<div id="cars" class="col-lg-8">				
 				<div id="debug">
-					<div id="result_table" style="clear: both; z-index: 999;"><p style="text-align: center;"><img src="http://www.sanbaldo.com/wordpress/wp-content/bigrotation2.gif" id="img-load" /> Finding Cars...</p></div>
+					<div id="result_table" style="clear: both; z-index: 999;"><p style="text-align: center;"><img src="/images/loading.gif" id="img-load" /> Finding Cars...</p></div>
 					<div id="vehicles-list">
 
 					</div>				
