@@ -225,13 +225,6 @@ class Rental extends CI_Controller {
 				$largeCarArray = @$this->BudgetCars($data);
 			break;
 			
-			case 'Jucy':
-				// organise post data relevant to company
-				// organise date in correct format
-				//$data = $this->scrapeSite($url, $postdata);
-				//$largeCarArray = $this->JucyCars($data);
-			break;
-			
 			case 'Apex':
 				
 				$puDateSplit = explode("/", $pudate);
