@@ -630,9 +630,6 @@ class Rental extends CI_Controller {
         	return $results;
     	}
 
-    	function JucyCars($data) {
-    	}
-
 	function ApexCars($data) {
 	        $dom = new DOMDocument();
 	        @$dom->loadHTML($data);
