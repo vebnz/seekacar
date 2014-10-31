@@ -375,10 +375,9 @@ class Rental extends CI_Controller {
 		$tempDom->saveHTML();
 		$carsXpath = new DOMXPath($tempDom);
 		$results = array();
-		$cars = $carsXpath->query("//div[position()>3]");
+		$cars = $carsXpath->query("//div[position()>1]");
 		$count = $cars->length;   
 		$i = 0;
-		
 		while ($i < $count) {
 			$children = $cars->item($i)->childNodes;
 			$tmp_doc = new DOMDocument();
@@ -390,7 +389,7 @@ class Rental extends CI_Controller {
 			$image = trim($carXpath->query("//div/div[@class='text_cont']/p[@class='image']/img/@src")->item(0)->nodeValue);
 			$size = trim($carXpath->query("//div/div[@class='seating']/ul/li[1]/span")->item(0)->nodeValue);
 			
-			$i+=4;
+			$i+=2;
 			
 			$children = $cars->item($i)->childNodes;
 			$tmp_doc = new DOMDocument();
@@ -405,8 +404,8 @@ class Rental extends CI_Controller {
 			$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 			$price = number_format((float)$price, 2, '.', '');
 			$type = "N/A";
-			$gearbox = "N/A";
-			if ($price != ""  && $price != "0.00") {
+            $gearbox = "N/A";
+		//	if ($price != ""  && $price != "0.00") {
 				$results[] = array(
 				'company' => "Pegasus",
 				'url' => "http://www.rentalcars.co.nz",
@@ -417,8 +416,8 @@ class Rental extends CI_Controller {
 				'size' => $size,
 				'price' => $price,
 				);   
-			}
-			$i+=4;		
+		//	}
+			$i=$i+1;		
 		}
 		return $results;
 	}
