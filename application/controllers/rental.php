@@ -1,87 +1,83 @@
 <?php
 
 class Rental extends CI_Controller {
-    public function __construct() {
-        parent::__construct();
-        $this->load->model('rental_model');
-    }
+    	public function __construct() {
+        	parent::__construct();
+        	$this->load->model('rental_model');
+    	}
     
-    public function index() {
-        $data['locations'] = $this->rental_model->populateFormLocations();
-        $data['page_title'] = $this->lang->line('page_title');
+    	public function index() {
+        	$data['locations'] = $this->rental_model->populateFormLocations();
+        	$data['page_title'] = $this->lang->line('page_title');
         
-        $this->form_validation->set_rules('pickuplocation', 'Pick-Up Location', 'required');
-        $this->form_validation->set_rules('pickupdate', 'Pick-Up Date', 'required');
-        $this->form_validation->set_rules('pickuptime', 'Pick-Up Time', 'required');
-        $this->form_validation->set_rules('dropofflocation', 'Drop-Off Location', 'required');
-        $this->form_validation->set_rules('dropoffdate', 'Drop-Off Date', 'required');
-        $this->form_validation->set_rules('dropofftime', 'Drop-Off Time', 'required');
+        	$this->form_validation->set_rules('pickuplocation', 'Pick-Up Location', 'required');
+        	$this->form_validation->set_rules('pickupdate', 'Pick-Up Date', 'required');
+        	$this->form_validation->set_rules('pickuptime', 'Pick-Up Time', 'required');
+		$this->form_validation->set_rules('dropofflocation', 'Drop-Off Location', 'required');
+        	$this->form_validation->set_rules('dropoffdate', 'Drop-Off Date', 'required');
+        	$this->form_validation->set_rules('dropofftime', 'Drop-Off Time', 'required');
         
-        if ($this->form_validation->run() === FALSE)
-        {
+        	if ($this->form_validation->run() === FALSE) {
+            		// load values for the view
+            		$this->load->vars($data);
 
-            // load values for the view
-            $this->load->vars($data);
+            		// get the view section
+            		$sections = array(
+                		'content'       => 'rental/index',
+            		);  
+            		$this->template->load('templates/default', $sections);
+        	} else {
+            		//$this->rental_model->search_cars();
+        		$data['plocation'] = $this->input->post('pickuplocation');
+            		$data['dlocation'] = $this->input->post('dropofflocation');
+            		$data['pudate'] = $this->input->post('pickupdate');
+            		$data['putime'] = $this->input->post('pickuptime');
+            		$data['dodate'] = $this->input->post('dropoffdate');
+            		$data['dotime'] = $this->input->post('dropofftime');
+            		//$data['cars'] = $this->get_cars();            
 
-            // get the view section
-            $sections = array(
-                'content'       => 'rental/index',
-            );  
-            $this->template->load('templates/default', $sections);
-        }
-        else
-        {
-            //$this->rental_model->search_cars();
-            $data['plocation'] = $this->input->post('pickuplocation');
-            $data['dlocation'] = $this->input->post('dropofflocation');
-            $data['pudate'] = $this->input->post('pickupdate');
-            $data['putime'] = $this->input->post('pickuptime');
-            $data['dodate'] = $this->input->post('dropoffdate');
-            $data['dotime'] = $this->input->post('dropofftime');
-            //$data['cars'] = $this->get_cars();            
+            		// load values for the view
+        		$this->load->vars($data);
 
-            // load values for the view
-            $this->load->vars($data);
-
-            // get the view section
-            $sections = array(
-                'content'       => 'rental/results',
-            );  
-            $this->template->load('templates/default', $sections);
-        }        
-    }
+            		// get the view section
+            		$sections = array(
+                		'content'       => 'rental/results',
+            		);  
+            		$this->template->load('templates/default', $sections);
+        	}        
+    	}
 	
 	public function contact() {
 		$data['page_title'] = $this->lang->line('page_title');
 		$this->load->vars($data);
 
-        // get the view section
-        $sections = array(
-            'content'       => 'rental/contact',
-        );  
-        $this->template->load('templates/default', $sections);
+		 // get the view section
+        	$sections = array(
+            		'content'       => 'rental/contact',
+        	);  
+        	$this->template->load('templates/default', $sections);
 	}
 	
 	public function about() {
 		$data['page_title'] = $this->lang->line('page_title');
 		$this->load->vars($data);
 
-        // get the view section
-        $sections = array(
-            'content'       => 'rental/about',
-        );  
-        $this->template->load('templates/default', $sections);
+        	// get the view section
+        	$sections = array(
+            		'content'       => 'rental/about',
+        	);  
+        	$this->template->load('templates/default', $sections);
 	}
 	
-    public function list_companies() {
-        $plocation = $this->input->post('pickuplocation');
+	 public function list_companies() {
+        	$plocation = $this->input->post('pickuplocation');
 		$dlocation = $this->input->post('dropofflocation');
 		$companies = $this->rental_model->getCompanies($plocation, $dlocation);
         
-        echo json_encode($companies);
-    }
+        	echo json_encode($companies);
+    	}
     
-    public function get_cars() {
+    	public function get_cars() {
 	
 		$name = $this->input->post('name');
 		$puc = $this->input->post('puc');
@@ -330,8 +326,8 @@ class Rental extends CI_Controller {
 				''=>''
 				);
 
-		$data = $this->scrapeSite($url, $postdata);
-				$largeCarArray = @$this->ApexCars($data);
+			$data = $this->scrapeSite($url, $postdata);
+			$largeCarArray = @$this->ApexCars($data);
 			break;
 		}
 		echo json_encode($largeCarArray);
@@ -340,7 +336,7 @@ class Rental extends CI_Controller {
 	
 	function scrapeSite($url, $postdata) {
 		$ch = @curl_init();
-		if($ch){
+		if($ch) {
 			curl_setopt($ch, CURLOPT_URL, $url);
 			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 15);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -501,9 +497,9 @@ class Rental extends CI_Controller {
 		return $results;
 	}
     
-    function OmegaCars($data) {	
+    	function OmegaCars($data) {	
 		
-        $dom = new DOMDocument();
+        	$dom = new DOMDocument();
 		@$dom->loadHTML($data);
 		$tempDom = new DOMDocument();
 		$carDom = new DOMDocument(); 
@@ -528,7 +524,7 @@ class Rental extends CI_Controller {
 			$type = trim(str_replace(array( '(', ')', '-' ), '', $type));
 			$price = trim($carXpath->query("div[@class='list_right']/div[@class='list_price']/div[@class='price']/text()")->item(0)->nodeValue);
 			$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
-                                $price = number_format((float)$price, 2, '.', '');
+                        $price = number_format((float)$price, 2, '.', '');
 			$title = trim($carXpath->query("div[@class='list_left']/div[@class='list_title']/h2/text()")->item(0)->nodeValue);
 			$gearbox = $carXpath->query("div[@class='list_right']/div[@class='list_features']/div[@class='feature'][1]/text()[contains(.,'Manual') or contains(.,'Automatic')]");
 			$gearbox = $gearbox->length ? trim($gearbox->item(0)->nodeValue) : "N/A";
@@ -538,145 +534,73 @@ class Rental extends CI_Controller {
 
 			if ($price != "" && $price != "0.00") {
 				$results[] = array(
-				'company' => "Omega",
-				'url' => "http://www.omegarentalcars.co.nz",
-				'image' => $image,
-				'title' => $title,
-				'type' => $type,
-				'gearbox' => $gearbox,
-				'size' => $size,
-				'price' => $price,
-				);
-			}
-        }
-
-        return $results;
-    }
-    
-    function ThriftyCars($data) {	
-
-        $dom = new DOMDocument();
-        @$dom->loadHTML($data);
-        $tempDom = new DOMDocument();
-        $carDom = new DOMDocument();
-        $xpath = new DOMXPath($dom);
-        
-        $site = $xpath->query("//table/tr[position()>2]");
-        
-        $count = $site->length;        
-        $i = 0;
-                    
-		$results = array();
-		
-        while ($i < $count) {
-            $children = $site->item($i)->childNodes;
-            $tmp_doc = new DOMDocument();
- 
-            //save child nodes to a new dom
-            for($j = 0; $j < $children->length; $j++){  
-                $tmp_doc->appendChild($tmp_doc->importNode($children->item($j), true));     
-                $tmp_doc->saveHTML();     
-            }
-            $carXpath = new DOMXPath($tmp_doc);
-            
-            $image = trim($carXpath->query("img/@src")->item(0)->nodeValue);
-            $title = trim($carXpath->query("h3/text()")->item(0)->nodeValue);
-            $type =  trim($carXpath->query("h1/text()")->item(0)->nodeValue);
-            $type = trim(str_replace(array( '(', ')', '-' ), '', $type));
-
-            $i++;
-            
-            $children = $site->item($i)->childNodes;
-            $tmp_doc = new DOMDocument();
- 
-            //save child nodes to a new dom
-            for($j = 0; $j < $children->length; $j++){ 
-                $tmp_doc->appendChild($tmp_doc->importNode($children->item($j), true));     
-                $tmp_doc->saveHTML();     
-            }
-            $carXpath = new DOMXPath($tmp_doc);
-            
-            $gearbox =  trim($carXpath->query("p/text()[1]")->item(0)->nodeValue);
-            $size =  trim($carXpath->query("p/text()[2]")->item(0)->nodeValue);
-	    $size = filter_var($size,FILTER_SANITIZE_NUMBER_INT);	    
-
-	    $price = $carXpath->query("//h1/text()");
-            $price = $price->length ? $price->item(0)->nodeValue : "N/A";
-            
-   	    $price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
-                                $price = number_format((float)$price, 2, '.', '');
-		$i=$i+2;
-			if ($price != "N/A")
-			{
-				$results[] = array(
-					'company' => "Thrifty",
-					'url' => "http://www.thrifty.co.nz",
+					'company' => "Omega",
+					'url' => "http://www.omegarentalcars.co.nz",
 					'image' => $image,
 					'title' => $title,
 					'type' => $type,
 					'gearbox' => $gearbox,
 					'size' => $size,
-					'price' => $price
+					'price' => $price,
 				);
-			}			
-        }   
-		
-        return $results;
-    }
+			}
+        	}
 
-    function BritzCars($data) {
-        $dom = new DOMDocument();
-        @$dom->loadHTML($data);
-        $tempDom = new DOMDocument();
-        $carDom = new DOMDocument();
-        $xpath = new DOMXPath($dom);
+        	return $results;
+    	}
+    
+	function BritzCars($data) {
+        	$dom = new DOMDocument();
+        	@$dom->loadHTML($data);
+        	$tempDom = new DOMDocument();
+        	$carDom = new DOMDocument();
+        	$xpath = new DOMXPath($dom);
 
-        $site = $xpath->query("//form[@id='form1']/div[@id='vehicleSelectionContainer']/div[@id='vehicleCatalogContainer']/ul[@id='vehicleCatalog']");
+        	$site = $xpath->query("//form[@id='form1']/div[@id='vehicleSelectionContainer']/div[@id='vehicleCatalogContainer']/ul[@id='vehicleCatalog']");
 
-        foreach ( $site as $item ) {
-            $tempDom->appendChild($tempDom->importNode($item,true));
-        }
+        	foreach ( $site as $item ) {
+            		$tempDom->appendChild($tempDom->importNode($item,true));
+        	}
 
-        $tempDom->saveHTML();
-        $carsXpath = new DOMXPath($tempDom);
-        $results = array();
+        	$tempDom->saveHTML();
+        	$carsXpath = new DOMXPath($tempDom);
+        	$results = array();
 
-            $cars = $carsXpath->query("//li[@class='Collapse element avail']");
+            	$cars = $carsXpath->query("//li[@class='Collapse element avail']");
 
-            foreach ($cars as $car) {
-                $newDom = new DOMDocument;
-                $newDom->appendChild($newDom->importNode($car,true));
-                $carXpath = new DOMXPath( $newDom );
+            	foreach ($cars as $car) {
+                	$newDom = new DOMDocument;
+                	$newDom->appendChild($newDom->importNode($car,true));
+                	$carXpath = new DOMXPath( $newDom );
 
-                $image = trim($carXpath->query("div[@class='VehicleItem']/a[@class='VehicleThumb PopUp']/img/@src")->item(0)->nodeValue);
-                $title = trim($carXpath->query("div[@class='VehicleItem']/div[@class='VehicleFeatures']/a[@class='PopUp']/text()")->item(0)->nodeValue);
-                $price = $carXpath->query("div[@class='PriceDetailsList NoFreeDays']/table[@class='chargesTable']/tbody/tr[1]/td[@class='dpd']/text()");
-                $price = $price->length ? trim($price->item(0)->nodeValue) : "N/A";
-               $price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
-                                $price = number_format((float)$price, 2, '.', ''); 
-                $type = "N/A";
-                $gearbox = "N/A";
-                $size = "N/A"; 
+                	$image = trim($carXpath->query("div[@class='VehicleItem']/a[@class='VehicleThumb PopUp']/img/@src")->item(0)->nodeValue);
+                	$title = trim($carXpath->query("div[@class='VehicleItem']/div[@class='VehicleFeatures']/a[@class='PopUp']/text()")->item(0)->nodeValue);
+                	$price = $carXpath->query("div[@class='PriceDetailsList NoFreeDays']/table[@class='chargesTable']/tbody/tr[1]/td[@class='dpd']/text()");
+                	$price = $price->length ? trim($price->item(0)->nodeValue) : "N/A";
+                	$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
+                        $price = number_format((float)$price, 2, '.', ''); 
+        		$type = "N/A";
+                	$gearbox = "N/A";
+                	$size = "N/A"; 
                 
-                if ($price != "N/A"  && $price != "0.00") {
-                    $results[] = array(
-                        'company' => "Britz",
-						'url' => "http://www.britz.co.nz",
-                        'image' => $image,
-                        'title' => $title,
-                        'type' => $type,
-                        'gearbox' => $gearbox,
-                        'size' => $size,
-                        'price' => $price,
-                    );   
-                }
-            } 
+                	if ($price != "N/A"  && $price != "0.00") {
+                    		$results[] = array(
+	                        	'company' => "Britz",
+					'url' => "http://www.britz.co.nz",
+	                        	'image' => $image,
+	                        	'title' => $title,
+	                        	'type' => $type,
+	                        	'gearbox' => $gearbox,
+	                        	'size' => $size,
+	                        	'price' => $price,
+                		);   
+                	}
+            	} 
+        	return $results;
+    	}
 
-            return $results;
-    }
-
-    function BudgetCars($data) {
-        $dom = new DOMDocument();
+    	function BudgetCars($data) {
+        	$dom = new DOMDocument();
 		@$dom->loadHTML($data);
 		$tempDom = new DOMDocument();
 		$carDom = new DOMDocument();
@@ -744,7 +668,7 @@ class Rental extends CI_Controller {
 			
 			$price =  trim($carXpath->query("//div[3]/text()")->item(0)->nodeValue);
 			$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
-                                $price = number_format((float)$price, 2, '.', '');		
+                        $price = number_format((float)$price, 2, '.', '');		
 	
 			$i=$i+3;
 			
@@ -777,62 +701,55 @@ class Rental extends CI_Controller {
 				);           
 			}
 		} 
+        	return $results;
+    	}
 
-        return $results;
-    }
+    	function JucyCars($data) {
+    	}
 
-    function JucyCars($data) {
-    }
-
-    function ApexCars($data) {
-        $dom = new DOMDocument();
-        @$dom->loadHTML($data);
-        $tempDom = new DOMDocument();
-        $carDom = new DOMDocument();
-        $xpath = new DOMXPath($dom);
+	function ApexCars($data) {
+	        $dom = new DOMDocument();
+	        @$dom->loadHTML($data);
+	        $tempDom = new DOMDocument();
+	        $carDom = new DOMDocument();
+	        $xpath = new DOMXPath($dom);
         
-        $site = $xpath->query("//div[@id='containerFooter']/div[@id='containerMain']/div[@id='containerHeader']/form[@id='aspnetForm']/div[@id='contentMain']/div[3]/div[@class='mainRightContent']/div[@id='ctl00_ContentPlaceHolder1_upCars']");
-
-        foreach ( $site as $item ) {
-            $tempDom->appendChild($tempDom->importNode($item,true));
-        }
-
-        $tempDom->saveHTML();
-        $carsXpath = new DOMXPath($tempDom);
-        $results = array();
-
-        $cars = $carsXpath->query("//div[@class='dvVehicleItem']");
-
-        foreach ($cars as $car) {
-                $newDom = new DOMDocument;
-                $newDom->appendChild($newDom->importNode($car,true));
-                $carXpath = new DOMXPath( $newDom );
-
-                $image = trim($carXpath->query("table/tr[2]/td[1]/div[3]/img/@src")->item(0)->nodeValue);
-                $title = trim($carXpath->query("table/tr[2]/td[1]/div[@class='h3 clean']/text()")->item(0)->nodeValue);
-                $price = trim($carXpath->query("table/tr[2]/td[3]/div/div[@class='dvBoxA']/span[@class='dvRate']/text()")->item(0)->nodeValue);
-		$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
-                                $price = number_format((float)$price, 2, '.', '');
-                $type =  trim($carXpath->query("table/tr[2]/td[1]/div[@class='h2']/text()")->item(0)->nodeValue);
-                $type = trim(str_replace(array( '(', ')', '-' ), '', $type));
-		$gearbox = "N/A"; //info is there, just hard to get
-                $size = "N/A"; //info is there, just hard to get
-
-				if ($price != "" && $price != "0.00") {
-                    $results[] = array(
-                        'company' => "Apex",
-                        'url' => "http://www.apexrentals.co.nz",
-                        'image' => $image,
-                        'title' => $title,
-                        'type' => $type,
-                        'gearbox' => $gearbox,
-                        'size' => $size,
-                        'price' => $price,
-                    );  
-				}
-        }
-
-        return $results;
-    }
+        	$site = $xpath->query("/html/body/div[@id='containerMain']/div[@id='containerHeader']/form[@id='aspnetForm']/div[@id='contentMain']/div[3]/div[@class='mainRightContent']/div[@id='ctl00_ContentPlaceHolder1_upCars']");
+	        foreach ( $site as $item ) {
+	        	$tempDom->appendChild($tempDom->importNode($item,true));
+	        }
+	        $tempDom->saveHTML();
+	        $carsXpath = new DOMXPath($tempDom);
+	        $results = array();
+	        $cars = $carsXpath->query("//div[@class='dvVehicleItem']");
+        
+        	foreach ($cars as $car) {
+	                $newDom = new DOMDocument;
+	                $newDom->appendChild($newDom->importNode($car,true));
+	                $carXpath = new DOMXPath( $newDom );
+        		$image = trim($carXpath->query("//div/table/tr[2]/td[1]/div[2]/img/@src")->item(0)->nodeValue);
+                	$type = trim($carXpath->query("//div/table/tr[2]/td[1]/div[1]/text()")->item(0)->nodeValue);
+			$title = trim($carXpath->query("//div/table/tr[2]/td[1]/div[2]/div/text()")->item(0)->nodeValue);
+                	$price = trim($carXpath->query("//div/table/tr[2]/td[2]/div/div[1]/div[2]/text()")->item(0)->nodeValue);
+			$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
+                	$price = number_format((float)$price, 2, '.', '');
+               
+			$gearbox = trim($carXpath->query("//div/table/tr[3]/td[1]/div/table/tr[2]/td/text()")->item(0)->nodeValue);
+                	$size = trim($carXpath->query("//div/table/tr[3]/td[1]/div/table/tr[1]/td[2]/text()")->item(0)->nodeValue);
+			if ($price != "" && $price != "0.00") {
+	                    	$results[] = array(
+		                        'company' => "Apex",
+		                        'url' => "http://www.apexrentals.co.nz",
+		                        'image' => $image,
+		                        'title' => $title,
+		                        'type' => $type,
+		                        'gearbox' => $gearbox,
+		                        'size' => $size,
+		                        'price' => $price,
+	                    	);  
+			}
+        	}
+        	return $results;
+    	}
 }
 ?>
