@@ -146,62 +146,7 @@ class Rental extends CI_Controller {
 				$largeCarArray = @$this->PegasusCars($data);
 			
 			break;
-			
-			case 'Thrifty':
-			
-				$puDateSplit = explode("/", $pudate);
-				$doDateSplit = explode("/", $dodate);
-				
-				$url = 'https://www.thrifty.co.nz/index.cfm/1,1,243,33,html?';
-				$postdata = array('PREVIOUSFORM' => 'selectItinerary',
-					'NEXTFORM' => 'selectCar',
-					'FORMID' => '',
-					'CONFNUMBER' => '',
-					'EXISTINGRESERVATION' => '0',
-					'SpecialsPage' => '',
-					'Promotions' => '',
-					'PromotionCodes' => '',
-					'blockoutperiods' => '0',
-					'blockoutstart1' => '',
-					'blockoutend1' => '',
-					'blockoutstart2' => '',
-					'blockoutend2' => '',
-					'blockoutstart3' => '',
-					'blockoutend3' => '',
-					'PICKUP_LOC' => "$locOne",
-					'PICKUP_DAY' => "$puDateSplit[0]",
-					'PICKUP_MONTH' => "$puDateSplit[1]",
-					'PICKUP_YEAR' => "$puDateSplit[2]",  
-					'PICKUP_TIME' => '10',
-					'RETURN_LOC' => "$locTwo",
-					'RETURN_DAY' => "$doDateSplit[0]",
-					'RETURN_MONTH' => "$doDateSplit[1]",
-					'RETURN_YEAR' => "$doDateSplit[2]",
-					'return_time' => '10',
-					'BOTHISLANDS' => '0',
-					'DRIVERSAGE' => '25',
-					'CORPNUMBER_AA' => '',
-					'PO_AA' => '',
-					'PROMOTIONCODE' => '',
-					'PO_PC' => '',
-					'vendor_email' => '', 
-					'BLUECHIPNUMBER' => '',
-					'LASTNAME' => '',
-					'PO_BC' => '',
-					'FREQUENTFLYERPARTNER' => 'None',
-					'FREQUENTFLYERNO' => '',
-					'PO' => '',
-					'AUTOCLUB' => 'Please select...',
-					'WHOLESALENUMBER' => '',
-					'WHOLESALEACCOUNT' => '',
-					'WHOLESALEVOUCHER' => '',
-					'PO_WHOLESALE' => '',
-					'WHOLESALECARCLASS' => '');
-								
-				$data = $this->scrapeSite($url, $postdata);
-				$largeCarArray = @$this->ThriftyCars($data);
-			break;
-			
+
 			case 'Britz':
 			
 				$puDateSplit = explode("/", $pudate);
