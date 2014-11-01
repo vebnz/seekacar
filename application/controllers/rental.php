@@ -502,7 +502,7 @@ class Rental extends CI_Controller {
                 	$title = trim($carXpath->query("div[@class='VehicleItem']/div[@class='VehicleFeatures']/a[@class='PopUp']/text()")->item(0)->nodeValue);
 					$link = trim($carXpath->query("div[@class='VehicleItem']/div[@class='VehicleFeatures']/a[@class='PopUp']/@href")->item(0)->nodeValue);
 					
-					$carData = simpleScrape($link);
+					$carData = @$this->simpleScrape($link);
 					
 					$carDom = new DOMDocument();
 					@$carDom->loadHTML($carData);
