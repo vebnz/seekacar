@@ -500,13 +500,28 @@ class Rental extends CI_Controller {
 
                 	$image = trim($carXpath->query("div[@class='VehicleItem']/a[@class='VehicleThumb PopUp']/img/@src")->item(0)->nodeValue);
                 	$title = trim($carXpath->query("div[@class='VehicleItem']/div[@class='VehicleFeatures']/a[@class='PopUp']/text()")->item(0)->nodeValue);
+					$link = trim($carXpath->query("div[@class='VehicleItem']/div[@class='VehicleFeatures']/a[@class='PopUp']/@href")->item(0)->nodeValue);
+					
+					$carData = simpleScrape($link);
+					
+					$carDom = new DOMDocument();
+					@$carDom->loadHTML($carData);
+					$carDetXpath = new DOMXPath($carDom);
+					
+					$size = $carDetXpath->query("//div[@class='detail_icons']/span[@class='people_icon_mid']/img")->length;
+					if ($size < 1) $size = "N/A";
+					$type = trim($carDetXpath->query("//div[@class='carList']/ul/li[1]/text()")->item(0)->nodeValue);
+					if ($type == "") $type = "N/A";
+					
+					$gearbox = trim($carDetXpath->query("//div[@class='carList']/ul/li[3]/text()")->item(0)->nodeValue);
+					if ($gearbox == "") $gearbox = "N/A";
+					
+					
                 	$price = $carXpath->query("div[@class='PriceDetailsList NoFreeDays']/table[@class='chargesTable']/tbody/tr[1]/td[@class='dpd']/text()");
                 	$price = $price->length ? trim($price->item(0)->nodeValue) : "N/A";
                 	$price = $amount = filter_var($price,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
                         $price = number_format((float)$price, 2, '.', ''); 
-        		$type = "N/A";
-                	$gearbox = "N/A";
-                	$size = "N/A"; 
+
                 
                 	if ($price != "N/A"  && $price != "0.00") {
                     		$results[] = array(
